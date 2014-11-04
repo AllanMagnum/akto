@@ -1,5 +1,7 @@
 <?php
 include_once '../util/Conexao.php';
+include_once '../model/dao/PerfilDAO.php';
+include_once '../model/bean/Perfil.php';
 
 class PerfilControl{
 	protected $con;

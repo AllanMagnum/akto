@@ -33,10 +33,10 @@ echo '<br>';
 try {
 	$o_perfil = new Perfil();
 	$o_perfil->setId(1);
-	
+
 	$o_perfilControl = new PerfilControl($o_perfil);
 	echo $o_perfilControl->buscarPorId();
-	
+
 	echo '<br>';
 	echo '<br>';
 } catch (Exception $e) {
@@ -50,16 +50,16 @@ echo '<br>';
 try {
 	$o_perfil = new Perfil();
 	$o_perfil->setId(1);
-	
+
 	$o_perfilControl = new PerfilControl($o_perfil);
 	$o_perfilAtualizado = $o_perfilControl->buscarPorId();
 	$o_perfilAtualizado->setDataAtualizacao($datahora);
-	
+
 	$o_perilControl_2 = new PerfilControl($o_perfilAtualizado);
 	$o_perilControl_2->atualizar();
-	
+
 	echo $o_perfilAtualizado;
-	
+
 	echo '<br>';
 	echo '<br>';
 } catch (Exception $e) {
@@ -73,10 +73,10 @@ echo '<br>';
 try {
 	$o_perfil = new Perfil();
 	$o_perfil->setId(1);
-	
+
 	$o_perfilControl = new PerfilControl($o_perfil);
 	$o_perfilParaDeletar = $o_perfilControl->buscarPorId();
-	
+
 	$o_perilControl_2 = new PerfilControl($o_perfilParaDeletar);
 	$o_perilControl_2->deletar();
 } catch (Exception $e) {

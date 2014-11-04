@@ -10,7 +10,7 @@ class PerfilDAO{
 
 	function cadastrar($o_perfil){
 		$this->sql = "insert into perfil (nome, dataCadastro, dataAtualizacao) " .
-				      "values ('" . $o_perfil->getNome() . "', '" . $o_perfil->getDataCadastro() . "'," . "', '" . $o_perfil->getDataAtualizacao() . "')";
+				      "values ('" . $o_perfil->getNome() . "', '" . $o_perfil->getDataCadastro() . "', '" . $o_perfil->getDataAtualizacao() . "')";
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
@@ -65,10 +65,10 @@ class PerfilDAO{
 		}
 		while($row = mysqli_fetch_object($st_query)){
 			$o_perfil = new Perfil($row->id, $row->nome, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_perfil,(array) $o_perfil);
 		}
-		return $this->v_o_perfil;
-		echo "registro encontrado";
+		
+		return $o_perfil;
+		
 		mysqli_close($this->con);
 	}
 }

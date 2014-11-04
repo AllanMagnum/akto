@@ -1,5 +1,6 @@
 <?php
 include_once '../util/Conexao.php';
+include_once '../model/dao/PessoaDAO.php';
 
 class PessoaControl{
 	protected $con;

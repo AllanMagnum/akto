@@ -39,19 +39,17 @@ class Usuario extends Pessoa {
 		$this->senha = $senha;
 	}
 	public function getOPerfil() {
-		return $this->perfil;
+		return $this->o_perfil;
 	}
-	public function setOPerfil($perfil) {
-		$this->perfil = $perfil;
+	public function setOPerfil($o_perfil) {
+		$this->o_perfil = $o_perfil;
 	}
 	public function getOPessoa() {
-		return $this->pessoa;
+		return $this->o_pessoa;
 	}
-	public function setOPessoa($pessoa) {
-		$this->pessoa = $pessoa;
+	public function setOPessoa($o_pessoa) {
+		$this->o_pessoa = $o_pessoa;
 	}
-	
-	
 	public function getDataCadastro() {
 		return $this->dataCadastro;
 	}
@@ -64,6 +62,11 @@ class Usuario extends Pessoa {
 	public function setDataAtualizacao($dataAtualizacao) {
 		$this->dataAtualizacao = $dataAtualizacao;
 	}
+	
+	public function __toString() {
+		return "Usuario [id=" . $this->id . ", login=" . $this->login . ", senha=" . $this->senha . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . ", pessoa=" . $this->o_pessoa . ", perfil=" . $this->o_perfil . "]";  
+	}
+
 	
 }
 ?>

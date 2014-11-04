@@ -38,7 +38,9 @@ class Perfil{
 		$this->dataAtualizacao = $dataAtualizacao;
 	}
 	
-	
+	public function __toString(){
+		return "Perfil [id=" . $this->id . ", nome=" . $this->nome . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
+	}
 	
 }
 

@@ -1,4 +1,10 @@
 <?php
+include_once '../model/bean/Perfil.php';
+include_once '../control/PerfilControl.php';
+include_once '../model/bean/Pessoa.php';
+include_once '../control/PessoaControl.php';
+include_once '../model/bean/Usuario.php';
+
 class UsuarioDAO{
 	private $con;
 	private $sql;
@@ -21,8 +27,8 @@ class UsuarioDAO{
 	}
 	
 	function atualizar($o_usuario){
-		$this->sql = "update usuario set login= '" . $o_usuario->getLogin() . "', senha= '" . $o_usuario->getSenha() . "'" .
-				                       "', idperfil= '" .  $o_usuario->getOPerfil()->getId() . "', idpessoa= '" . $o_usuario->getOPessoa()->getId() . "'" .
+		$this->sql = "update usuario set login= '" . $o_usuario->getLogin() . "', senha= '" . $o_usuario->getSenha() .
+				                       "', idperfil= '" .  $o_usuario->getOPerfil()->getId() . "', idpessoa= '" . $o_usuario->getOPessoa()->getId() .
 				                       "', dataCadastro= '" . $o_usuario->getDataCadastro() . "', dataAtualizacao= '" . $o_usuario->getDataAtualizacao() . "'" .
 				    " where id='" . $o_usuario->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
@@ -67,11 +73,26 @@ class UsuarioDAO{
 			die('Error: ' . mysqli_error($this->con));
 		}
 		while($row = mysqli_fetch_object($st_query)){
-			$o_usuario = new Usuario($row->id, $row->login, $row->senha, $row->idperfil,
-					                 $row->idpessia, $row->datacadastro, $row->dataatualizacao);
-			return $o_usuario;
+			
+			$o_perfil = new Perfil();
+			$o_perfil->setId($row->idperfil);
+			
+			$o_perfilControl = new PerfilControl($o_perfil);
+			$o_perfil = $o_perfilControl->buscarPorId($row->idperfil);
+			
+			$o_pessoa = new Pessoa();
+			$o_pessoa->setId($row->idpessoa);
+			
+			$o_pessoaControl = new PessoaControl($o_pessoa);
+			$o_pessoa = $o_pessoaControl->buscarPorId();
+			
+			$o_usuario = new Usuario($row->id, $row->login, $row->senha, $o_perfil,
+					                 $o_pessoa, $row->datacadastro, $row->dataatualizacao);
+			
 		}
 
+		return $o_usuario;
+		
 		mysqli_close($this->con);
 	}
 	

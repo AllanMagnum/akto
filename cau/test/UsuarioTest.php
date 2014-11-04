@@ -1,21 +1,29 @@
 <?php
 include_once '../model/bean/Usuario.php';
 include_once '../model/bean/Pessoa.php';
+include_once '../control/PessoaControl.php';
 include_once '../model/bean/Perfil.php';
+include_once '../control/PerfilControl.php';
 include_once '../control/UsuarioControl.php';
 include_once '../model/dao/UsuarioDAO.php';
 
 $datahora = date ( "Y-m-d H:i:s" );
 
-// cadastrar usuario allan ligado a pessoa allan e ao perfil basico
+// deve cadastrar usuario allan ligado a pessoa allan(id=1) e ao perfil basico(id=1)
 try {
-	echo "<font color=\'#FF0000\'> cadastrar usuario allan ligado a pessoa allan e ao perfil basico </font>";
+	echo "<font color=\'#FF0000\'> deve cadastrar usuario allan ligado a pessoa allan(id=1) e ao perfil basico(id=1) </font>";
 	echo '<br>';
-	$o_pessoa = new Pessoa ();
-	$o_pessoa->setId ( 1 );
+	$o_pessoa = new Pessoa();
+	$o_pessoa->setId(1);
 	
-	$o_perfil = new Perfil ();
-	$o_perfil->setId ( 1 );
+	$o_pessoaControl = new PessoaControl($o_pessoa);
+	$o_pessoa = $o_pessoaControl->buscarPorId();
+	
+	$o_perfil = new Perfil();
+	$o_perfil->setId(1);
+	
+	$o_perfilControl = new PerfilControl($o_perfil);
+	$o_perfil = $o_perfilControl->buscarPorId();
 	
 	$o_usuario = new Usuario ();
 	$o_usuario->setLogin ( 'allan' );
@@ -26,14 +34,54 @@ try {
 	$o_usuario->setDataAtualizacao ( "0000-00-00 00:00:00" );
 	
 	$o_usuarioControl = new UsuarioControl ( $o_usuario );
-	$o_usuarioControl->cadastrar ();
+	$o_usuarioControl->cadastrar();
 	
 	echo "Usuario cadastrado sem erros";
 	echo "<br>";
 	echo "<br>";
 } catch ( Exception $e ) {
-	echo "teste falhou: " . $e;
+	echo "teste falhou: " . $e->getMessage();
 }
 
-//Buscar usuario por login = 'allan'
+//deve pesquisar e encontrar usuario com id = 1
+try {
+	echo "<font color=\'#FF0000\'> deve pesquisar e encontrar usuario com id = 1 </font>";
+	echo '<br>';
+	
+	$o_usuario = new Usuario();
+	$o_usuario->setId(1);
+	
+	$o_usuarioControl = new UsuarioControl($o_usuario);
+	echo $o_usuarioControl->buscarPorId();
+	echo "<br>";
+	echo "<br>";
+	 
+} catch (Exception $e) {
+	echo "teste falhou: " . $e->getMessage();
+}
+
+//deve atualizar senha do usuario com o id = 1
+try {
+	echo "<font color=\'#FF0000\'> deve atualizar senha do usuario com o id = 1 </font>";
+	echo '<br>';
+	
+	$o_usuario = new Usuario();
+	$o_usuario->setId(1);
+	
+	$o_usuarioControl = new UsuarioControl($o_usuario);
+	$o_usuario = $o_usuarioControl->buscarPorId();
+	
+	$o_usuario->setSenha( base64_encode ( '54321' ) );
+	
+	$o_usuarioControl = new UsuarioControl($o_usuario);
+	$o_usuarioControl->atualizar();
+	
+	echo $o_usuario;
+	
+	$o_usuarioControl = new UsuarioControl($o_usuario);
+	echo $o_usuarioControl->buscarPorId();
+	
+} catch (Exception $e) {
+	echo "teste falhou: " . $e->getMessage();
+}
 ?>
