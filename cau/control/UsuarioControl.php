@@ -31,6 +31,10 @@ class UsuarioControl{
 	
 	function listarTodos(){
 		return $this->usuarioDAO->listarTodos();
-	}	
+	}
+
+	function autenticar(){
+		return $this->usuarioDAO->autenticar($this->o_usuario);
+	}
 }
 ?>

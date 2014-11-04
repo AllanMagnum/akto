@@ -76,12 +76,74 @@ try {
 	$o_usuarioControl = new UsuarioControl($o_usuario);
 	$o_usuarioControl->atualizar();
 	
-	echo $o_usuario;
-	
 	$o_usuarioControl = new UsuarioControl($o_usuario);
 	echo $o_usuarioControl->buscarPorId();
+	echo "<br>";
+	echo "<br>";
 	
 } catch (Exception $e) {
 	echo "teste falhou: " . $e->getMessage();
+}
+
+//deve validar pessoa allan com login = allan e senha = 12345(false) e senha = 54321(true)
+try {
+	echo "<font color=\'#FF0000\'> deve validar pessoa allan com login = allan e senha = 12345(false) e senha = 54321(true) </font>";
+	echo '<br>';
+	
+	$o_usuario = new Usuario();
+	$o_usuario->setLogin("allan");
+	$o_usuario->setSenha("12345");
+	
+	$o_usuarioControl = new UsuarioControl($o_usuario);
+	$resposta = $o_usuarioControl->autenticar();
+	
+	echo "a reposta para login = allan e senha = 12345 e: " . $resposta;
+	echo "<br>";
+	
+	$o_usuario = new Usuario();
+	$o_usuario->setLogin("allan");
+	$o_usuario->setSenha(base64_encode ("54321"));
+	
+	$o_usuarioControl = new UsuarioControl($o_usuario);
+	$resposta = $o_usuarioControl->autenticar();
+	
+	echo "a reposta para login = allan e senha = 54321 e: " . $resposta;
+	echo "<br>";
+	echo "<br>";
+} catch (Exception $e) {
+	echo "teste falhou: " . $e->getMessage();
+}
+
+//deve listar todos os usuarios cadastrados
+try {
+	echo "<font color=\'#FF0000\'> deve listar todos os usuarios cadastrados </font>";
+	echo '<br>';
+	
+	$o_usuarioControl = new UsuarioControl();
+	$v_o_usuario = $o_usuarioControl->listarTodos();
+	
+	foreach ($v_o_usuario as $o_usuario) {
+		echo $o_usuario;
+	}
+	echo "<br>";
+	echo "<br>";
+} catch (Exception $e) {
+	echo "teste falhou: " . $e->getMessage();
+}
+
+//deve deletar o usario com o id = 1
+try {
+	echo "<font color=\'#FF0000\'> deve deletar o usario com o id = 1 </font>";
+	echo '<br>';
+	
+	$o_usuario = new Usuario();
+	$o_usuario->setId(1);
+	
+	$o_usuarioControl = new UsuarioControl($o_usuario);
+	$o_usuarioControl->deletar();
+	
+	echo "usuario deletado";
+	
+} catch (Exception $e) {
 }
 ?>

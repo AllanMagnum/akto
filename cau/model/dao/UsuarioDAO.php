@@ -34,16 +34,14 @@ class UsuarioDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		echo "registro atualizado";
 		mysqli_close($this->con);
 	}
 	
 	function deletar($o_usuario){
-		$this->sql = "delete from usuairo where id='" . $o_usuario->getId() ."'" ;
+		$this->sql = "delete from usuario where id='" . $o_usuario->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		echo "registro deletado";
 		mysqli_close($this->con);
 	}
 	
@@ -58,9 +56,21 @@ class UsuarioDAO{
 		}
 			
 		while($row = mysqli_fetch_object($query)){
-			$o_usuario = new Usuario($row->id, $row->login, $row->senha, $row->idperfil,
-					                 $row->idpessia, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_usuario,(array) $o_usuario);
+			$o_perfil = new Perfil();
+			$o_perfil->setId($row->idperfil);
+			
+			$o_perfilControl = new PerfilControl($o_perfil);
+			$o_perfil = $o_perfilControl->buscarPorId($row->idperfil);
+			
+			$o_pessoa = new Pessoa();
+			$o_pessoa->setId($row->idpessoa);
+			
+			$o_pessoaControl = new PessoaControl($o_pessoa);
+			$o_pessoa = $o_pessoaControl->buscarPorId();
+			
+			$o_usuario = new Usuario($row->id, $row->login, $row->senha, $o_perfil,
+					                 $o_pessoa, $row->datacadastro, $row->dataatualizacao);
+			array_push($this->v_o_usuario, $o_usuario);
 		}
 		return $this->v_o_usuario;
 		mysqli_close($this->con);
@@ -96,23 +106,25 @@ class UsuarioDAO{
 		mysqli_close($this->con);
 	}
 	
-	function buscarPorLogin($o_usuario){
-		$this->sql= "select * from usuario where login= '" . $o_usuario->getLogin() . "%'";
+	function autenticar($o_usuario){
+		$resposta = FALSE;
+		$this->sql= "select * from usuario where login= '" . $o_usuario->getLogin() . "' and senha = '" . $o_usuario->getSenha() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		while($row = mysqli_fetch_object($st_query)){
-			$o_usuario = new Usuario($row->id, $row->login, $row->senha, $row->idperfil,
-					$row->idpessia, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_usuario,(array) $o_usuario);
+		
+		$registro = mysqli_num_rows($st_query);
+		
+		echo $registro;
+		
+		if ($registro > 0) {
+			$resposta = TRUE;
 		}
-		return $this->v_o_usuario;
-		mysqli_close($this->con);
+		
+		return $resposta;
 	}
-	
-	
-	
+
 	
 }
 ?>
