@@ -1,5 +1,6 @@
 <?php
-include_once '../util/Conexao.php'; 
+include_once '../util/Conexao.php';
+include_once '../model/dao/SistemaDAO.php'; 
 
 class SistemaControl{
 	protected $con;
@@ -9,28 +10,28 @@ class SistemaControl{
 	function __construct($o_sistema=""){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
-		$this->sistemaDAO = new SistemaDAO($this->con);
+		$this->o_sistemaDAO = new SistemaDAO($this->con);
 		$this->o_sistema = $o_sistema;
 	}
 
 	function cadastrar(){
-		$this->sistemaDAO->cadastrar($this->o_sistema);
+		$this->o_sistemaDAO->cadastrar($this->o_sistema);
 	}
 
 	function atualizar(){
-		$this->sistemaDAO->atualizar($this->o_sistema);
+		$this->o_sistemaDAO->atualizar($this->o_sistema);
 	}
 
 	function deletar(){
-		$this->sistemaDAO->deletar($this->o_sistema);
+		$this->o_sistemaDAO->deletar($this->o_sistema);
 	}
 
 	function buscarPorId(){
-		return $this->sistemaDAO->buscarPorId($this->o_sistema);
+		return $this->o_sistemaDAO->buscarPorId($this->o_sistema);
 	}
 
 	function listarTodos(){
-		return $this->sistemaDAO->listarTodos();
+		return $this->o_sistemaDAO->listarTodos();
 	}
 
 }

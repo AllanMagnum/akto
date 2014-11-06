@@ -14,7 +14,6 @@ class SistemaDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		echo "registro adicionado";
 		mysqli_close($this->con);
 	}
 
@@ -24,7 +23,6 @@ class SistemaDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		echo "registro atualizado";
 		mysqli_close($this->con);
 	}
 
@@ -33,7 +31,6 @@ class SistemaDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		echo "registro deletado";
 		mysqli_close($this->con);
 	}
 
@@ -49,11 +46,10 @@ class SistemaDAO{
 			
 		while($row = mysqli_fetch_object($query)){
 			$o_sistema = new Sistema($row->id, $row->nome, $row->sigla, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_sistema,(array) $o_sistema);
+			array_push($this->v_o_sistema, $o_sistema);
 		}
 		return $this->v_o_sistema;
-		echo "registro listado";
-		echo "<br>";
+		
 		mysqli_close($this->con);
 	}
 
@@ -65,11 +61,11 @@ class SistemaDAO{
 		}
 		while($row = mysqli_fetch_object($st_query)){
 			$o_sistema = new Sistema($row->id, $row->nome, $row->sigla, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_sistema,(array) $o_sistema);
 		}
-		return $this->v_o_sistema;
-		echo "registro encontrado";
+		return $o_sistema;
+		
 		mysqli_close($this->con);
 	}
+
 }
 ?>

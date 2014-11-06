@@ -10,7 +10,7 @@ class OpcoesDAO{
 	
 	function cadastrar($o_opcoes){
 		$this->sql = "insert into opcoes (nome, tipo, url, idsistema, dataCadastro, dataAtualizacao) " .
-				"values ('" . $o_opcoes->getNome(). "', '" . $o_opcoes->getTipo() . "', '" . $o_opcoes->getUrl . "', '" . $o_opcoes->getSistema()->getId() . "', '" . $o_opcoes->getDataCadastro() . "', '" . $o_opcoes->getDataAtualizacao() . "')";
+				"values ('" . $o_opcoes->getNome(). "', '" . $o_opcoes->getTipo() . "', '" . $o_opcoes->getUrl() . "', '" . $o_opcoes->getSistema()->getId() . "', '" . $o_opcoes->getDataCadastro() . "', '" . $o_opcoes->getDataAtualizacao() . "')";
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
@@ -65,7 +65,7 @@ class OpcoesDAO{
 		}
 		while($row = mysqli_fetch_object($st_query)){
 			$o_opcoes = new Opcoes($row->id, $row->nome, $row->tipo, $row->url, $row->idsistema, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_opcoes,(array) $o_opcoes);
+			array_push($this->v_o_opcoes, $o_opcoes);
 		}
 		return $this->v_o_opcoes;
 		echo "registro encontrado";

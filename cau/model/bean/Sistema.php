@@ -5,15 +5,13 @@
 		private $sigla;
 		private $dataCadastro;
 		private $dataAtualizacao;
-		private $v_o_opcoes = array();
 		
-		function __construct($id="", $nome="", $sigla="", $dataCadastro="", $dataAtualizacao="", $v_o_opcoes){
+		function __construct($id="", $nome="", $sigla="", $dataCadastro="", $dataAtualizacao=""){
 			$this->id= $id;
 			$this->nome = $nome;
 			$this->sigla = $sigla;
 			$this->dataCadastro = $dataCadastro;
 			$this->dataAtualizacao = $dataAtualizacao;
-			$this->v_o_opcoes = $v_o_opcoes;
 		}
 		
 		public function getId() {
@@ -45,12 +43,6 @@
 		}
 		public function setDataAtualizacao($dataAtualizacao) {
 			$this->dataAtualizacao = $dataAtualizacao;
-		}
-		public function getVOOpcoes() {
-			return $this->v_opcoes;
-		}
-		public function setVOOpcoes($v_o_opcoes) {
-			$this->v_o_opcoes = $v_o_opcoes;
 		}
 		
 		function __toString(){
