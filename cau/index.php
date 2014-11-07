@@ -11,7 +11,7 @@
 	$o_usuarioControl = new UsuarioControl($o_usuario);
 	$resposta=$o_usuarioControl->autenticar();
 	
-	if ($resposta==0) {
+	if ($resposta==1) {
 		session_start();
 		$_SESSION['usuarioLogin'] = $_POST ['txtUsuario'];
 		header("Location: view/projeto.php");
