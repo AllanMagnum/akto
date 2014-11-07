@@ -4,12 +4,10 @@
  * Desenvolvedores : Allan Magnum e Nilton Caldas Jr.
  */
 
- Ext.application({
-
+Ext.application({
     name: 'cau',
-	
-	extend: 'cau.Application',
-		
-	autoCreateViewport: true
 
+    extend: 'cau.Application',
+    
+    autoCreateViewport: true
 });
