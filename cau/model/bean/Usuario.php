@@ -33,10 +33,10 @@ class Usuario extends Pessoa {
 		$this->login = $login;
 	}
 	public function getSenha() {
-		return $this->senha;
+		return base64_decode($this->senha);
 	}
 	public function setSenha($senha) {
-		$this->senha = $senha;
+		$this->senha = base64_encode ($senha);
 	}
 	public function getOPerfil() {
 		return $this->o_perfil;
