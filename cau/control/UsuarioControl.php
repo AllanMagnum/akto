@@ -14,27 +14,27 @@ class UsuarioControl{
 	}
 	
 	function cadastrar(){
-		$this->usuarioDAO->cadastrar($this->o_usuario);
+		$this->o_usuarioDAO->cadastrar($this->o_usuario);
 	}
 	
 	function atualizar(){
-		$this->usuarioDAO->atualizar($this->o_usuario);
+		$this->o_usuarioDAO->atualizar($this->o_usuario);
 	}
 	
 	function deletar(){
-		$this->usuarioDAO->deletar($this->o_usuario);
+		$this->o_usuarioDAO->deletar($this->o_usuario);
 	}
 	
 	function buscarPorId(){
-		return $this->usuarioDAO->buscarPorId($this->o_usuario);
+		return $this->o_usuarioDAO->buscarPorId($this->o_usuario);
 	}
 	
 	function listarTodos(){
-		return $this->usuarioDAO->listarTodos();
+		return $this->o_usuarioDAO->listarTodos();
 	}
 
 	function autenticar(){
-		return $this->usuarioDAO->autenticar($this->o_usuario);
+		return $this->o_usuarioDAO->autenticar($this->o_usuario);
 	}
 }
 ?>

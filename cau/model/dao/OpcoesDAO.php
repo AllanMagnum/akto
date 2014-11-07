@@ -10,21 +10,19 @@ class OpcoesDAO{
 	
 	function cadastrar($o_opcoes){
 		$this->sql = "insert into opcoes (nome, tipo, url, idsistema, dataCadastro, dataAtualizacao) " .
-				"values ('" . $o_opcoes->getNome(). "', '" . $o_opcoes->getTipo() . "', '" . $o_opcoes->getUrl() . "', '" . $o_opcoes->getSistema()->getId() . "', '" . $o_opcoes->getDataCadastro() . "', '" . $o_opcoes->getDataAtualizacao() . "')";
+				"values ('" . $o_opcoes->getNome(). "', '" . $o_opcoes->getTipo() . "', '" . $o_opcoes->getUrl() . "', '" . $o_opcoes->getOSistema()->getId() . "', '" . $o_opcoes->getDataCadastro() . "', '" . $o_opcoes->getDataAtualizacao() . "')";
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		echo "registro adicionado";
 		mysqli_close($this->con);
 	}
 	
 	function atualizar($o_opcoes){
-		$this->sql = "update opcoes set nome= '" . $o_opcoes->getNome(). "', tipo= '" . $o_opcoes->getTipo() . "', url= '" . $o_opcoes->getUrl()  . "', idsistema= '" . $o_opcoes->getSistema()->getId() . "', dataCadastro= '" . $o_opcoes->getDataCadastro() . "', dataAtualizacao= '" . $o_opcoes->getDataAtualizacao() . "'" .
+		$this->sql = "update opcoes set nome= '" . $o_opcoes->getNome(). "', tipo= '" . $o_opcoes->getTipo() . "', url= '" . $o_opcoes->getUrl()  . "', idsistema= '" . $o_opcoes->getOSistema()->getId() . "', dataCadastro= '" . $o_opcoes->getDataCadastro() . "', dataAtualizacao= '" . $o_opcoes->getDataAtualizacao() . "'" .
 				" where id='" . $o_opcoes->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		echo "registro atualizado";
 		mysqli_close($this->con);
 	}
 	
@@ -33,27 +31,6 @@ class OpcoesDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		echo "registro deletado";
-		mysqli_close($this->con);
-	}
-	
-	function listarTodos(){
-		mysqli_set_charset($this->con, "utf8");
-			
-		$this->sql= "select * from opcoes limit 50";
-		$query = mysqli_query($this->con, $this->sql);
-			
-		if (!$query) {
-			die('Error: ' . mysqli_error($this->con));
-		}
-			
-		while($row = mysqli_fetch_object($query)){
-			$o_opcoes = new Opcoes($row->id, $row->nome, $row->tipo, $row->url, $row->idsistema, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_opcoes,(array) $o_opcoes);
-		}
-		return $this->v_o_opcoes;
-		echo "registro listado";
-		echo "<br>";
 		mysqli_close($this->con);
 	}
 	
@@ -64,11 +41,17 @@ class OpcoesDAO{
 			die('Error: ' . mysqli_error($this->con));
 		}
 		while($row = mysqli_fetch_object($st_query)){
-			$o_opcoes = new Opcoes($row->id, $row->nome, $row->tipo, $row->url, $row->idsistema, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_opcoes, $o_opcoes);
+			
+			$o_sistema = new Sistema();
+			$o_sistema->setId($row->idsistema);
+			
+			$o_sistemaControl = new SistemaControl($o_sistema);
+			$o_sistema = $o_sistemaControl->buscarPorId();
+			
+			$o_opcoes = new Opcoes($row->id, $row->nome, $row->tipo, $row->url, $row->datacadastro, $row->dataatualizacao, $o_sistema);
 		}
-		return $this->v_o_opcoes;
-		echo "registro encontrado";
+		return $o_opcoes;
+		
 		mysqli_close($this->con);
 	}
 }

@@ -46,7 +46,7 @@
 		}
 		
 		function __toString(){
-			return 'Sistema: ' . 'id-' . $this->id . ' Nome-' .$this->nome . ' Sigla-' . $this->sigla . ' DataCadastro-' . $this->dataCadastro. 'DataAtualizacao-'. $this->dataAtualizacao ;
+			return 'Sistema: ' . 'id-' . $this->id . ' Nome-' .$this->nome . ' Sigla-' . $this->sigla . ' DataCadastro-' . $this->dataCadastro . 'DataAtualizacao-' . $this->dataAtualizacao ;
 		}
 		
 		

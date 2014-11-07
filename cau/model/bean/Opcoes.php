@@ -26,21 +26,18 @@ class Opcoes {
 	}
 	public function setId($id) {
 		$this->id = $id;
-		return $this;
 	}
 	public function getNome() {
 		return $this->nome;
 	}
 	public function setNome($nome) {
 		$this->nome = $nome;
-		return $this;
 	}
 	public function getTipo() {
 		return $this->tipo;
 	}
 	public function setTipo($tipo) {
 		$this->tipo = $tipo;
-		return $this;
 	}
 	public function getUrl() {
 		return $this->url;
@@ -61,12 +58,14 @@ class Opcoes {
 		$this->dataAtualizacao = $dataAtualizacao;
 	}
 	public function getOSistema() {
-		return $this->sistema;
+		return $this->o_sistema;
 	}
-	public function setOSistema($sistema) {
-		$this->sistema = $sistema;
-		return $this;
+	public function setOSistema($o_sistema) {
+		$this->o_sistema = $o_sistema;
 	}
 	
+	public function __toString(){
+		return "Opcoes [id=" . $this->id . ", nome=" . $this->nome . ", tipo=" . $this->tipo . ", url=" . $this->url . ", sistema=" . $this->o_sistema . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
+	}
 }
 ?>

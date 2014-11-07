@@ -29,8 +29,8 @@ class OpcoesControl{
 		return $this->opcoesDAO->buscarPorId($this->o_opcoes);
 	}
 
-	function listarTodos(){
-		return $this->opcoesDAO->listarTodos();
+	function listarPorSistema(){
+		return $this->opcoesDAO->listarPorSistema($this->o_opcoes);
 	}
 
 }
