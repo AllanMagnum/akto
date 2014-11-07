@@ -5,7 +5,6 @@ include_once '../control/PessoaControl.php';
 include_once '../model/bean/Perfil.php';
 include_once '../control/PerfilControl.php';
 include_once '../control/UsuarioControl.php';
-include_once '../model/dao/UsuarioDAO.php';
 
 $datahora = date ( "Y-m-d H:i:s" );
 
@@ -33,7 +32,7 @@ try {
 	$o_usuario->setDataCadastro ( $datahora );
 	$o_usuario->setDataAtualizacao ( "0000-00-00 00:00:00" );
 	
-	$o_usuarioControl = new UsuarioControl ( $o_usuario );
+	$o_usuarioControl = new UsuarioControl($o_usuario);
 	$o_usuarioControl->cadastrar();
 	
 	echo "Usuario cadastrado sem erros";
@@ -131,7 +130,7 @@ try {
 	echo "teste falhou: " . $e->getMessage();
 }
 
-//deve deletar o usario com o id = 1
+/* //deve deletar o usario com o id = 1
 try {
 	echo "<font color=\'#FF0000\'> deve deletar o usario com o id = 1 </font>";
 	echo '<br>';
@@ -145,5 +144,5 @@ try {
 	echo "usuario deletado";
 	
 } catch (Exception $e) {
-}
+} */
 ?>
