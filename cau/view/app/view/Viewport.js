@@ -5,5 +5,17 @@
  */
 
 Ext.define('cau.view.Viewport', {
+    extend: 'Ext.container.Viewport',
+    requires:[
+        'Ext.layout.container.Fit',
+        'cau.view.Main'
+    ],
 
+    layout: {
+        type: 'fit'
+    },
+
+    items: [{
+        xtype: 'app-main'
+    }]
 });

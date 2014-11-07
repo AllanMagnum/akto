@@ -5,19 +5,5 @@
  */
 
 Ext.define('cau.controller.Main', {
-	
-	extend: 'Ext.app.Controller',
-
-    models: [
-    	
-    ],
-
-    stores: [
-    	
-    ],
-
-    views: [
-    	
-    ]
-    
+    extend: 'Ext.app.Controller'
 });

@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <?php
-//  include_once 'control/UsuarioControl.class.php';
-//  include_once 'model/bean/Usuario.class.php';
-//  if (isset( $_POST ['acao'])) {
-// 	$o_usuario = new Usuario(1,$_POST ['txtUsuario'], $_POST ['txtSenha']);
-// 	$o_usuarioControl = new UsuarioControl();
-// 	$o_usuarioControl->setUsuario( $o_usuario );
-// 	$o_usuarioControl->validar();
-//  }
+ include_once 'control/UsuarioControl.php';
+ include_once 'model/bean/Usuario.php';
+ include_once 'model/dao/UsuarioDAO.php';
+ if (isset( $_POST ['acao'])) {
+	$o_usuario = new Usuario(1,$_POST ['txtUsuario'], $_POST ['txtSenha']);
+	$o_usuarioControl = new UsuarioControl();
+	$o_usuarioControl->setUsuario( $o_usuario );
+	$o_usuarioControl->autenticar();
+ }
 ?>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Sistema AKTO - Usu√°rio Logado : </title>
+  <title>Sistema AKTO - Usu·rio Logado : </title>
   <link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body>

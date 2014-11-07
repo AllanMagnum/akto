@@ -6,23 +6,18 @@
 
 Ext.define('cau.Application', {
     name: 'cau',
-    
+
     extend: 'Ext.app.Application',
 
-    requires: [
-
-    ],
-
     views: [
-        
+        // TODO: add views here
     ],
 
     controllers: [
-        'Main'
+        // TODO: add controllers here
     ],
 
     stores: [
-        
+        // TODO: add stores here
     ]
-	
 });
