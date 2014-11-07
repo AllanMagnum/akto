@@ -10,11 +10,11 @@ class UsuarioDAO{
 	private $sql;
 	private $v_o_usuario = array();
 
-	function __construct($con){
+	public function __construct($con){
 		$this->con = $con;
 	}
 
-	function cadastrar($o_usuario){
+	public function cadastrar($o_usuario){
 		$this->sql = "insert into usuario (login, senha, idperfil, idpessoa, dataCadastro, dataAtualizacao) " .
 				"values ('" . $o_usuario->getLogin() . "', '" . $o_usuario->getSenha() . "', '" .
 				         $o_usuario->getOPerfil()->getId() . "', '" . $o_usuario->getOPessoa()->getId() . "', '" .
@@ -26,7 +26,7 @@ class UsuarioDAO{
 		mysqli_close($this->con);
 	}
 	
-	function atualizar($o_usuario){
+	public function atualizar($o_usuario){
 		$this->sql = "update usuario set login= '" . $o_usuario->getLogin() . "', senha= '" . $o_usuario->getSenha() .
 				                       "', idperfil= '" .  $o_usuario->getOPerfil()->getId() . "', idpessoa= '" . $o_usuario->getOPessoa()->getId() .
 				                       "', dataCadastro= '" . $o_usuario->getDataCadastro() . "', dataAtualizacao= '" . $o_usuario->getDataAtualizacao() . "'" .
@@ -37,7 +37,7 @@ class UsuarioDAO{
 		mysqli_close($this->con);
 	}
 	
-	function deletar($o_usuario){
+	public function deletar($o_usuario){
 		$this->sql = "delete from usuario where id='" . $o_usuario->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
@@ -76,7 +76,7 @@ class UsuarioDAO{
 		mysqli_close($this->con);
 	}
 	
-	function buscarPorId($o_usuario){
+	public function buscarPorId($o_usuario){
 		$this->sql= "select * from usuario where id= '" . $o_usuario->getId() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {
@@ -106,7 +106,7 @@ class UsuarioDAO{
 		mysqli_close($this->con);
 	}
 	
-	function autenticar($o_usuario){
+	public function autenticar($o_usuario){
 		$resposta = FALSE;
 		$this->sql= "select * from usuario where login= '" . $o_usuario->getLogin() . "' and senha = '" . $o_usuario->getSenha() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);

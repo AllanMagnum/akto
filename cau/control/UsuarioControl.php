@@ -1,5 +1,7 @@
 <?php
 include_once '../util/Conexao.php';
+include_once '../model/dao/UsuarioDAO.php';
+include_once '../model/bean/Usuario.php';
 
 class UsuarioControl{
 	protected $con;
@@ -9,23 +11,23 @@ class UsuarioControl{
 	function __construct($o_usuario=""){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
-		$this->usuarioDAO = new UsuarioDAO($this->con);
+		$this->o_usuarioDAO = new UsuarioDAO($this->con);
 		$this->o_usuario = $o_usuario;
 	}
 	
-	function cadastrar(){
+	public function cadastrar(){
 		$this->o_usuarioDAO->cadastrar($this->o_usuario);
 	}
 	
-	function atualizar(){
+	public function atualizar(){
 		$this->o_usuarioDAO->atualizar($this->o_usuario);
 	}
 	
-	function deletar(){
+	public function deletar(){
 		$this->o_usuarioDAO->deletar($this->o_usuario);
 	}
 	
-	function buscarPorId(){
+	public function buscarPorId(){
 		return $this->o_usuarioDAO->buscarPorId($this->o_usuario);
 	}
 	
@@ -33,7 +35,7 @@ class UsuarioControl{
 		return $this->o_usuarioDAO->listarTodos();
 	}
 
-	function autenticar(){
+	public function autenticar(){
 		return $this->o_usuarioDAO->autenticar($this->o_usuario);
 	}
 }
