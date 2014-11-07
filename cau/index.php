@@ -4,10 +4,19 @@
  include_once 'model/bean/Usuario.php';
  include_once 'model/dao/UsuarioDAO.php';
  if (isset( $_POST ['acao'])) {
-	$o_usuario = new Usuario(1,$_POST ['txtUsuario'], $_POST ['txtSenha']);
-	$o_usuarioControl = new UsuarioControl();
-	$o_usuarioControl->setUsuario( $o_usuario );
-	$o_usuarioControl->autenticar();
+	$o_usuario = new Usuario();
+	$o_usuario->setLogin($_POST ['txtUsuario']);
+	$o_usuario->setSenha($_POST ['txtSenha']);
+
+	$o_usuarioControl = new UsuarioControl($o_usuario);
+	$resposta=$o_usuarioControl->autenticar();
+	
+	if ($resposta==0) {
+		session_start();
+		$_SESSION['usuarioLogin'] = $_POST ['txtUsuario'];
+		header("Location: view/projeto.php");
+	}
+	
  }
 ?>
 <html lang="pt-br">
