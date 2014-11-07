@@ -1,6 +1,6 @@
 <?php
-include_once '../util/Conexao.php';
-include_once '../model/dao/SistemaDAO.php'; 
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/SistemaDAO.php'; 
 
 class SistemaControl{
 	protected $con;

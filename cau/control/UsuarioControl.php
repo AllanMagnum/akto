@@ -1,7 +1,7 @@
 <?php
-include_once '../util/Conexao.php';
-include_once '../model/dao/UsuarioDAO.php';
-include_once '../model/bean/Usuario.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/UsuarioDAO.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Usuario.php';
 
 class UsuarioControl{
 	protected $con;

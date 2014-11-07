@@ -1,5 +1,5 @@
 <?php
-include_once '../util/Conexao.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
 
 class AcessoControl{
 	protected $con;

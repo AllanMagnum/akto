@@ -1,9 +1,9 @@
 <?php
-include_once '../model/bean/Perfil.php';
-include_once '../control/PerfilControl.php';
-include_once '../model/bean/Pessoa.php';
-include_once '../control/PessoaControl.php';
-include_once '../model/bean/Usuario.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Perfil.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/PerfilControl.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Pessoa.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/PessoaControl.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Usuario.php';
 
 class UsuarioDAO{
 	private $con;

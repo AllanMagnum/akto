@@ -1,7 +1,7 @@
 <?php
-include_once '../util/Conexao.php';
-include_once '../model/dao/PerfilDAO.php';
-include_once '../model/bean/Perfil.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/PerfilDAO.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Perfil.php';
 
 class PerfilControl{
 	protected $con;
