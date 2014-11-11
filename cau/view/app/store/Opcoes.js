@@ -4,10 +4,10 @@
  * Desenvolvedores : Allan Magnum e Nilton Caldas Jr.
  */
 
-Ext.define('cau.store.Usuario',{
+Ext.define('cau.store.Opcoes',{
 	extend: 'Ext.data.Store',
 
-	model: 'cau.model.Usuario',
+	model: 'cau.model.Opcoes',
 
 	pageSize: 20,
 
@@ -15,10 +15,10 @@ Ext.define('cau.store.Usuario',{
 		type: 'ajax',
 
 		api:{
-			create: 'php/criaUsuario.php',
-			read: 'php/listaUsuario.php',
-			update: 'php/atualizaUsuario.php',
-			destroy: 'php/deletaUsuario.php',
+			create: 'php/criaOpcoes.php',
+			read: 'php/listaOpcoes.php',
+			update: 'php/atualizaOpcoes.php',
+			destroy: 'php/deletaOpcoes.php',
 		},
 
 		reader: {
@@ -32,4 +32,6 @@ Ext.define('cau.store.Usuario',{
 			encode: true
 		}
 	}
-});
+});/**
+ * 
+ */

@@ -14,7 +14,7 @@
 	if ($resposta==1) {
 		session_start();
 		$_SESSION['usuarioLogin'] = $_POST ['txtUsuario'];
-		header("Location: view/projeto.php");
+		header("Location: view/app.php");
 	}
 	
  }

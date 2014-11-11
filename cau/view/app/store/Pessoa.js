@@ -4,10 +4,10 @@
  * Desenvolvedores : Allan Magnum e Nilton Caldas Jr.
  */
 
-Ext.define('cau.store.Usuario',{
+Ext.define('cau.store.Pessoa',{
 	extend: 'Ext.data.Store',
 
-	model: 'cau.model.Usuario',
+	model: 'cau.model.Pessoa',
 
 	pageSize: 20,
 
@@ -15,10 +15,10 @@ Ext.define('cau.store.Usuario',{
 		type: 'ajax',
 
 		api:{
-			create: 'php/criaUsuario.php',
-			read: 'php/listaUsuario.php',
-			update: 'php/atualizaUsuario.php',
-			destroy: 'php/deletaUsuario.php',
+			create: 'php/criaPessoa.php',
+			read: 'php/listaPessoa.php',
+			update: 'php/atualizaPessoa.php',
+			destroy: 'php/deletaPessoa.php',
 		},
 
 		reader: {
@@ -32,4 +32,6 @@ Ext.define('cau.store.Usuario',{
 			encode: true
 		}
 	}
-});
+});/**
+ * 
+ */
