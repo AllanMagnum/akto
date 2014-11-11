@@ -4,15 +4,15 @@
  * Desenvolvedores : Allan Magnum e Nilton Caldas Jr.
  */
 
-Ext.define('cau.model.Usuario',{
+Ext.define('cau.model.Opcoes',{
 	extend: 'Ext.data.Model',
 
 	fields: [
 		{name: 'id',  				type: 'int'},
-		{name: 'login',  			type: 'string'},
-		{name: 'senha',  			type: 'string'},
-		{name: 'idpessoa',  		type: 'int'},
-		{name: 'idperfil', 			type: 'int'},
+		{name: 'nome',  			type: 'string'},
+		{name: 'tipo',  			type: 'string'},
+		{name: 'url',  				type: 'string'},
+		{name: 'idsistema',  		type: 'int'},
 		{name: 'datacadastro', 		type: 'date' , dateFormat: 'c'},
 		{name: 'dataatualizacao', 	type: 'date', dateFormat: 'c'}
 	]	

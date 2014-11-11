@@ -22,9 +22,6 @@ Ext.define('cau.view.Main', {
 			region: 'center',
 			xtype: 'panel',
 			title: 'Painel 1',
-			icon : 'image/YM.png',
-			//width: 200,
-			//height: 70,
 			bodyStyle: 'padding:15px',
 			html: 'regiao central'
 		},
@@ -33,17 +30,12 @@ Ext.define('cau.view.Main', {
 			xtype: 'panel',
 			title: 'Ferramentas de Apoio',
 			width: 200,
-			//height: 300,
 			defaults: {
-				// Aplica no conteudo do PANEL
 				bodyStyle: 'padding:15px'
 			},
 			layout: {
-			// layout-specific configs go here
 				type: 'accordion',
 				titleCollapse: false
-				//animate: true,	
-				//activeOnTop: true
 			},
 			items: [{
                 xtype: 'treepanel',
@@ -107,12 +99,9 @@ Ext.define('cau.view.Main', {
 			region: 'east',
 			xtype: 'panel',
 			title: 'Painel 3',
-			icon : 'image/wrench.png',
 			width: 200,
-			//height: 70,
 			bodyStyle: 'padding:15px',
 			html: 'regiao lest',
-			//width: '250',
 			collapsible: true,
 			split: true
 		},
@@ -120,8 +109,7 @@ Ext.define('cau.view.Main', {
 			region: 'north',
 			xtype: 'panel',
 			title: 'Painel 4',
-			icon : 'image/people.png',
-			//width: 200,
+			//icon : 'image/Address Book.png',
 			height: 70,
 			bodyStyle: 'padding:15px',
 			html: 'regiao norte',
@@ -132,9 +120,7 @@ Ext.define('cau.view.Main', {
 			region: 'south',
 			xtype: 'panel',
 			title: 'Painel 5',
-			icon : 'image/Address Book.png',
-			//width: 200,
-			//height: 70,
+			//icon : 'image/Address Book.png',
 			bodyStyle: 'padding:15px',
 			html: 'regiao sul',
 			collapsible: true,
