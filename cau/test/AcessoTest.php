@@ -174,4 +174,8 @@ try {
 } catch (Exception $e) {
 	echo "teste falhou: " . $e->getMessage();
 }
+
+// deve atualizar todos os acessos do perfil basico(id=1) para poder atualizar
+echo "<font color=\'#FF0000\'> deve atualizar todos os acessos do perfil basico(id=1) para poder atualizar </font>";
+echo '<br>';
 ?>
