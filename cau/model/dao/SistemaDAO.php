@@ -3,6 +3,7 @@ class SistemaDAO{
 	private $con;
 	private $sql;
 	private $v_o_sistema = array();
+	private $v_o_opcoes = array();
 
 	function __construct($con){
 		$this->con = $con;
@@ -37,7 +38,7 @@ class SistemaDAO{
 	function listarTodos(){
 		mysqli_set_charset($this->con, "utf8");
 			
-		$this->sql= "select * from sistema limit 50";
+		$this->sql= "select * from sistema";
 		$query = mysqli_query($this->con, $this->sql);
 			
 		if (!$query) {
@@ -63,6 +64,30 @@ class SistemaDAO{
 			$o_sistema = new Sistema($row->id, $row->nome, $row->sigla, $row->datacadastro, $row->dataatualizacao);
 		}
 		return $o_sistema;
+		
+		mysqli_close($this->con);
+	}
+	
+	function listarOpcoes($o_sistema){
+		mysqli_set_charset($this->con, "utf8");
+			
+		$this->sql= "select t1.*, t2.* from sistema t1 inner join opcoes t2 on t1.id = t2.idsistema where t1.id = " . $o_sistema->getId();
+		$query = mysqli_query($this->con, $this->sql);
+			
+		if (!$query) {
+			die('Error: ' . mysqli_error($this->con));
+		}
+			
+		while($row = mysqli_fetch_object($query)){
+			
+			$o_sistemaControl = new SistemaControl($o_sistema);
+			$o_sistema = $o_sistemaControl->buscarPorId();
+			
+			$o_opcoes = new Sistema($row->id, $row->nome, $row->tipo, $row->tipo, $row->datacadastro, $row->dataatualizacao, $o_sistema);
+			
+			array_push($this->v_o_opcoes, $o_opcoes);
+		}
+		return $this->v_o_opcoes;
 		
 		mysqli_close($this->con);
 	}

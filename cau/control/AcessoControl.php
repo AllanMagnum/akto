@@ -1,5 +1,7 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Acesso.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/AcessoDAO.php';
 
 class AcessoControl{
 	protected $con;
@@ -24,9 +26,17 @@ class AcessoControl{
 	function deletar(){
 		$this->acessoDAO->deletar($this->o_acesso);
 	}
-
-	function buscarPorId(){
-		return $this->acessoDAO->buscarPorId($this->o_acesso);
+	
+	function buscarPorUsuario(){
+		$this->acessoDAO->buscarPorUsuario($this->o_acesso);
+	}
+	
+	function buscarPorPerfil(){
+		$this->acessoDAO->buscarPorPerfil($this->o_acesso);
+	}
+	
+	function buscarPorSistema(){
+		$this->acessoDAO->buscarPorSistema($this->o_acesso);
 	}
 
 	function listarTodos(){

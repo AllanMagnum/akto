@@ -1,8 +1,8 @@
 <?php
-include_once '../model/bean/Sistema.php';
-include_once '../control/SistemaControl.php';
-include_once '../model/bean/Opcoes.php';
-include_once '../control/OpcoesControl.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Sistema.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/SistemaControl.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Opcoes.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/OpcoesControl.php';
 
 // deve cadastrar o sistema cau 
 echo "<font color=\'#FF0000\'> deve cadastrar o sistema cau </font>";

@@ -110,7 +110,7 @@ class UsuarioDAO{
 		$resposta = FALSE;
 		$this->sql= "select * from usuario where login= '" . $o_usuario->getLogin() . "' and senha = '" . $o_usuario->getSenha() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);
-		if (!$st_query) {
+		if (! $st_query) {
 			die('Error: ' . mysqli_error($this->con));
 		}
 		

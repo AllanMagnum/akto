@@ -33,6 +33,10 @@ class SistemaControl{
 	function listarTodos(){
 		return $this->o_sistemaDAO->listarTodos();
 	}
+	
+	function listarOpcoes(){
+		return $this->o_sistemaDAO->listarOpcoes($this->o_sistema);
+	}
 
 }
 ?>

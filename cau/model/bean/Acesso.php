@@ -12,7 +12,7 @@ class Acesso{
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	function __construct($o_usuario, $o_perfil, $o_sistema, $o_opcoes, $visualizar, $cadastrar, $consultar, $atualizar, $deletar, $dataCadastro, $dataAtualizacao){
+	function __construct($o_usuario="", $o_perfil="", $o_sistema="", $o_opcoes="", $visualizar="", $cadastrar="", $consultar="", $atualizar="", $deletar="", $dataCadastro="", $dataAtualizacao=""){
 		$this->o_usuario = $o_usuario;
 		$this->o_perfil = $o_perfil;
 		$this->o_sistema = $o_sistema;
@@ -95,5 +95,8 @@ class Acesso{
 		$this->dataAtualizacao = $dataAtualizacao;
 	}
 	
+	public function __toString(){
+		return "Sistema [ Usuario= " . $this->o_usuario . ", Perifl=" . $this->o_perfil . ", sistema= " . $this->o_sistema . ", opcoes= " . $this->o_opcoes . ", visualizar= " . $this->visualizar . ", cadastrar= " . $this->cadastrar . ", consultar= " . $this->consultar . ", atualizar= " . $this->atualizar .  ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . ", pessoa=" . "]";
+	}
 }
 ?>

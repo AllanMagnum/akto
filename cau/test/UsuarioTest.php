@@ -70,7 +70,7 @@ try {
 	$o_usuarioControl = new UsuarioControl($o_usuario);
 	$o_usuario = $o_usuarioControl->buscarPorId();
 	
-	$o_usuario->setSenha( base64_encode ( '54321' ) );
+	$o_usuario->setSenha('54321');
 	
 	$o_usuarioControl = new UsuarioControl($o_usuario);
 	$o_usuarioControl->atualizar();
@@ -101,7 +101,7 @@ try {
 	
 	$o_usuario = new Usuario();
 	$o_usuario->setLogin("allan");
-	$o_usuario->setSenha(base64_encode ("54321"));
+	$o_usuario->setSenha("54321");
 	
 	$o_usuarioControl = new UsuarioControl($o_usuario);
 	$resposta = $o_usuarioControl->autenticar();

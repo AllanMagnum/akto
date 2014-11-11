@@ -1,7 +1,7 @@
 <?php
-include_once '../model/bean/Perfil.php';
-include_once '../control/PerfilControl.php';
-include_once '../model/dao/PerfilDAO.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Perfil.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/PerfilControl.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/PerfilDAO.php';
 
 //cadastrar perfil "Basico"
 echo "<font color=\'#FF0000\'> deve cadastrar perfil basico </font>";

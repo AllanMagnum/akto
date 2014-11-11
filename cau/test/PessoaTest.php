@@ -1,7 +1,7 @@
 <?php
-	include_once '../model/bean/Pessoa.php';
-	include_once '../control/PessoaControl.php';
-	include_once '../model/dao/PessoaDAO.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Pessoa.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/PessoaControl.php';
+	include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/PessoaDAO.php';
 	
 	
 	
