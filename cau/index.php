@@ -7,6 +7,7 @@
 	$o_usuario = new Usuario();
 	$o_usuario->setLogin($_POST ['txtUsuario']);
 	$o_usuario->setSenha($_POST ['txtSenha']);
+	
 
 	$o_usuarioControl = new UsuarioControl($o_usuario);
 	$resposta=$o_usuarioControl->autenticar();
