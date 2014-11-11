@@ -1,7 +1,4 @@
 <?php
-include_once '../util/Conexao.php';
-include_once '../model/dao/OpcoesDAO.php';
-
 class Opcoes {
 	private $id;
 	private $nome;

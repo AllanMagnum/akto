@@ -138,7 +138,7 @@ try {
 		$o_acesso->setCadastrar(1);
 		$o_acesso->setDataAtualizacao($datahora);
 		$o_acessoControl = new AcessoControl($o_acesso);
-		$o_acessoControl->atualizarPorUsuario();
+		$o_acessoControl->atualizar();
 	}
 	
 	echo "acesso atualizado com sucesso";
@@ -159,13 +159,13 @@ try {
 	$o_acesso->setOPerfil($o_perfil);
 	
 	$o_acessoControl = new AcessoControl($o_acesso);
-	$v_o_acesso = $o_acessoControl->buscarPorUsuario();
+	$v_o_acesso = $o_acessoControl->buscarPorPerfil();
 	
 	foreach ($v_o_acesso as $o_acesso) {
 		$o_acesso->setAtualizar(1);
 		$o_acesso->setDataAtualizacao($datahora);
 		$o_acessoControl = new AcessoControl($o_acesso);
-		$o_acessoControl->atualizarPorPerfil();
+		$o_acessoControl->atualizar();
 	}
 	
 	echo "acesso atualizado com sucesso";
