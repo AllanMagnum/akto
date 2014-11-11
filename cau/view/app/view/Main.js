@@ -21,110 +21,44 @@ Ext.define('cau.view.Main', {
 		{
 			region: 'center',
 			xtype: 'panel',
-			title: 'Painel 1',
+			title: 'Cadastro de Usuários',
 			bodyStyle: 'padding:15px',
-			html: 'regiao central'
+			html: 'Grid de Pessoas e Form de Edição em Baixo'
 		},
 		{
 			region: 'west',
 			xtype: 'panel',
-			title: 'Ferramentas de Apoio',
+			title: 'Filtro por Perfil',
 			width: 200,
-			defaults: {
-				bodyStyle: 'padding:15px'
-			},
-			layout: {
-				type: 'accordion',
-				titleCollapse: false
-			},
-			items: [{
-                xtype: 'treepanel',
-                title: 'Cadastro',
-                rootVisible: false,
-                root: {
-                    expanded: false,
-                    children: [
-                        { text: "Empresas", leaf: true },
-                        {
-                            text: "Bancários", expanded: false, children: [
-                                { text: "Bancos", leaf: true },
-                                { text: "Contas", leaf: true }
-                            ]
-                        },
-                        { text: "Unidade", leaf: true },
-                        { text: "Centro de Custo", leaf: true },
-                        { text: "Histórico", leaf: true },
-                        { text: "Contas a Pagar", leaf: true },
-                        { text: "Contas a Receber", leaf: true }
-                    ]
-                }
-            },
-            {
-                xtype: 'treepanel',
-                title: 'Relatórios',
-                rootVisible: false,
-                root: {
-                    expanded: false,
-                    children: [
-                        { text: "Fornecedores", leaf: true },
-                        {
-                            text: "Contas", expanded: false, children: [
-                                { text: "A Pagar", leaf: true },
-                                { text: "A Receber", leaf: true }
-                            ]
-                        },
-                        { text: "Mapa de Revenda", leaf: true }
-                    ]
-                }
-            },
-            {
-                xtype: 'treepanel',
-                title: 'Ferramentas',
-                rootVisible: false,
-                root: {
-                    expanded: false,
-                    children: [
-                        { text: "Correções Financeiras", leaf: true },
-                        { text: "Configurações Gerais", leaf: true },
-                        { text: "e-mail", leaf: true },
-                        { text: "Links", leaf: true },
-                        { text: "LogOut", href: 'php/logout.php', leaf: true }
-                    ]
-                }
-            }],
-			collapsible: true,
-			split: true
+			bodyStyle: 'padding:15px',
+			html: '<h4>Escolha do Perfil:</h4> <br><br>[ ] - Administrador<br>[ ] - Operador<br>[ ] - Digitador<br>[ ] - Outros',
 		},
 		{
 			region: 'east',
 			xtype: 'panel',
-			title: 'Painel 3',
-			width: 200,
+			title: 'Histórico do Usuário',
+			width: 400,
 			bodyStyle: 'padding:15px',
-			html: 'regiao lest',
+			html: '<h4>Dados Histórico do Usuários:</h4> <br><br>1 - Fotos<br>2 - Dados Pessoais<br>3 - Logs de Acesso<br>4 - Etc.',
 			collapsible: true,
 			split: true
 		},
 		{
+			// Topo da Tela Viewport
 			region: 'north',
 			xtype: 'panel',
-			title: 'Painel 4',
-			//icon : 'image/Address Book.png',
-			height: 70,
-			bodyStyle: 'padding:15px',
-			html: 'regiao norte',
-			collapsible: true,
-			split: true
+			height: 50,
+			bodyStyle: 'padding:3px',
+			html: '<table><tr><td><img src="/git/akto/cau/resources/images/logo.jpg"></td><td><h3>Controle e Autenticação de Usuário</h3></td></tr></table> '
 		},
 		{
 			region: 'south',
 			xtype: 'panel',
-			title: 'Painel 5',
-			//icon : 'image/Address Book.png',
-			bodyStyle: 'padding:15px',
-			html: 'regiao sul',
-			collapsible: true,
-			split: true
+			//title: 'Painel 5',
+			bodyStyle: 'padding:5px',
+			html: 'Rodapé do Sistema',
+			//collapsible: true,
+			//split: true
 		}
 	],
 });
