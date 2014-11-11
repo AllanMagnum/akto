@@ -107,8 +107,9 @@ class UsuarioDAO{
 	}
 	
 	public function autenticar($o_usuario){
-		$resposta = FALSE;
-		$this->sql= "select * from usuario where login= '" . $o_usuario->getLogin() . "' and senha = '" . $o_usuario->getSenha() . "'";
+		
+		$resposta = 0;
+		$this->sql= "select * from usuario where login= '" . $o_usuario->getLogin() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (! $st_query) {
 			die('Error: ' . mysqli_error($this->con));
@@ -116,10 +117,12 @@ class UsuarioDAO{
 		
 		$registro = mysqli_num_rows($st_query);
 		
-		echo $registro;
-		
 		if ($registro > 0) {
-			$resposta = TRUE;
+			while($row = mysqli_fetch_object($st_query)){
+				if (base64_decode($row->senha) == base64_decode($o_usuario->getSenha())){
+					$resposta = 1;
+				}
+			}	
 		}
 		
 		return $resposta;

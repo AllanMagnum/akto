@@ -60,10 +60,12 @@ try {
 	$o_acessoControl = new AcessoControl($o_acesso);
 	$v_o_acesso = $o_acessoControl->buscarPorUsuario();
 	
+	
 	foreach ($v_o_acesso as $o_acesso) {
 		echo $o_acesso;
 		echo "<br>";
 	}
+	
 	echo "<br>";
 	echo "<br>";
 	
@@ -79,7 +81,7 @@ try {
 	$o_perfil->setId(1);
 
 	$o_acesso = new Acesso();
-	$o_acesso->setOUsuario($o_perfil);
+	$o_acesso->setOPerfil($o_perfil);
 
 	$o_acessoControl = new AcessoControl($o_acesso);
 	$v_o_acesso = $o_acessoControl->buscarPorPerfil();
@@ -103,7 +105,7 @@ try {
 	$o_sistema->setId(1);
 
 	$o_acesso = new Acesso();
-	$o_acesso->setOUsuario($o_sistema);
+	$o_acesso->setOSistema($o_sistema);
 
 	$o_acessoControl = new AcessoControl($o_acesso);
 	$v_o_acesso = $o_acessoControl->buscarPorSistema();
@@ -115,6 +117,60 @@ try {
 	echo "<br>";
 	echo "<br>";
 
+} catch (Exception $e) {
+	echo "teste falhou: " . $e->getMessage();
+}
+
+// deve atualizar todos os acessos do usuario allan(id=1) para poder cadatrar
+echo "<font color=\'#FF0000\'> deve atualizar todos os acessos do usuario allan(id=1) para poder cadatrar </font>";
+echo '<br>';
+try {
+	$o_usuario = new Usuario();
+	$o_usuario->setId(1);
+	
+	$o_acesso = new Acesso();
+	$o_acesso->setOUsuario($o_usuario);
+	
+	$o_acessoControl = new AcessoControl($o_acesso);
+	$v_o_acesso = $o_acessoControl->buscarPorUsuario();
+	
+	foreach ($v_o_acesso as $o_acesso) {
+		$o_acesso->setCadastrar(1);
+		$o_acesso->setDataAtualizacao($datahora);
+		$o_acessoControl = new AcessoControl($o_acesso);
+		$o_acessoControl->atualizarPorUsuario();
+	}
+	
+	echo "acesso atualizado com sucesso";
+	echo "<br>";
+	echo "<br>";
+} catch (Exception $e) {
+	echo "teste falhou: " . $e->getMessage();
+}
+
+// deve atualizar todos os acessos do perfil basico(id=1) para poder atualizar 
+echo "<font color=\'#FF0000\'> deve atualizar todos os acessos do perfil basico(id=1) para poder atualizar </font>";
+echo '<br>';
+try {
+	$o_perfil = new Perfil();
+	$o_perfil->setId(1);
+	
+	$o_acesso = new Acesso();
+	$o_acesso->setOPerfil($o_perfil);
+	
+	$o_acessoControl = new AcessoControl($o_acesso);
+	$v_o_acesso = $o_acessoControl->buscarPorUsuario();
+	
+	foreach ($v_o_acesso as $o_acesso) {
+		$o_acesso->setAtualizar(1);
+		$o_acesso->setDataAtualizacao($datahora);
+		$o_acessoControl = new AcessoControl($o_acesso);
+		$o_acessoControl->atualizarPorPerfil();
+	}
+	
+	echo "acesso atualizado com sucesso";
+	echo "<br>";
+	echo "<br>";
 } catch (Exception $e) {
 	echo "teste falhou: " . $e->getMessage();
 }

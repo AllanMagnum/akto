@@ -25,12 +25,25 @@ class AcessoDAO{
 		mysqli_close($this->con);
 	}
 
-	function atualizar($o_acesso){
-		$this->sql = "update acesso set idusuario= '" . $o_acesso->getUsuario()->getId() . "', idperfil= '" . $o_acesso->getPerifl()->getId() . "', idsistema=  '" . $o_acesso->getSistema()->getId() . "'" .
-				"idopcoes = " . $o_acesso->getOpcoes()->getId() . "', visualizar= '" . $o_acesso->getVisualizar() . "', cadastrar= '" . $o_acesso->getCadastrar() . "'" .
-				"consultar = " . $o_acesso->getConsultar() . "', atualizar= '" . $o_acesso->getAtualizar() . "', deletar= '" . $o_acesso->getDeletar() . "'" .
-				"', dataCadastro= '" . $o_acesso->getDataCadastro() . "', dataAtualizacao= '" . $o_acesso->getDataAtualizacao() . "'" .
-				" where id='" . $o_acesso->getId() ."'" ;
+	function atualizarPorUsuario($o_acesso){
+		$this->sql = "update acesso set idusuario= '" . $o_acesso->getOUsuario()->getId() . "', idperfil= '" . $o_acesso->getOPerfil()->getId() . "', idsistema=  '" . $o_acesso->getOSistema()->getId() . "'" .
+				"idopcoes = '" . $o_acesso->getOOpcoes()->getId() . "', visualizar= '" . $o_acesso->getVisualizar() . "', cadastrar= '" . $o_acesso->getCadastrar() . "'," .
+				"consultar = '" . $o_acesso->getConsultar() . "', atualizar= '" . $o_acesso->getAtualizar() . "', deletar= '" . $o_acesso->getDeletar() . "'," .
+				"dataCadastro= '" . $o_acesso->getDataCadastro() . "', dataAtualizacao= '" . $o_acesso->getDataAtualizacao() . "'" .
+				" where idusuario='" . $o_acesso->getOUsuario()->getId() ."'" ;
+		if (!mysqli_query($this->con, $this->sql)) {
+			die('Error: ' . mysqli_error($this->con));
+		}
+	
+		mysqli_close($this->con);
+	}
+	
+	function atualizarPorPerfil($o_acesso){
+		$this->sql = "update acesso set idusuario= '" . $o_acesso->getOUsuario()->getId() . "', idperfil= '" . $o_acesso->getOPerfil()->getId() . "', idsistema=  '" . $o_acesso->getOSistema()->getId() . "'" .
+				"idopcoes = " . $o_acesso->getOOpcoes()->getId() . "', visualizar= '" . $o_acesso->getVisualizar() . "', cadastrar= '" . $o_acesso->getCadastrar() . "'," .
+				"consultar = " . $o_acesso->getConsultar() . "', atualizar= '" . $o_acesso->getAtualizar() . "', deletar= '" . $o_acesso->getDeletar() . "'," .
+				"dataCadastro= '" . $o_acesso->getDataCadastro() . "', dataAtualizacao= '" . $o_acesso->getDataAtualizacao() . "'" .
+				" where idperfil='" . $o_acesso->getOPerfil()->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
@@ -103,11 +116,11 @@ class AcessoDAO{
 			$o_acesso = new Acesso($o_usuario, $o_perfil, $o_sistema,
 					               $o_opcoes, $row->visualizar, $row->cadastrar, $row->consultar,
 					               $row->atualizar, $row->deletar, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_acesso,(array) $o_acesso);
+			array_push($this->v_o_acesso, $o_acesso);
 		}
+		
 		return $this->v_o_acesso;
-		echo "registro listado";
-		echo "<br>";
+		
 		mysqli_close($this->con);
 	}
 
@@ -149,6 +162,7 @@ class AcessoDAO{
 			
 			array_push($this->v_o_acesso, $o_acesso);
 		}
+		
 		return $this->v_o_acesso;
 		
 		mysqli_close($this->con);
@@ -186,8 +200,9 @@ class AcessoDAO{
 			$o_opcoes = $o_opcoesDAO->buscarPorId($o_opcoes);
 				
 			$o_acesso = new Acesso($o_usuario, $o_perfil, $o_sistema,
-					$o_opcoes, $row->visualizar, $row->cadastrar, $row->consultar,
-					$row->atualizar, $row->deletar, $row->datacadastro, $row->dataatualizacao);
+								   $o_opcoes, $row->visualizar, $row->cadastrar, $row->consultar,
+								   $row->atualizar, $row->deletar, $row->datacadastro, $row->dataatualizacao);
+			
 			array_push($this->v_o_acesso, $o_acesso);
 		}
 		return $this->v_o_acesso;
@@ -226,9 +241,9 @@ class AcessoDAO{
 			$o_opcoesDAO = new OpcoesDAO($con);
 			$o_opcoes = $o_opcoesDAO->buscarPorId($o_opcoes);
 				
-			$o_acesso = new Acesso($row->id, $o_usuario, $o_perfil, $o_sistema,
-					$o_opcoes, $row->visualizar, $row->cadastrar, $row->consultar,
-					$row->atualizar, $row->deletar, $row->datacadastro, $row->dataatualizacao);
+			$o_acesso = new Acesso($o_usuario, $o_perfil, $o_sistema,
+								   $o_opcoes, $row->visualizar, $row->cadastrar, $row->consultar,
+					               $row->atualizar, $row->deletar, $row->datacadastro, $row->dataatualizacao);
 			array_push($this->v_o_acesso, $o_acesso);
 		}
 		return $this->v_o_acesso;

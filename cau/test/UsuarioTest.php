@@ -26,7 +26,7 @@ try {
 	
 	$o_usuario = new Usuario ();
 	$o_usuario->setLogin ( 'allan' );
-	$o_usuario->setSenha ( base64_encode ( '12345' ) );
+	$o_usuario->setSenha ( '12345' );
 	$o_usuario->setOPerfil ( $o_perfil );
 	$o_usuario->setOPessoa ( $o_pessoa );
 	$o_usuario->setDataCadastro ( $datahora );
@@ -91,7 +91,6 @@ try {
 	
 	$o_usuario = new Usuario();
 	$o_usuario->setLogin("allan");
-	$o_usuario->setSenha(base64_encode ("12345"));
 	
 	$o_usuarioControl = new UsuarioControl($o_usuario);
 	$resposta = $o_usuarioControl->autenticar();

@@ -19,24 +19,28 @@ class AcessoControl{
 		$this->acessoDAO->cadastrar($this->o_acesso);
 	}
 
-	function atualizar(){
-		$this->acessoDAO->atualizar($this->o_acesso);
+	function atualizarPorUsuario(){
+		$this->acessoDAO->atualizarPorUsuario($this->o_acesso);
 	}
 
+	function atualizarPorPerfil(){
+		$this->acessoDAO->atualizarPorPerfil($this->o_acesso);
+	}
+	
 	function deletar(){
 		$this->acessoDAO->deletar($this->o_acesso);
 	}
 	
 	function buscarPorUsuario(){
-		$this->acessoDAO->buscarPorUsuario($this->o_acesso);
+		return $this->acessoDAO->buscarPorUsuario($this->o_acesso);
 	}
 	
 	function buscarPorPerfil(){
-		$this->acessoDAO->buscarPorPerfil($this->o_acesso);
+		return $this->acessoDAO->buscarPorPerfil($this->o_acesso);
 	}
 	
 	function buscarPorSistema(){
-		$this->acessoDAO->buscarPorSistema($this->o_acesso);
+		return $this->acessoDAO->buscarPorSistema($this->o_acesso);
 	}
 
 	function listarTodos(){
