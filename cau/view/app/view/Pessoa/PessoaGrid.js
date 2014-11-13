@@ -4,15 +4,12 @@
  * Desenvolvedores : Allan Magnum e Nilton Caldas Jr.
  */
 
-Ext.define('cau.view.PessoaGrid',{
+
+Ext.define('cau.view.pessoa.PessoaGrid',{
 	extend: 'Ext.grid.Panel',
 	alias: 'widget.pessoagrid',
 
 	store: 'cau.store.Pessoa',
-
-	title: 'Pessoa',
-
-	iconCls: 'icon-grid',
 
 	columns: [
 		{
@@ -44,10 +41,11 @@ Ext.define('cau.view.PessoaGrid',{
 		{
 			xtype: 'pagingtoolbar',
 	        store: 'cau.store.Pessoa',
-	        dock: 'top',
+	        dock: 'bottom',
 	        displayInfo: true,
 	        emptyMsg: 'Nenhuma Pessoa encontrada'
 		}
 	]
+	
 
 });

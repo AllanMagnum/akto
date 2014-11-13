@@ -4,8 +4,9 @@
  * Desenvolvedores : Allan Magnum e Nilton Caldas Jr.
  */
 
-Ext.define('cau.view.PessoaForm',{
-	extend: 'Ext.window.Window',
+Ext.define('cau.view.pessoa.PessoaForm',{
+	
+	extend: 'Ext.panel.Panel',	
 	alias: 'widget.pessoaform',
 
 	height: 200,
@@ -23,11 +24,26 @@ Ext.define('cau.view.PessoaForm',{
 				anchor: '100%'
 			},
 			items: [
-				{
-					xtype: 'hiddenfield',
-			        name: 'id'
-				}
-			]
+					{
+						xtype: 'hiddenfield',
+				        name: 'id'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'nome',
+				        fieldLabel: 'Nome'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'telefoneMovel',
+				        fieldLabel: 'Telefone Movel'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'telefoneFixo',
+				        fieldLabel: 'Telefone Fixo'
+					}
+				]
 		}
 	],
 	dockedItems: [

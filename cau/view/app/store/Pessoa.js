@@ -15,10 +15,10 @@ Ext.define('cau.store.Pessoa',{
 		type: 'ajax',
 
 		api:{
-			create: 'php/criaPessoa.php',
-			read: 'php/listaPessoa.php',
-			update: 'php/atualizaPessoa.php',
-			destroy: 'php/deletaPessoa.php',
+			create: 'view/controle/pessoa/criaPessoa.php',
+			read: 'controle/pessoa/ListaPessoa.php',
+			update: 'view/controle/pessoa/atualizaPessoa.php',
+			destroy: 'view/controle/pessoa/deletaPessoa.php',
 		},
 
 		reader: {

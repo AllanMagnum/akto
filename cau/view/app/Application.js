@@ -15,6 +15,7 @@ Ext.define('cau.Application', {
 
     controllers: [
         // TODO: add controllers here
+        'Main'
     ],
 
     stores: [

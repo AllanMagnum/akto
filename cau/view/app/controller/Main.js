@@ -5,5 +5,19 @@
  */
 
 Ext.define('cau.controller.Main', {
-    extend: 'Ext.app.Controller'
+    extend: 'Ext.app.Controller',
+
+    models: [
+             	'cau.model.Pessoa'
+    ],
+
+    stores: [
+             	'cau.store.Pessoa'
+    ],
+
+    views: [
+             	'cau.view.pessoa.PessoaForm',
+                'cau.view.pessoa.PessoaGrid'
+    ]    	
+    	
 });
