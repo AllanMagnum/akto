@@ -1,5 +1,5 @@
 <?php
-class Acesso{
+class Acesso implements JsonSerializable{
 	private $o_usuario;
 	private $o_perfil;
 	private $o_sistema;
@@ -98,5 +98,27 @@ class Acesso{
 	public function __toString(){
 		return "Sistema [ Usuario= " . $this->o_usuario . ", Perifl=" . $this->o_perfil . ", sistema= " . $this->o_sistema . ", opcoes= " . $this->o_opcoes . ", visualizar= " . $this->visualizar . ", cadastrar= " . $this->cadastrar . ", consultar= " . $this->consultar . ", atualizar= " . $this->atualizar .  ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . ", pessoa=" . "]";
 	}
+	
+	public function toJson() {
+		return json_encode(array(
+				'o_usuario' => $this->o_usuario->toJson(),
+				'o_perfil' => $this->o_perfil->toJson(),
+				'o_sistema' => $this->o_sistema->toJson(),
+				'o_opcoes' => $this->o_opcoes->toJson(),
+				'visualizar' => $this->visualizar,
+				'cadastrar' => $this->cadastrar,
+				'consultar' => $this->consultar,
+				'atualizar' => $this->atualizar,
+				'deletar' => $this->deletar,
+				'dataCadastro' => $this->dataCadastro,
+				'dataAtualizacao' => $this->dataAtualizacao
+		));
+	}
+	
+	public function jsonSerialize() {
+		
+
+	}
+
 }
 ?>

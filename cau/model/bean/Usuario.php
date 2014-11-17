@@ -67,6 +67,16 @@ class Usuario extends Pessoa {
 		return "Usuario [id=" . $this->id . ", login=" . $this->login . ", senha=" . $this->senha . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . ", pessoa=" . $this->o_pessoa . ", perfil=" . $this->o_perfil . "]";  
 	}
 
-	
+	public function toJson() {
+		return json_encode(array(
+				'id' => $this->id,
+				'login' => $this->login,
+				'senha' => $this->senha,
+				'perfil' => $this->o_perfil->toJson(),
+				'pessoa' => $this->o_pessoa->toJson(),
+				'dataCadastro' => $this->dataCadastro,
+				'dataAtualizacao' => $this->dataAtualizacao
+		));
+	}
 }
 ?>

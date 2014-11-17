@@ -27,7 +27,9 @@ Ext.define('cau.view.Viewport', {
 			iconCls: 'icon-grid',
 			items: [{
 		        flex: 2,
-		        xtype: 'pessoagrid'
+		        xtype: 'pessoagrid',
+		        collapsible: true,
+				split: true
 		    },
 		    {
 		        xtype: 'pessoaform',

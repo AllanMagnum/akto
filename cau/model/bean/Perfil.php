@@ -42,6 +42,14 @@ class Perfil{
 		return "Perfil [id=" . $this->id . ", nome=" . $this->nome . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
 	}
 	
+	public function toJson() {
+		return json_encode(array(
+				'id' => $this->id,
+				'nome' => $this->nome,
+				'dataCadastro' => $this->dataCadastro,
+				'dataAtualizacao' => $this->dataAtualizacao
+		));
+	}
 }
 
 ?>

@@ -49,6 +49,15 @@
 			return 'Sistema: ' . 'id-' . $this->id . ' Nome-' .$this->nome . ' Sigla-' . $this->sigla . ' DataCadastro-' . $this->dataCadastro . 'DataAtualizacao-' . $this->dataAtualizacao ;
 		}
 		
+		public function toJson() {
+			return json_encode(array(
+					'id' => $this->id,
+					'nome' => $this->nome,
+					'sigla' => $this->sigla,
+					'dataCadastro' => $this->dataCadastro,
+					'dataAtualizacao' => $this->dataAtualizacao
+			));
+		}
 		
 	}
 ?>

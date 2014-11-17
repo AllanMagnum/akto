@@ -1,6 +1,6 @@
 <?php
 class Pessoa {
-	private $id;
+	private  $id;
 	private $nome;
 	private $telefoneMovel;
 	private $telefoneFixo;
@@ -38,87 +38,106 @@ class Pessoa {
 	public function setId($id) {
 		$this->id = $id;
 	}
-	function getNome() {
+	public function getNome() {
 		return $this->nome;
 	}
-	function setNome($nome) {
+	public function setNome($nome) {
 		$this->nome = $nome;
 	}
-	function getTelefoneMovel() {
+	public function getTelefoneMovel() {
 		return $this->telefoneMovel;
 	}
-	function setTelefoneMovel($telefoneMovel) {
+	public function setTelefoneMovel($telefoneMovel) {
 		$this->telefoneMovel = $telefoneMovel;
 	}
-	function getTelefoneFixo() {
+	public function getTelefoneFixo() {
 		return $this->telefoneFixo;
 	}
-	function setTelefoneFixo($telefoneFixo) {
+	public function setTelefoneFixo($telefoneFixo) {
 		$this->telefoneFixo = $telefoneFixo;
 	}
-	function getTelefoneAdicional() {
+	public function getTelefoneAdicional() {
 		return $this->telefoneAdicional;
 	}
-	function setTelefoneAdicional($telefoneAdicional) {
+	public function setTelefoneAdicional($telefoneAdicional) {
 		$this->telefoneAdicional = $telefoneAdicional;
 	}
-	function getEmail() {
+	public function getEmail() {
 		return $this->email;
 	}
-	function setEmail($email) {
+	public function setEmail($email) {
 		$this->email = $email;
 	}
-	function getEmailAdicional() {
+	public function getEmailAdicional() {
 		return $this->emailAdicional;
 	}
-	function setEmailAdicional($emailAdicional) {
+	public function setEmailAdicional($emailAdicional) {
 		$this->emailAdicional = $emailAdicional;
 	}
-	function getLogradouro() {
+	public function getLogradouro() {
 		return $this->logradouro;
 	}
-	function setLogradouro($logradouro) {
+	public function setLogradouro($logradouro) {
 		$this->logradouro = $logradouro;
 	}
-	function getNumero() {
+	public function getNumero() {
 		return $this->numero;
 	}
-	function setNumero($numero) {
+	public function setNumero($numero) {
 		return $this->numero = $numero;
 	}
-	function getComplemento() {
+	public function getComplemento() {
 		return $this->complemento;
 	}
-	function setComplemento($complemento) {
+	public function setComplemento($complemento) {
 		$this->complemento = $complemento;
 	}
-	function getBairro() {
+	public function getBairro() {
 		return $this->bairro;
 	}
-	function setBairro($bairro) {
+	public function setBairro($bairro) {
 		$this->bairro = $bairro;
 	}
-	function getCep() {
+	public function getCep() {
 		return $this->cep;
 	}
-	function setCep($cep) {
+	public function setCep($cep) {
 		$this->cep = $cep;
 	}
-	function getDataCadastro() {
+	public function getDataCadastro() {
 		return $this->dataCadastro;
 	}
-	function setDataCadastro($dataCadastro) {
+	public function setDataCadastro($dataCadastro) {
 		$this->dataCadastro = $dataCadastro;
 	}
-	function getDataAtualizacao() {
+	public function getDataAtualizacao() {
 		return $this->dataAtualizacao;
 	}
-	function setDataAtualizacao($dataAtualizacao) {
+	public function setDataAtualizacao($dataAtualizacao) {
 		$this->dataAtualizacao = $dataAtualizacao;
 	}
 	
-	function __toString(){
+	public function __toString(){
 		return "Pessoa [id=" . $this->id . ", nome=" . $this->nome . ", telefone movel=" . $this->telefoneMovel . ", telefone fixo=" . $this->telefoneFixo . ", telefone adicional=" . $this->telefoneAdicional . ", email=" . $this->email . ", email adicional=" . $this->emailAdicional . ", logradouro=" . $this->logradouro . ", numero=" . $this->numero . ", complemento=" . $this->complemento . ", bairro=" . $this->bairro . ", cep=" . $this->cep . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
+	}
+	public function toJson() {
+		return json_encode(array(
+				'id' => $this->id,
+				'nome' => $this->nome,
+				'telefoneMovel' => $this->telefoneMovel,
+				'telefoneFixo' => $this->telefoneFixo,
+				'telefoneAdicional' => $this->telefoneAdicional,
+				'email' => $this->email,
+				'emailAdicional' => $this->emailAdicional,
+				'logradouro' => $this->logradouro,
+				'numero' => $this->numero,
+				'complemento' => $this->complemento,
+				'bairro' => $this->bairro,
+				'cep' => $this->cep,
+				'dataCadastro' => $this->dataCadastro,
+				'dataAtualizacao' => $this->dataAtualizacao
+		));
 	}
+
 }
 ?>

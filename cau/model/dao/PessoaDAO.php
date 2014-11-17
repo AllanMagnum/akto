@@ -57,7 +57,7 @@ class PessoaDAO{
 					               $row->telefoneadicional, $row->email, $row->emailadicional, $row->logradouro,
 					               $row->numero, $row->complemento, $row->bairro, $row->cep,
 					               $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_pessoa,(array) $o_pessoa);
+			array_push($this->v_o_pessoa, $o_pessoa);
 		}
 		return $this->v_o_pessoa;
 		mysqli_close($this->con);

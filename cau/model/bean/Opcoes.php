@@ -64,5 +64,17 @@ class Opcoes {
 	public function __toString(){
 		return "Opcoes [id=" . $this->id . ", nome=" . $this->nome . ", tipo=" . $this->tipo . ", url=" . $this->url . ", sistema=" . $this->o_sistema . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
 	}
+	
+	public function toJson() {
+		return json_encode(array(
+				'id' => $this->id,
+				'nome' => $this->nome,
+				'tipo' => $this->tipo,
+				'url' => $this->url,
+				'dataCadastro' => $this->dataCadastro,
+				'dataAtualizacao' => $this->dataAtualizacao,
+				'o_sistema' => $this->o_sistema
+		));
+	}
 }
 ?>
