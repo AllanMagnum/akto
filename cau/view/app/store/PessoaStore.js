@@ -12,8 +12,13 @@ Ext.define('cau.store.PessoaStore',{
 	proxy: {
 		type: 'ajax',
 		
-		url: 'controle/pessoa/listaPessoa.php',
-
+		api:{
+			create: 'controle/pessoa/listaPessoa.php',
+			read: 'controle/pessoa/listaPessoa.php',
+			update: 'controle/pessoa/listaPessoa.php',
+			destroy: 'controle/pessoa/listaPessoa.php',
+		},
+		
 		reader: {
 			type: 'json',
 			root: 'pessoa'

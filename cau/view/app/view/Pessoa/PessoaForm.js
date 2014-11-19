@@ -31,7 +31,8 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 					{
 						xtype: 'textfield',
 				        name: 'nome',
-				        fieldLabel: 'Nome'
+				        fieldLabel: 'Nome',
+				        allowBlank: false
 					},
 					{
 						xtype: 'textfield',
