@@ -22,8 +22,11 @@
 	$o_pessoa->setDataCadastro($datahora);
 	$o_pessoa->setDataAtualizacao("0000-00-00 00:00:00");
 	
-	$pessoaControl = new PessoaControl($o_pessoa);
-	$pessoaControl->cadastrar();
+	for ($i = 0; $i < 1000; $i++) {
+		$pessoaControl = new PessoaControl($o_pessoa);
+		$pessoaControl->cadastrar();
+	}
+	
 	echo "<font color=\'#FF0000\'> cadastrar pessoa allan </font>";
 	echo '<br>';
 	echo $o_pessoa;
