@@ -39,6 +39,7 @@ Ext.define('cau.view.Viewport', {
 		{
 			region: 'west',
 			xtype: 'panel',
+			split: true,
 			title: 'Filtro por Perfil',
 			width: 200,
 			bodyStyle: 'padding:15px',
@@ -65,6 +66,7 @@ Ext.define('cau.view.Viewport', {
 		{
 			region: 'south',
 			xtype: 'panel',
+			split: true,
 			bodyStyle: 'padding:5px',
 			html: 'Rodapé do Sistema',
 		}
