@@ -39,7 +39,7 @@ class PessoaControl{
 	}
 	
 	function qtdTotal(){
-		return $this->pessoaDAO->qtdTotalPessoa();
+		return $this->pessoaDAO->qtdTotal();
 	}
 	
 }

@@ -98,14 +98,19 @@ class PessoaDAO{
 	}
 	
 	function qtdTotal(){
-		$this->sql= "select count(*) quantidade from pessoa";
+		$this->sql= "select count(*) as quantidade from pessoa";
 		$st_query = mysqli_query($this->con, $this->sql);
+		
 		if (!$st_query) {
 			die('Error: ' . mysqli_error($this->con));
 		}
+		
+		$total = 0;
 		while($row = mysqli_fetch_object($st_query)){
-			return $row->quantidade;
+			$total = $row->quantidade;
 		}
+		
+		return $total;
 		
 		mysqli_close($this->con);
 	}
