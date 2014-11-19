@@ -31,11 +31,15 @@ class PessoaControl{
 	}
 	
 	function buscarPorNome(){
-		return  $this->pessoaDAO->buscarPorNome($this->o_pessoa);
+		return $this->pessoaDAO->buscarPorNome($this->o_pessoa);
 	}
 	
-	function listarTodos(){
-		return $this->pessoaDAO->listarTodos();
+	function listarPaginado($start, $limit){
+		return $this->pessoaDAO->listarPaginado($start, $limit);
+	}
+	
+	function qtdTotal(){
+		return $this->pessoaDAO->qtdTotalPessoa();
 	}
 	
 }

@@ -42,10 +42,10 @@ class PessoaDAO{
 		mysqli_close($this->con);
 	}
 	
-	function listarTodos(){
+	function listarPaginado($start, $limit){
 		mysqli_set_charset($this->con, "utf8");
 			
-		$this->sql= "select * from pessoa limit 50";
+		$this->sql= "select * from pessoa limit " . $start . ", " . $limit;
 		$query = mysqli_query($this->con, $this->sql);
 			
 		if (!$query) {
@@ -54,9 +54,9 @@ class PessoaDAO{
 			
 		while($row = mysqli_fetch_object($query)){
 			$o_pessoa = new Pessoa($row->id, $row->nome, $row->telefonemovel, $row->telefonefixo,
-					               $row->telefoneadicional, $row->email, $row->emailadicional, $row->logradouro,
-					               $row->numero, $row->complemento, $row->bairro, $row->cep,
-					               $row->datacadastro, $row->dataatualizacao);
+					$row->telefoneadicional, $row->email, $row->emailadicional, $row->logradouro,
+					$row->numero, $row->complemento, $row->bairro, $row->cep,
+					$row->datacadastro, $row->dataatualizacao);
 			array_push($this->v_o_pessoa, $o_pessoa);
 		}
 		return $this->v_o_pessoa;
@@ -94,6 +94,19 @@ class PessoaDAO{
 			array_push($this->v_o_pessoa, $o_pessoa);
 		}
 		return $this->v_o_pessoa;
+		mysqli_close($this->con);
+	}
+	
+	function qtdTotal(){
+		$this->sql= "select count(*) quantidade from pessoa";
+		$st_query = mysqli_query($this->con, $this->sql);
+		if (!$st_query) {
+			die('Error: ' . mysqli_error($this->con));
+		}
+		while($row = mysqli_fetch_object($st_query)){
+			return $row->quantidade;
+		}
+		
 		mysqli_close($this->con);
 	}
 	
