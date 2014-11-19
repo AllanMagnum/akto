@@ -21,7 +21,7 @@ Ext.define('cau.store.PessoaStore',{
 		
 		reader: {
 			type: 'json',
-			root: 'pessoa'
+			root: 'data'
 		},
 	},
 	autoLoad: true

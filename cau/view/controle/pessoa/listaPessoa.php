@@ -6,21 +6,21 @@ $start = $_REQUEST['start'];
 $limit = $_REQUEST['limit'];
 
 $o_pessoaControl = new PessoaControl ();
-$v_pessoas = $o_pessoaControl->listarTodos();
+$v_pessoas = $o_pessoaControl->listarPaginado($start, $limit);
 
 foreach ($v_pessoas as $o_pessoa) {
-	echo $o_pessoa->toJson();
+	$v_registros[] = $o_pessoa->toJson();
 }
 
+$o_pessoaControl = new PessoaControl ();
+$totalRegistro = $o_pessoaControl->qtdTotal();
 
-//consulta total de linhas na tabela
-// $total = $o_pessoaControl->totalRegistros();
- 
-//encoda para formato JSON
-// echo json_encode(array(
-// 		"success" => 0,
-// 		"total" => $total,
-// 		"data" => $v_pessoas
-// ));
+
+// encoda para formato JSON
+echo json_encode(array(
+		"success" => 0,
+		"total" => $totalRegistro,
+		"data" => $v_registros
+));
 
 ?>
