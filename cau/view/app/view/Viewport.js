@@ -23,8 +23,6 @@ Ext.define('cau.view.Viewport', {
 		        type: 'vbox',
 		        align: 'stretch'
 		    },
-			title: 'Cadastro de Usuários',
-			iconCls: 'icon-grid',
 			items: [{
 		        flex: 2,
 		        xtype: 'pessoagrid',

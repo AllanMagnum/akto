@@ -12,7 +12,7 @@ Ext.define('cau.controller.Main', {
     ],
 
     stores: [
-             	'cau.store.Pessoa'
+             	'cau.store.PessoaStore'
     ],
 
     views: [

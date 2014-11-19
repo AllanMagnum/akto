@@ -36,12 +36,42 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 					{
 						xtype: 'textfield',
 				        name: 'telefoneMovel',
-				        fieldLabel: 'Telefone Movel'
+				        fieldLabel: 'Telefone movel'
 					},
 					{
 						xtype: 'textfield',
 				        name: 'telefoneFixo',
-				        fieldLabel: 'Telefone Fixo'
+				        fieldLabel: 'Telefone fixo'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'telefoneAdicional',
+				        fieldLabel: 'Telefone adicional'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'email',
+				        fieldLabel: 'E-mail'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'emailAdicional',
+				        fieldLabel: 'E-mail adiconal'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'logradouro',
+				        fieldLabel: 'Logradouro'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'numero',
+				        fieldLabel: 'Numero'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'complemento',
+				        fieldLabel: 'Complemento'
 					}
 				]
 		}

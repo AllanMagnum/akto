@@ -19,6 +19,7 @@ Ext.define('cau.model.Pessoa',{
 		{name: 'numero', 			type: 'string'},
 		{name: 'complemento', 		type: 'string'},
 		{name: 'bairro', 			type: 'string'},
+		{name: 'cep', 			    type: 'string'},
 		{name: 'datacadastro', 		type: 'date' , dateFormat: 'c'},
 		{name: 'dataatualizacao', 	type: 'date', dateFormat: 'c'}
 	]	

@@ -121,22 +121,22 @@ class Pessoa {
 		return "Pessoa [id=" . $this->id . ", nome=" . $this->nome . ", telefone movel=" . $this->telefoneMovel . ", telefone fixo=" . $this->telefoneFixo . ", telefone adicional=" . $this->telefoneAdicional . ", email=" . $this->email . ", email adicional=" . $this->emailAdicional . ", logradouro=" . $this->logradouro . ", numero=" . $this->numero . ", complemento=" . $this->complemento . ", bairro=" . $this->bairro . ", cep=" . $this->cep . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
 	}
 	public function toJson() {
-		return json_encode(array(
-				'id' => $this->id,
-				'nome' => $this->nome,
-				'telefoneMovel' => $this->telefoneMovel,
-				'telefoneFixo' => $this->telefoneFixo,
-				'telefoneAdicional' => $this->telefoneAdicional,
-				'email' => $this->email,
-				'emailAdicional' => $this->emailAdicional,
-				'logradouro' => $this->logradouro,
-				'numero' => $this->numero,
-				'complemento' => $this->complemento,
-				'bairro' => $this->bairro,
-				'cep' => $this->cep,
-				'dataCadastro' => $this->dataCadastro,
-				'dataAtualizacao' => $this->dataAtualizacao
-		));
+		return $v_pessoa[] = array( 'id' => $this->id,
+							 'nome' => $this->nome,
+							 'telefoneMovel' => $this->telefoneMovel,
+							 'telefoneFixo' => $this->telefoneFixo,
+						     'telefoneAdicional' => $this->telefoneAdicional,
+							 'email' => $this->email,
+							 'emailAdicional' => $this->emailAdicional,
+							 'logradouro' => $this->logradouro,
+							 'numero' => $this->numero,
+							 'complemento' => $this->complemento,
+							 'bairro' => $this->bairro,
+				             'cep' => $this->cep,
+				             'dataCadastro' => $this->dataCadastro,
+				             'dataAtualizacao' => $this->dataAtualizacao
+		                    );
+		
 	}
 
 }

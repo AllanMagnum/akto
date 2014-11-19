@@ -20,5 +20,6 @@ Ext.define('cau.Application', {
 
     stores: [
         // TODO: add stores here
+        'PessoaStore'
     ]
 });
