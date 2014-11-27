@@ -1,25 +1,25 @@
 <?php
-class Enderenco implements JsonSerializable{
+class EnderencoPf implements JsonSerializable{
 	private $id;
-	private $tipoEnumEndereco;
+	private $o_tipoEndereco;
 	private $logradouro;
 	private $numero;
 	private $complemento;
 	private $bairro;
 	private $cep;
-	private $o_pessoa;
+	private $o_pessoaFisica;
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	public function __construct($id="", $tipoEnumEndereco = "", $logradouro="",  $numero="", $complemento="", $bairro="", $cep="", $o_pessoa="", $dataCadastro="", $dataAtualizacao=""){
+	public function __construct($id="", $o_tipoEndereco = "", $logradouro="",  $numero="", $complemento="", $bairro="", $cep="", $o_pessoaFisica="", $dataCadastro="", $dataAtualizacao=""){
 		$this->id = $id;
-		$this->tipoEnumEndereco = $tipoEnumEndereco;
+		$this->o_tipoEndereco = $o_tipoEndereco;
 		$this->logradouro = $logradouro;
 		$this->numero = $numero;
 		$this->complemento = $complemento;
 		$this->bairro = $bairro;
 		$this->cep = $cep;
-		$this->o_pessoa = $o_pessoa;
+		$this->o_pessoaFisica = $o_pessoaFisica;
 		$this->dataCadastro = $dataCadastro;
 		$this->dataAtualizacao = $dataAtualizacao;
 	}
@@ -30,11 +30,11 @@ class Enderenco implements JsonSerializable{
 	public function setId($id) {
 		$this->id = $id;
 	}
-	public function getTipoEnumEndereco() {
-		return $this->tipoEnumEndereco;
+	public function getOTipoEndereco() {
+		return $this->o_tipoEndereco;
 	}
-	public function setTipoEnumEndereco($tipoEnumEndereco) {
-		$this->tipoEnumEndereco = $tipoEnumEndereco;
+	public function setOTipoEndereco($o_tipoEndereco) {
+		$this->o_tipoEndereco = $o_tipoEndereco;
 	}
 	public function getLogradouro() {
 		return $this->logradouro;
@@ -66,11 +66,11 @@ class Enderenco implements JsonSerializable{
 	public function setCep($cep) {
 		$this->cep = $cep;
 	}
-	public function getOPessoa() {
-		return $this->o_pessoa;
+	public function getOPessoaFisica() {
+		return $this->o_pessoaFisica;
 	}
-	public function setOPessoa($o_pessoa) {
-		$this->o_pessoa = $o_pessoa;
+	public function setOPessoaFisica($o_pessoaFisica) {
+		$this->o_pessoaFisica = $o_pessoaFisica;
 	}
 	public function getDataCadastro() {
 		return $this->dataCadastro;
@@ -86,18 +86,19 @@ class Enderenco implements JsonSerializable{
 	}
 	
 	public function __toString(){
-		
+		"Endereco [ id= " . $this->id . ", " . $this->o_tipoEndereco . ", logradouro= " . $this->logradouro . ", numero= " . $this->numero . ", complemento= " . $this->complemento . ", bairro= " . $this->bairro . "cep= " . $this->cep . ", " . $this->o_pessoaFisica . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . " ]";  	
 	}
 	
 	public function jsonSerialize() {
 		return array(
 					'id' => $this->id,
-					'tipoEnumEndereco' => $this->tipoEnumEndereco,
+					'o_tipoEndereco' => $this->o_tipoEndereco->jsonSerialize(),
 					'logradouro' => $this->logradouro,
 					'numero' => $this->numero,
 					'complemento' => $this->complemento,
 					'bairro' => $this->bairro,
 					'cep' => $this->cep,
+					'o_pessoaFisica' => $this->o_pessoaFisica->jsonSerialize(),
 					'dataCadastro' => $this->dataCadastro,
 					'dataAtualizacao' => $this->dataAtualizacao
 				);

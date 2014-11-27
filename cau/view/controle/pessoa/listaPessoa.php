@@ -9,7 +9,7 @@ $o_pessoaControl = new PessoaControl ();
 $v_pessoas = $o_pessoaControl->listarPaginado($start, $limit);
 
 foreach ($v_pessoas as $o_pessoa) {
-	$v_registros[] = $o_pessoa->toJson();
+	$v_registros[] = $o_pessoa->jsonSerializable();
 }
 
 $o_pessoaControl = new PessoaControl ();
