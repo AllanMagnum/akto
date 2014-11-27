@@ -8,10 +8,11 @@ class EnderencoPf implements JsonSerializable{
 	private $bairro;
 	private $cep;
 	private $o_pessoaFisica;
+	private $o_cidade;
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	public function __construct($id="", $o_tipoEndereco = "", $logradouro="",  $numero="", $complemento="", $bairro="", $cep="", $o_pessoaFisica="", $dataCadastro="", $dataAtualizacao=""){
+	public function __construct($id="", $o_tipoEndereco = "", $logradouro="",  $numero="", $complemento="", $bairro="", $cep="", $o_pessoaFisica="",  $o_cidade="", $dataCadastro="", $dataAtualizacao=""){
 		$this->id = $id;
 		$this->o_tipoEndereco = $o_tipoEndereco;
 		$this->logradouro = $logradouro;
@@ -20,6 +21,7 @@ class EnderencoPf implements JsonSerializable{
 		$this->bairro = $bairro;
 		$this->cep = $cep;
 		$this->o_pessoaFisica = $o_pessoaFisica;
+		$this->o_cidade = $o_cidade;
 		$this->dataCadastro = $dataCadastro;
 		$this->dataAtualizacao = $dataAtualizacao;
 	}
@@ -72,6 +74,12 @@ class EnderencoPf implements JsonSerializable{
 	public function setOPessoaFisica($o_pessoaFisica) {
 		$this->o_pessoaFisica = $o_pessoaFisica;
 	}
+	public function getOCidade() {
+		return $this->o_cidade;
+	}
+	public function setOCidade($o_cidade) {
+		$this->o_cidade = $o_cidade;
+	}
 	public function getDataCadastro() {
 		return $this->dataCadastro;
 	}
@@ -86,7 +94,7 @@ class EnderencoPf implements JsonSerializable{
 	}
 	
 	public function __toString(){
-		"Endereco [ id= " . $this->id . ", " . $this->o_tipoEndereco . ", logradouro= " . $this->logradouro . ", numero= " . $this->numero . ", complemento= " . $this->complemento . ", bairro= " . $this->bairro . "cep= " . $this->cep . ", " . $this->o_pessoaFisica . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . " ]";  	
+		"Endereco [ id= " . $this->id . ", " . $this->o_tipoEndereco . ", logradouro= " . $this->logradouro . ", numero= " . $this->numero . ", complemento= " . $this->complemento . ", bairro= " . $this->bairro . "cep= " . $this->cep . ", " . $this->o_pessoaFisica . ", " . $this->o_cidade . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . " ]";  	
 	}
 	
 	public function jsonSerialize() {
@@ -99,6 +107,7 @@ class EnderencoPf implements JsonSerializable{
 					'bairro' => $this->bairro,
 					'cep' => $this->cep,
 					'o_pessoaFisica' => $this->o_pessoaFisica->jsonSerialize(),
+					'o_cidade' => $this->o_cidade->jsonSerialize(),
 					'dataCadastro' => $this->dataCadastro,
 					'dataAtualizacao' => $this->dataAtualizacao
 				);
