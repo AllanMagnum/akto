@@ -2,7 +2,7 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/PessoaDAO.php';
 
-class PessoaControl{
+class PessoaFisicaControl{
 	protected $con;
 	protected $o_pessoa;
 	protected $o_pessoaDAO;

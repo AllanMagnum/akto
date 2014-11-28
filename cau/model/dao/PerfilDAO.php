@@ -14,7 +14,7 @@ class PerfilDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		echo "registro adicionado";
+
 		mysqli_close($this->con);
 	}
 
@@ -24,7 +24,7 @@ class PerfilDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		echo "registro atualizado";
+		
 		mysqli_close($this->con);
 	}
 
@@ -33,12 +33,11 @@ class PerfilDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		echo "registro deletado";
+	
 		mysqli_close($this->con);
 	}
 
 	function listarTodos(){
-		mysqli_set_charset($this->con, "utf8");
 			
 		$this->sql= "select * from perfil limit 50";
 		$query = mysqli_query($this->con, $this->sql);
@@ -49,11 +48,10 @@ class PerfilDAO{
 			
 		while($row = mysqli_fetch_object($query)){
 			$o_perfil = new Perfil($row->id, $row->nome, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_perfil,(array) $o_perfil);
+			array_push($this->v_o_perfil, $o_perfil);
 		}
 		return $this->v_o_perfil;
-		echo "registro listado";
-		echo "<br>";
+		
 		mysqli_close($this->con);
 	}
 

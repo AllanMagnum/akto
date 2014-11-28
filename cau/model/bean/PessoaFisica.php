@@ -5,8 +5,8 @@ class PessoaFisica implements JsonSerializable{
 	private $cpf;
 	private $dataNascimento;
 	private $estadoCivil;
-	private $sexo;
-	private $estadoCivil;
+	private $enum_sexo;
+	private $enum_estadoCivil;
 	private $nomePai;
 	private $nomeMae;
 	private $enum_cor;
@@ -18,12 +18,13 @@ class PessoaFisica implements JsonSerializable{
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	function __construct($id = "", $nome = "", $cpf = "", $dataNascimento = "", $estadoCivil = "", $sexo = "", $nomePai = "", $nomeMae = "", $enum_cor="", $naturalidade="", $nacionalidade="", $v_o_endereco = "", $v_o_contato = "", $v_o_documento = "", $dataCadastro = "", $dataAtualizacao = "") {
+	function __construct($id = "", $nome = "", $cpf = "", $dataNascimento = "", $enum_estadoCivil = "", $enum_sexo = "", $nomePai = "", $nomeMae = "", $enum_cor="", $naturalidade="", $nacionalidade="", $v_o_endereco = "", $v_o_contato = "", $v_o_documento = "", $dataCadastro = "", $dataAtualizacao = "") {
 		$this->id = $id;
 		$this->nome = $nome;
 		$this->cpf = $cpf;
 		$this->dataNascimento = $dataNascimento;
-		$this->estadoCivil = $estadoCivil;
+		$this->enum_estadoCivil = $enum_estadoCivil;
+		$this->enum_sexo = $enum_sexo;
 		$this->nomePai = $nomePai;
 		$this->nomeMae = $nomeMae;
 		$this->enum_cor = $enum_cor;
@@ -66,17 +67,17 @@ class PessoaFisica implements JsonSerializable{
 	public function setEstadoCivil($estadoCivil) {
 		$this->estadoCivil = $estadoCivil;
 	}
-	public function getSexo() {
-		return $this->sexo;
+	public function getEnumSexo() {
+		return $this->enum_sexo;
 	}
-	public function setSexo($sexo) {
-		$this->sexo = $sexo;
+	public function setEnumSexo($enum_sexo) {
+		$this->enum_sexo = $enum_sexo;
 	}
-	public function getEstadoCivil() {
-		return $this->estadoCivil;
+	public function getEnumEstadocivil() {
+		return $this->enum_estadoCivil;
 	}
-	public function setEstadoCivil($estadoCivil) {
-		$this->estadoCivil = $estadoCivil;
+	public function setEnumEstadocivil($enum_estadoCivil) {
+		$this->enum_estadoCivil = $enum_estadoCivil;
 	}
 	public function getNomePai() {
 		return $this->nomePai;
@@ -138,9 +139,9 @@ class PessoaFisica implements JsonSerializable{
 	public function setDataAtualizacao($dataAtualizacao) {
 		$this->dataAtualizacao = $dataAtualizacao;
 	}
-		
+	
 	public function __toString(){
-		return "Pessoa [id=" . $this->id . ", nome=" . $this->nome . ", cpf=" . $this->cpf . ", data nascimento=" . $this->dataNascimento . ", estado civil=" . $this->estadoCivil . ", sexo=" . $this->sexo . ", nome do pai=" . $this->nomePai . ", nome da mae=" . $this->nomeMae . ", cor= " . $this->enum_cor. ", naturalidade=" . $this->naturalidade . ", nacionalidade= " . $this->nacionalidade . ", " . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
+		return "Pessoa [id=" . $this->id . ", nome=" . $this->nome . ", cpf=" . $this->cpf . ", data nascimento=" . $this->dataNascimento . ", estado civil=" . $this->enum_estadoCivil . ", sexo=" . $this->enum_sexo . ", nome do pai=" . $this->nomePai . ", nome da mae=" . $this->nomeMae . ", cor= " . $this->enum_cor. ", naturalidade=" . $this->naturalidade . ", nacionalidade= " . $this->nacionalidade . ", " . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
 	}
 	public function jsonSerialize() {
 		return array( 
@@ -148,8 +149,8 @@ class PessoaFisica implements JsonSerializable{
 				'nome' => $this->nome,
 				'cpf' => $this->cpf,
 				'dataNascimento' => $this->dataNascimento,
-				'estadoCivil' => $this->estadoCivil,
-				'sexo' => $this->sexo,
+				'estadoCivil' => $this->enum_estadoCivil,
+				'sexo' => $this->enum_sexo,
 				'nomePai' => $this->nomePai,
 				'nomeMae' => $this->nomeMae,
 				'enum_cor' => $this->enum_cor,
@@ -160,6 +161,8 @@ class PessoaFisica implements JsonSerializable{
 		         );
 		
 	}
+	
+	
 
 }
 ?>
