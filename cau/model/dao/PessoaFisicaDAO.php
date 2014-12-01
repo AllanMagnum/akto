@@ -11,9 +11,9 @@ class PessoaFisicaDAO{
 	function cadastrar($o_pessoaFisica){
 		$this->sql = "insert into pessoafisica (nome, cpf, datanascimento, estadocivil, sexo, nomepai, " .
 	                                     "nomemae, cor, naturalidade, nacionalidade, dataCadastro, dataAtualizacao) " .			    
-				     "values ('" . $o_pessoaFisica->getCpf() . "', '" . $o_pessoaFisica->getDataNascimento() . "', '" . $o_pessoaFisica->getEnumEstadoCivil() . "'," .
+				     "values ('" . $o_pessoaFisica->getNome() . "', '" . $o_pessoaFisica->getCpf() . "', '" . $o_pessoaFisica->getDataNascimento() . "', '" . $o_pessoaFisica->getEnumEstadoCivil() . "'," .
 				             "'" . $o_pessoaFisica->getEnumSexo() . "', '" . $o_pessoaFisica->getNomePai() . "', '" . $o_pessoaFisica->getNomeMae() . "'," .
-				             "'" . $o_pessoaFisica->getCor() . "', '" . $o_pessoaFisica->Naturalidade() . "', '" . $o_pessoaFisica->getNacionalidade() . "'," .
+				             "'" . $o_pessoaFisica->getEnumCor() . "', '" . $o_pessoaFisica->getNaturalidade() . "', '" . $o_pessoaFisica->getNacionalidade() . "'," .
 				             "'" . $o_pessoaFisica->getDataCadastro() . "', '" . $o_pessoaFisica->getDataAtualizacao() .
 		             "')";
 		if (!mysqli_query($this->con, $this->sql)) {
