@@ -43,7 +43,6 @@ class PessoaFisicaDAO{
 	}
 	
 	function listarPaginado($start, $limit){
-		mysqli_set_charset($this->con, "utf8");
 			
 		$this->sql= "select * from pessoafisica limit " . $start . ", " . $limit;
 		$query = mysqli_query($this->con, $this->sql);
@@ -63,7 +62,7 @@ class PessoaFisicaDAO{
 	}
 	
 	function buscarPorId($o_pessoaFisica){
-		$this->sql= "select * from pessoafisica where id= '" . $o_pessoafisica->getId() . "'";
+		$this->sql= "select * from pessoafisica where id= '" . $o_pessoaFisica->getId() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {
 			die('Error: ' . mysqli_error($this->con));

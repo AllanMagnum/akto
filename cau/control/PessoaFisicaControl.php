@@ -4,42 +4,42 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/PessoaDAO
 
 class PessoaFisicaControl{
 	protected $con;
-	protected $o_pessoa;
-	protected $o_pessoaDAO;
+	protected $o_pessoaFisica;
+	protected $o_pessoaFisicaDAO;
 	
 	function __construct($o_pessoa=""){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
-		$this->pessoaDAO = new PessoaDAO($this->con);
-		$this->o_pessoa = $o_pessoa;
+		$this->pessoaFisicaDAO = new PessoaFisicaDAO($this->con);
+		$this->o_pessoaFisica = $o_pessoa;
 	} 
 	
 	function cadastrar(){
-		$this->pessoaDAO->cadastrar($this->o_pessoa);
+		$this->pessoaFisicaDAO->cadastrar($this->o_pessoaFisica);
 	}
 	
 	function atualizar(){
-		$this->pessoaDAO->atualizar($this->o_pessoa);
+		$this->pessoaFisicaDAO->atualizar($this->o_pessoaFisica);
 	}
 	
 	function deletar(){
-		$this->pessoaDAO->deletar($this->o_pessoa);
+		$this->pessoaFisicaDAO->deletar($this->o_pessoaFisica);
 	}
 	
 	function buscarPorId(){
-		return $this->pessoaDAO->buscarPorId($this->o_pessoa);
+		return $this->pessoaFisicaDAO->buscarPorId($this->o_pessoaFisica);
 	}
 	
 	function buscarPorNome(){
-		return $this->pessoaDAO->buscarPorNome($this->o_pessoa);
+		return $this->pessoaFisicaDAO->buscarPorNome($this->o_pessoaFisica);
 	}
 	
 	function listarPaginado($start, $limit){
-		return $this->pessoaDAO->listarPaginado($start, $limit);
+		return $this->pessoaFisicaDAO->listarPaginado($start, $limit);
 	}
 	
 	function qtdTotal(){
-		return $this->pessoaDAO->qtdTotal();
+		return $this->pessoaFisicaDAO->qtdTotal();
 	}
 	
 }
