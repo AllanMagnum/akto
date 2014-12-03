@@ -50,7 +50,5 @@ class TipoEndereco implements JsonSerializable{
 		);
 	}
 
-	}
-
 }
 ?>

@@ -1,21 +1,21 @@
 <?php
-include_once 'Pessoa.php';
+include_once 'PessoaFisica.php';
 
-class Usuario extends Pessoa {
+class Usuario extends PessoaFisica {
 	private $id;
 	private $login;
 	private $senha;
 	private $o_perfil;
-	private $o_pessoa;
+	private $o_pessoaFisica;
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	function __construct($id="", $login="", $senha="", $o_perfil="", $o_pessoa="", $dataCadastro="", $dataAtualizacao=""){
+	function __construct($id="", $login="", $senha="", $o_perfil="", $o_pessoaFisica="", $dataCadastro="", $dataAtualizacao=""){
 		$this->id = $id;
 		$this->login = $login;
 		$this->senha= $senha;
 		$this->o_perfil= $o_perfil;
-		$this->o_pessoa = $o_pessoa;
+		$this->o_pessoaFisica = $o_pessoaFisica;
 		$this->dataCadastro = $dataCadastro;
 		$this->dataAtualizacao = $dataAtualizacao;
 	}

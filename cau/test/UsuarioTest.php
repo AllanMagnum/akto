@@ -1,7 +1,7 @@
 <?php
 include_once '../model/bean/Usuario.php';
-include_once '../model/bean/Pessoa.php';
-include_once '../control/PessoaControl.php';
+include_once '../model/bean/PessoaFisica.php';
+include_once '../control/PessoaFisicaControl.php';
 include_once '../model/bean/Perfil.php';
 include_once '../control/PerfilControl.php';
 include_once '../control/UsuarioControl.php';
@@ -12,11 +12,11 @@ $datahora = date ( "Y-m-d H:i:s" );
 try {
 	echo "<font color=\'#FF0000\'> deve cadastrar usuario allan ligado a pessoa allan(id=1) e ao perfil basico(id=1) </font>";
 	echo '<br>';
-	$o_pessoa = new Pessoa();
-	$o_pessoa->setId(1);
+	$o_pessoaFisica = new PessoaFisica();
+	$o_pessoaFisica->setId(1);
 	
-	$o_pessoaControl = new PessoaControl($o_pessoa);
-	$o_pessoa = $o_pessoaControl->buscarPorId();
+	$o_pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
+	$o_pessoaFisica = $o_pessoaFisicaControl->buscarPorId();
 	
 	$o_perfil = new Perfil();
 	$o_perfil->setId(1);
@@ -28,7 +28,7 @@ try {
 	$o_usuario->setLogin ( 'allan' );
 	$o_usuario->setSenha ( '12345' );
 	$o_usuario->setOPerfil ( $o_perfil );
-	$o_usuario->setOPessoa ( $o_pessoa );
+	$o_usuario->setOPessoa ( $o_pessoaFisica );
 	$o_usuario->setDataCadastro ( $datahora );
 	$o_usuario->setDataAtualizacao ( "0000-00-00 00:00:00" );
 	
