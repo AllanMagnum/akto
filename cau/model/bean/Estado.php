@@ -42,12 +42,12 @@ class Estado implements JsonSerializable{
 	}
 
 	public function jsonSerialize() {
-		return array(
+		return [
 			'id' => $this->id,
 			'nome' => $this->nome,
 			'sigla' => $this->sigla,
 			'o_pais' => $this->o_pais->jsonSerialize()
-		);
+		];
 	}
 
 }

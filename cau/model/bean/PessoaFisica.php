@@ -158,7 +158,7 @@ class PessoaFisica implements JsonSerializable{
  				'nacionalidade' => $this->nacionalidade,
  				'dataCadastro' => $this->dataCadastro,
  				'dataAtualizacao' => $this->dataAtualizacao
-		         ];
+		        ];
 		
 	}
 	

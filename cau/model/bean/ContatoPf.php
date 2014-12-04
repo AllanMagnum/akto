@@ -67,7 +67,7 @@ class ContatoPf implements JsonSerializable{
 	}
 	
 	public function jsonSerialize() {
-		return array(
+		return [
 					'id' => $this->id,
 					'o_tipoContato' => $this->o_tipoContato->jsonSerialize(),
 					'o_operadoraContato' => $this->o_operadoraContato->jsonSerialize(),
@@ -75,7 +75,7 @@ class ContatoPf implements JsonSerializable{
 					'o_pessoa' => $this->o_pessoa->jsonSerialize(),
 					'dataCadastro' => $this->dataCadastro,
 					'dataAtualizacao' => $this->dataAtualizacao
-				);
+				];
 	}
 
 }

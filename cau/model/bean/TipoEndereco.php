@@ -42,12 +42,12 @@ class TipoEndereco implements JsonSerializable{
 	} 
 	
 	public function jsonSerialize() {
-		return array(
+		return [
 				'id' => $this->id,
 				'descricao' => $this->descricao,
 				'dataCadastro' => $this->dataCadastro,
 				'dataAtualizacao' => $this->dataAtualizacao
-		);
+				];
 	}
 
 }

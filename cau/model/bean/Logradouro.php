@@ -51,13 +51,13 @@ class Logradouro implements JsonSerializable{
 	}
 	
 	public function jsonSerialize() {
-		return array(
+		return [
 					'id' => $this->id,
 					'cep' => $this->cep,
 					'tipo' => $this->tipo,
 					'endereco' => $this->endereco,
 					'o_bairro' => $this->o_bairro->jsonSerialize()
-				);	
+				];	
 	}
 
 }

@@ -82,7 +82,7 @@ class DocumentoPf implements JsonSerializable{
 	}
 	
 	public function jsonSerialize() {
-		return array(
+		return [
 				'id' => $this->id,
 				'enum_tipo' => $this->enum_tipo,
 				'numero' => $this->numero,
@@ -92,7 +92,7 @@ class DocumentoPf implements JsonSerializable{
 				'o_pessoaFisica' => $this->o_pessoaFisica->jsonSerialize(),
 				'dataCadastro' => $this->dataCadastro,
 				'dataAtualizacao' => $this->dataAtualizacao
-		);
+		];
 	}
 
 }

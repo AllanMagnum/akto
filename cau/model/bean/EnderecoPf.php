@@ -98,7 +98,7 @@ class EnderecoPf implements JsonSerializable{
 	}
 	
 	public function jsonSerialize() {
-		return array(
+		return [
 					'id' => $this->id,
 					'o_tipoEndereco' => $this->o_tipoEndereco->jsonSerialize(),
 					'logradouro' => $this->logradouro,
@@ -110,7 +110,7 @@ class EnderecoPf implements JsonSerializable{
 					'o_cidade' => $this->o_cidade->jsonSerialize(),
 					'dataCadastro' => $this->dataCadastro,
 					'dataAtualizacao' => $this->dataAtualizacao
-				);
+				];
 
 	}
 

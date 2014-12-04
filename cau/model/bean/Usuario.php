@@ -1,5 +1,6 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFisica.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Perfil.php';
 
 class Usuario extends PessoaFisica implements JsonSerializable{
 	private $id;
@@ -68,7 +69,7 @@ class Usuario extends PessoaFisica implements JsonSerializable{
 	}
 
 	public function jsonSerialize() {
-		return array(
+		return [
 				'id' => $this->id,
 				'login' => $this->login,
 				'senha' => $this->senha,
@@ -76,7 +77,7 @@ class Usuario extends PessoaFisica implements JsonSerializable{
 				'pessoa' => $this->o_pessoa->toJson(),
 				'dataCadastro' => $this->dataCadastro,
 				'dataAtualizacao' => $this->dataAtualizacao
-		);
+				];
 	}
 
 }

@@ -34,11 +34,11 @@ class Cidade implements JsonSerializable{
 	}
 	
 	public function jsonSerialize() {
-		return array(
+		return [
 			'id' => $this->id,
 			'nome' => $this->nome,
 			'o_estado' => $this->o_estado->jsonSerialize()
-		);
+		];
 	}
 
 }	

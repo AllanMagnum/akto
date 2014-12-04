@@ -34,11 +34,11 @@ class Pais implements JsonSerializable{
 	}
 	
 	public function jsonSerialize() {
-		return array( 
+		return [ 
 			   	'id' => $this->id,
 				'nome' => $this->nome,
 				'sigla' => $this->sigla
-		         );
+		         ];
 	}
 
 }

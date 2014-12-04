@@ -67,20 +67,20 @@ try {
 }
 
 //deve perquisar e encontrar perfil com id = 1 e deletar o mesmo
-echo "<font color=\'#FF0000\'> deve perquisar e encontrar perfil com id = 1 e deletar o mesmo </font>";
-echo '<br>';
+// echo "<font color=\'#FF0000\'> deve perquisar e encontrar perfil com id = 1 e deletar o mesmo </font>";
+// echo '<br>';
 
-try {
-	$o_perfil = new Perfil();
-	$o_perfil->setId(1);
+// try {
+// 	$o_perfil = new Perfil();
+// 	$o_perfil->setId(1);
 
-	$o_perfilControl = new PerfilControl($o_perfil);
-	$o_perfilParaDeletar = $o_perfilControl->buscarPorId();
+// 	$o_perfilControl = new PerfilControl($o_perfil);
+// 	$o_perfilParaDeletar = $o_perfilControl->buscarPorId();
 
-	$o_perilControl_2 = new PerfilControl($o_perfilParaDeletar);
-	$o_perilControl_2->deletar();
-} catch (Exception $e) {
-	echo "teste falhou: " . $e->getMessage();
-}
+// 	$o_perilControl_2 = new PerfilControl($o_perfilParaDeletar);
+// 	$o_perilControl_2->deletar();
+// } catch (Exception $e) {
+// 	echo "teste falhou: " . $e->getMessage();
+// }
 
 ?>

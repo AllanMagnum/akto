@@ -1,6 +1,5 @@
 <?php
-
-class Perfil{
+class Perfil implements JsonSerializable{
 	private $id;
 	private $nome;
 	private $dataCadastro;
@@ -43,13 +42,17 @@ class Perfil{
 	}
 	
 	public function toJson() {
-		return json_encode(array(
+		
+	}
+	public function jsonSerialize() {
+		return [
 				'id' => $this->id,
 				'nome' => $this->nome,
 				'dataCadastro' => $this->dataCadastro,
 				'dataAtualizacao' => $this->dataAtualizacao
-		));
+				];
 	}
+
 }
 
 ?>

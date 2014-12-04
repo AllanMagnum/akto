@@ -1,5 +1,5 @@
 <?php
-class Opcoes {
+class Opcoes implements JsonSerializable {
 	private $id;
 	private $nome;
 	private $tipo;
@@ -65,8 +65,8 @@ class Opcoes {
 		return "Opcoes [id=" . $this->id . ", nome=" . $this->nome . ", tipo=" . $this->tipo . ", url=" . $this->url . ", sistema=" . $this->o_sistema . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
 	}
 	
-	public function toJson() {
-		return json_encode(array(
+	public function jsonSerialize() {
+		return [
 				'id' => $this->id,
 				'nome' => $this->nome,
 				'tipo' => $this->tipo,
@@ -74,7 +74,8 @@ class Opcoes {
 				'dataCadastro' => $this->dataCadastro,
 				'dataAtualizacao' => $this->dataAtualizacao,
 				'o_sistema' => $this->o_sistema
-		));
+		];
 	}
+
 }
 ?>

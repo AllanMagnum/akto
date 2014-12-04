@@ -116,8 +116,19 @@ class Acesso implements JsonSerializable{
 	}
 	
 	public function jsonSerialize() {
-		
-
+		return [
+				'o_usuario' => $this->o_usuario->toJson(),
+				'o_perfil' => $this->o_perfil->toJson(),
+				'o_sistema' => $this->o_sistema->toJson(),
+				'o_opcoes' => $this->o_opcoes->toJson(),
+				'visualizar' => $this->visualizar,
+				'cadastrar' => $this->cadastrar,
+				'consultar' => $this->consultar,
+				'atualizar' => $this->atualizar,
+				'deletar' => $this->deletar,
+				'dataCadastro' => $this->dataCadastro,
+				'dataAtualizacao' => $this->dataAtualizacao
+				];
 	}
 
 }

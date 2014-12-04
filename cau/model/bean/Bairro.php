@@ -34,11 +34,11 @@ class Bairro implements JsonSerializable{
 	}
 	
 	public function jsonSerialize() {
-		return array(
+		return [
 			'id' => $this->id,
 			'nome' => $this->nome,
 			'o_cidade' => $this->o_cidade		
-		);
+		];
 	}
 
 }
