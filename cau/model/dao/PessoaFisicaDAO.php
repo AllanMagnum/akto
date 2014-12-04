@@ -52,7 +52,7 @@ class PessoaFisicaDAO{
 		}
 			
 		while($row = mysqli_fetch_object($query)){
-			$o_pessoaFisica = new PessoaFisica($row->id, $row->nome, $row->cpf, $row->estadocivil, $row->sexo,
+			$o_pessoaFisica = new PessoaFisica($row->id, $row->nome, $row->cpf, $row->dataNascimento, $row->estadocivil, $row->sexo,
 					$row->nomepai, $row->nomemae, $row->cor, $row->naturalidade,
 					$row->nacionalidade, $row->datacadastro, $row->dataatualizacao);
 			array_push($this->v_o_pessoaFisica, $o_pessoaFisica);
@@ -68,7 +68,7 @@ class PessoaFisicaDAO{
 			die('Error: ' . mysqli_error($this->con));
 		}
 		while($row = mysqli_fetch_object($st_query)){
-			$o_pessoaFisica = new PessoaFisica($row->id, $row->nome, $row->cpf, $row->estadocivil, $row->sexo,
+			$o_pessoaFisica = new PessoaFisica($row->id, $row->nome, $row->cpf, $row->dataNascimento, $row->estadocivil, $row->sexo,
 					$row->nomepai, $row->nomemae, $row->cor, $row->naturalidade,
 					$row->nacionalidade, $row->datacadastro, $row->dataatualizacao);
 			return $o_pessoaFisica;
@@ -84,7 +84,7 @@ class PessoaFisicaDAO{
 			die('Error: ' . mysqli_error($this->con));
 		}
 		while($row = mysqli_fetch_object($st_query)){
-			$o_pessoaFisica = new PessoaFisica($row->id, $row->nome, $row->cpf, $row->estadocivil, $row->sexo,
+			$o_pessoaFisica = new PessoaFisica($row->id, $row->nome, $row->cpf, $row->dataNascimento, $row->estadocivil, $row->sexo,
 					$row->nomepai, $row->nomemae, $row->cor, $row->naturalidade,
 					$row->nacionalidade, $row->datacadastro, $row->dataatualizacao);
 			array_push($this->v_o_pessoaFisica, $o_pessoaFisica);
