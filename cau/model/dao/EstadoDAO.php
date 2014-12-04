@@ -14,7 +14,7 @@ class EstadoDAO{
 	
 	function cadastrar($o_estado){
 		$this->sql = "insert into estado (nome, sigla, idpais) " .
-				"values ('" . $o_estado->getNome() . "', '" . $o_estado->getSigla() . "', '" . $o_estado->getPais()->getId() . "')";
+				"values ('" . $o_estado->getNome() . "', '" . $o_estado->getSigla() . "', '" . $o_estado->getOPais()->getId() . "')";
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
@@ -22,7 +22,7 @@ class EstadoDAO{
 	}
 	
 	function atualizar($o_estado){
-		$this->sql = "update estado set nome= '" . $o_estado->getNome . "', sigla= '" . $o_estado->getSigla() . "', idpais= '" . $o_estado->getPais()->getId() . "'" .
+		$this->sql = "update estado set nome= '" . $o_estado->getNome . "', sigla= '" . $o_estado->getSigla() . "', idpais= '" . $o_estado->getOPais()->getId() . "'" .
 				" where id='" . $o_estado->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));

@@ -1,5 +1,5 @@
 <?php
-class Estado{
+class Estado implements JsonSerializable{
 	private $id;
 	private $nome;
 	private $sigla;
@@ -40,6 +40,15 @@ class Estado{
 	public function __toString(){
 		"Estado [ id= " . $this->id . ", nome= " . $this->nome . ", sigla= " . $this->sigla . ", " . $this->o_pais . " ]";
 	}
-	
+
+	public function jsonSerialize() {
+		return array(
+			'id' => $this->id,
+			'nome' => $this->nome,
+			'sigla' => $this->sigla,
+			'o_pais' => $this->o_pais->jsonSerialize()
+		);
+	}
+
 }
 ?>
