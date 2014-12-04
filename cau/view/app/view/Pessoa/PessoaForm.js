@@ -36,44 +36,44 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 					},
 					{
 						xtype: 'textfield',
-				        name: 'telefoneMovel',
-				        fieldLabel: 'Telefone movel'
-					},
-					{
-						xtype: 'textfield',
-				        name: 'telefoneFixo',
-				        fieldLabel: 'Telefone fixo'
-					},
-					{
-						xtype: 'textfield',
-				        name: 'telefoneAdicional',
-				        fieldLabel: 'Telefone adicional'
-					},
-					{
-						xtype: 'textfield',
-				        name: 'email',
-				        fieldLabel: 'E-mail'
-					},
-					{
-						xtype: 'textfield',
-				        name: 'emailAdicional',
-				        fieldLabel: 'E-mail adiconal'
-					},
-					{
-						xtype: 'textfield',
-				        name: 'logradouro',
-				        fieldLabel: 'Logradouro'
-					},
-					{
-						xtype: 'textfield',
-				        name: 'numero',
-				        fieldLabel: 'Numero'
-					},
-					{
-						xtype: 'textfield',
-				        name: 'complemento',
-				        fieldLabel: 'Complemento'
+				        name: 'cpf',
+				        fieldLabel: 'Cpf'
 					}
+//					{
+//						xtype: 'textfield',
+//				        name: 'dataNascimento',
+//				        fieldLabel: 'Data Nascimento'
+//					},
+//					{
+//						xtype: 'textfield',
+//				        name: 'enum_sexo',
+//				        fieldLabel: 'Sexo'
+//					},
+//					{
+//						xtype: 'textfield',
+//				        name: 'nomePai',
+//				        fieldLabel: 'Nome do Pai'
+//					},
+//					{
+//						xtype: 'textfield',
+//				        name: 'nomeMae',
+//				        fieldLabel: 'Nome da Mâe'
+//					},
+//					{
+//						xtype: 'textfield',
+//				        name: 'enum_cor',
+//				        fieldLabel: 'Cor'
+//					},
+//					{
+//						xtype: 'textfield',
+//				        name: 'naturalidade',
+//				        fieldLabel: 'Naturalidade'
+//					},
+//					{
+//						xtype: 'textfield',
+//				        name: 'nacionalidade',
+//				        fieldLabel: 'Nacionalidade'
+//					}
 				]
 		}
 	],

@@ -10,18 +10,17 @@ Ext.define('cau.model.Pessoa',{
 	fields: [
 		{name: 'id',  				type: 'int'},
 		{name: 'nome',  			type: 'string'},
-		{name: 'telefoneMovel',  	type: 'string'},
-		{name: 'telefoneFixo',  	type: 'string'},
-		{name: 'telefoneAdicional', type: 'string'},
-		{name: 'email', 			type: 'string'},
-		{name: 'emailAdicional', 	type: 'string'},
-		{name: 'logradouro', 		type: 'string'},
-		{name: 'numero', 			type: 'string'},
-		{name: 'complemento', 		type: 'string'},
-		{name: 'bairro', 			type: 'string'},
-		{name: 'cep', 			    type: 'string'},
-		{name: 'datacadastro', 		type: 'date' , dateFormat: 'c'},
-		{name: 'dataatualizacao', 	type: 'date', dateFormat: 'c'}
+		{name: 'cpf',  				type: 'string'}
+//		{name: 'dataNascimento',  	type: 'date' , dateFormat: 'c'},
+//		{name: 'enum_estadoCivil', 	type: 'string'},
+//		{name: 'enum_sexo', 		type: 'string'},
+//		{name: 'nomePai', 			type: 'string'},
+//		{name: 'nomeMae', 			type: 'string'},
+//		{name: 'enum_cor', 			type: 'string'},
+//		{name: 'naturalidade', 		type: 'string'},
+//		{name: 'nacionalidade', 	type: 'string'},
+//		{name: 'dataCadastro', 		type: 'date' , dateFormat: 'c'},
+//		{name: 'dataAtualizacao', 	type: 'date', dateFormat: 'c'}
 	]	
 	
 });

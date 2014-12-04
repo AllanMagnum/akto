@@ -82,16 +82,16 @@ Ext.define('cau.controller.Main', {
             var pessoa = Ext.create('cau.model.Pessoa',{
             	
             	nome: 			  	values.nome,
-            	telefoneMovel: 		values.telefoneMovel,
-            	telefoneFixo: 		values.telefoneFixo,
-            	telefoneAdicional: 	values.telefoneAdicional,
-            	email: 				values.email,
-            	emailAdicional: 	values.emailAdicional,
-            	logradouro: 		values.logradouro,
-            	numero: 			values.numero,
-            	complemento: 		values.complemento,
-            	bairro: 			values.bairro,
-            	cep: 				values.cep
+//            	telefoneMovel: 		values.telefoneMovel,
+//            	telefoneFixo: 		values.telefoneFixo,
+//            	telefoneAdicional: 	values.telefoneAdicional,
+//            	email: 				values.email,
+//            	emailAdicional: 	values.emailAdicional,
+//            	logradouro: 		values.logradouro,
+//            	numero: 			values.numero,
+//            	complemento: 		values.complemento,
+//            	bairro: 			values.bairro,
+//            	cep: 				values.cep
             });
 
             store.insert(0,pessoa);
