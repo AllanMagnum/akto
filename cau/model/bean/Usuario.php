@@ -1,7 +1,7 @@
 <?php
-include_once 'PessoaFisica.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFisica.php';
 
-class Usuario extends PessoaFisica {
+class Usuario extends PessoaFisica implements JsonSerializable{
 	private $id;
 	private $login;
 	private $senha;
@@ -67,8 +67,8 @@ class Usuario extends PessoaFisica {
 		return "Usuario [id=" . $this->id . ", login=" . $this->login . ", senha=" . $this->senha . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . ", pessoa=" . $this->o_pessoa . ", perfil=" . $this->o_perfil . "]";  
 	}
 
-	public function toJson() {
-		return json_encode(array(
+	public function jsonSerialize() {
+		return array(
 				'id' => $this->id,
 				'login' => $this->login,
 				'senha' => $this->senha,
@@ -76,7 +76,8 @@ class Usuario extends PessoaFisica {
 				'pessoa' => $this->o_pessoa->toJson(),
 				'dataCadastro' => $this->dataCadastro,
 				'dataAtualizacao' => $this->dataAtualizacao
-		));
+		);
 	}
+
 }
 ?>
