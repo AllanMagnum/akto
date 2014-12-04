@@ -144,21 +144,21 @@ class PessoaFisica implements JsonSerializable{
 		return "Pessoa [id=" . $this->id . ", nome=" . $this->nome . ", cpf=" . $this->cpf . ", data nascimento=" . $this->dataNascimento . ", estado civil=" . $this->enum_estadoCivil . ", sexo=" . $this->enum_sexo . ", nome do pai=" . $this->nomePai . ", nome da mae=" . $this->nomeMae . ", cor= " . $this->enum_cor. ", naturalidade=" . $this->naturalidade . ", nacionalidade= " . $this->nacionalidade . ", " . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
 	}
 	public function jsonSerialize() {
-		return array( 
+		return [ 
 			   	'id' => $this->id,
 				'nome' => $this->nome,
-				'cpf' => $this->cpf
-// 				'dataNascimento' => $this->dataNascimento,
-// 				'enum_estadoCivil' => $this->enum_estadoCivil,
-// 				'enum_sexo' => $this->enum_sexo,
-// 				'nomePai' => $this->nomePai,
-// 				'nomeMae' => $this->nomeMae,
-// 				'enum_cor' => $this->enum_cor,
-// 				'naturalidade' => $this->naturalidade,
-// 				'nacionalidade' => $this->nacionalidade,
-// 				'dataCadastro' => $this->dataCadastro,
-// 				'dataAtualizacao' => $this->dataAtualizacao
-		         );
+				'cpf' => $this->cpf,
+ 				'dataNascimento' => $this->dataNascimento,
+ 				'enum_estadoCivil' => $this->enum_estadoCivil,
+ 				'enum_sexo' => $this->enum_sexo,
+ 				'nomePai' => $this->nomePai,
+				'nomeMae' => $this->nomeMae,
+ 				'enum_cor' => $this->enum_cor,
+ 				'naturalidade' => $this->naturalidade,
+ 				'nacionalidade' => $this->nacionalidade,
+ 				'dataCadastro' => $this->dataCadastro,
+ 				'dataAtualizacao' => $this->dataAtualizacao
+		         ];
 		
 	}
 	
