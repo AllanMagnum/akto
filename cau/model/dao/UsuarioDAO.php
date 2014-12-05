@@ -62,14 +62,14 @@ class UsuarioDAO{
 			$o_perfilControl = new PerfilControl($o_perfil);
 			$o_perfil = $o_perfilControl->buscarPorId($row->idperfil);
 			
-			$o_pessoa = new Pessoa();
-			$o_pessoa->setId($row->idpessoa);
+			$o_pessoaFisica = new PessoaFisica();
+			$o_pessoaFisica->setId($row->idpessoa);
 			
-			$o_pessoaControl = new PessoaControl($o_pessoa);
-			$o_pessoa = $o_pessoaControl->buscarPorId();
+			$o_pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
+			$o_pessoaFisica = $o_pessoaFisicaControl->buscarPorId();
 			
 			$o_usuario = new Usuario($row->id, $row->login, $row->senha, $o_perfil,
-					                 $o_pessoa, $row->datacadastro, $row->dataatualizacao);
+					                 $o_pessoaFisica, $row->datacadastro, $row->dataatualizacao);
 			array_push($this->v_o_usuario, $o_usuario);
 		}
 		return $this->v_o_usuario;
@@ -90,14 +90,14 @@ class UsuarioDAO{
 			$o_perfilControl = new PerfilControl($o_perfil);
 			$o_perfil = $o_perfilControl->buscarPorId($row->idperfil);
 			
-			$o_pessoa = new Pessoa();
-			$o_pessoa->setId($row->idpessoa);
+			$o_pessoaFisica = new PessoaFisica();
+			$o_pessoaFisica->setId($row->idpessoa);
 			
-			$o_pessoaControl = new PessoaControl($o_pessoa);
-			$o_pessoa = $o_pessoaControl->buscarPorId();
+			$o_pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
+			$o_pessoaFisica = $o_pessoaFisicaControl->buscarPorId();
 			
 			$o_usuario = new Usuario($row->id, $row->login, $row->senha, $o_perfil,
-					                 $o_pessoa, $row->datacadastro, $row->dataatualizacao);
+					                 $o_pessoaFisica, $row->datacadastro, $row->dataatualizacao);
 			
 		}
 

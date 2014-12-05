@@ -20,7 +20,7 @@ class ContatoPfDAO{
 	
 	function atualizar($o_contatoPF){
 		$this->sql = "update contato_pf set tipo= '" . $o_contatoPF->getOTipocontato()->getDescricao() . "', operadora= '" . $o_contatoPF->getOOperadoracontato()->getDescricao() . "', contato=  '" . $o_contatoPF->getContato() . "', " . 
-		             "', idpessoa= '" . $o_contatoPF->getOPessoa()->getId() .  "', dataAtualizacao= '" . $o_pessoa->getDataAtualizacao() . "'" .
+		             "', idpessoa= '" . $o_contatoPF->getOPessoa()->getId() .  "', dataAtualizacao= '" . $o_contatoPF->getDataAtualizacao() . "'" .
 		             " where id='" . $o_contatoPF->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
@@ -39,7 +39,7 @@ class ContatoPfDAO{
 	function listarPorPessoa($o_contatoPF, $start, $limit){
 		mysqli_set_charset($this->con, "utf8");
 			
-		$this->sql= "select * from contato_pf WHERE idpessoa=" . $o_enderecoPF->getOPessoaFisica()->getId()  . " limit " . $start . ", " . $limit;
+		$this->sql= "select * from contato_pf WHERE idpessoa=" . $o_contatoPF->getOPessoaFisica()->getId()  . " limit " . $start . ", " . $limit;
 		$query = mysqli_query($this->con, $this->sql);
 			
 		if (!$query) {
