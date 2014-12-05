@@ -13,16 +13,22 @@ Ext.define('cau.store.PessoaStore',{
 		type: 'ajax',
 		
 		api:{
-			create: 'controle/pessoa/listaPessoa.php',
+			create: 'controle/pessoa/cadastraPessoa.php',
 			read: 'controle/pessoa/listaPessoa.php',
-			update: 'controle/pessoa/listaPessoa.php',
-			destroy: 'controle/pessoa/listaPessoa.php',
+			update: 'controle/pessoa/atualizaPessoa.php',
+			destroy: 'controle/pessoa/deletaPessoa.php',
 		},
 		
 		reader: {
 			type: 'json',
 			root: 'data'
 		},
+
+		writer: {
+			type: 'json',
+			root: 'data',
+			encode: true
+		}
 	}
 });/**
  * 

@@ -34,6 +34,12 @@ Ext.define('cau.controller.Main', {
                 viewready: this.onViewReady,
                 render : this.onGridRender,
             },
+            "pessoagrid button#add": {
+                click : this.onAddClick
+            },
+            "pessoagrid button#delete": {
+                click : this.onDeleteClick
+            },
             "pessoaform button#cancel": {
                 click : this.onCancelClick
             },
@@ -65,6 +71,25 @@ Ext.define('cau.controller.Main', {
 
     },
 
+    onAddClick: function(btn, e, eOpts ){
+        
+    	this.getPessoaForm().getForm().reset();
+    },
+
+    onDeleteClick: function(btn, e, eOpts){
+
+        var grid = btn.up('grid');
+
+        var records = grid.getSelectionModel().getSelection();
+
+        var store = grid.getStore();
+
+        store.remove(records);
+
+        store.sync();
+    },
+
+
     onSaveClick: function(btn, e, eOpts){
 
         var form = this.getPessoaForm().getForm(),
@@ -81,17 +106,16 @@ Ext.define('cau.controller.Main', {
 
             var pessoa = Ext.create('cau.model.Pessoa',{
             	
-//            	nome: 			  	values.nome,
-//            	telefoneMovel: 		values.telefoneMovel,
-//            	telefoneFixo: 		values.telefoneFixo,
-//            	telefoneAdicional: 	values.telefoneAdicional,
-//            	email: 				values.email,
-//            	emailAdicional: 	values.emailAdicional,
-//            	logradouro: 		values.logradouro,
-//            	numero: 			values.numero,
-//            	complemento: 		values.complemento,
-//            	bairro: 			values.bairro,
-//            	cep: 				values.cep
+            	nome: 			  	values.nome,
+            	cpf: 				values.cpf,
+            	dataNascimento:		values.dataNascimento,
+            	enum_estadoCivil: 	values.enum_estadoCivil,
+            	enum_sexo: 			values.enum_sexo,
+            	nomePai:		 	values.nomePai,
+            	nomeMae: 			values.nomeMae,
+            	enum_cor: 			values.enum_cor,
+            	naturalidade: 		values.naturalidade,
+            	nacionalidade: 		values.nacionalidade
             });
 
             store.insert(0,pessoa);

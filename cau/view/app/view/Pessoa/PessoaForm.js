@@ -49,6 +49,11 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 					},
 					{
 						xtype: 'textfield',
+				        name: 'enum_estadoCivil',
+				        fieldLabel: 'Estado Civil'
+					},
+					{
+						xtype: 'textfield',
 				        name: 'enum_sexo',
 				        fieldLabel: 'Sexo'
 					},
