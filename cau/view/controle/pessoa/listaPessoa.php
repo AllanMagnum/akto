@@ -9,7 +9,7 @@ $o_pessoaFisicaControl = new PessoaFisicaControl();
 $v_o_pessoaFisica = $o_pessoaFisicaControl->listarPaginado($start, $limit);
 
 foreach ($v_o_pessoaFisica as $o_pessoaFisica) {
-	$v_registros[] =json_encode($o_pessoaFisica);
+	$v_registros[] = $o_pessoaFisica;
 }
 
 $o_pessoaFisicaControl = new PessoaFisicaControl();
