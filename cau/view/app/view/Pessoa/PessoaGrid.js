@@ -15,15 +15,15 @@ Ext.define('cau.view.pessoa.PessoaGrid',{
 	columns: [
 		{ text: 'Id',  dataIndex: 'id' },
         { text: 'Nome', dataIndex: 'nome', flex: 1 },
-        { text: 'CPF', dataIndex: 'cpf' }
-//        { text: 'Data Nascimento', dataIndex: 'dataNascimento' },
-//        { text: 'Estado Civil', dataIndex: 'enum_estadoCivil' },
-//        { text: 'Sexo', dataIndex: 'enum_sexo' },
-//        { text: 'Cor', dataIndex: 'enum_cor' },
-//        { text: 'Naturalidade', dataIndex: 'naturalidade' },
-//        { text: 'Nacionalidade', dataIndex: 'nacionalidade' },
-//        { text: 'Data cadastro', dataIndex: 'dataCadastro' },
-//        { text: 'Data atualizacao', dataIndex: 'dataAtualizacao' }
+        { text: 'CPF', dataIndex: 'cpf' },
+        { text: 'Data Nascimento', dataIndex: 'dataNascimento' },
+        { text: 'Estado Civil', dataIndex: 'enum_estadoCivil' },
+        { text: 'Sexo', dataIndex: 'enum_sexo' },
+        { text: 'Cor', dataIndex: 'enum_cor' },
+        { text: 'Naturalidade', dataIndex: 'naturalidade' },
+        { text: 'Nacionalidade', dataIndex: 'nacionalidade' },
+        { text: 'Data cadastro', dataIndex: 'dataCadastro' },
+        { text: 'Data atualizacao', dataIndex: 'dataAtualizacao' }
 	],
 
 	dockedItems: [

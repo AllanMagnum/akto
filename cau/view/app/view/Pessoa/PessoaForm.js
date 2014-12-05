@@ -6,7 +6,7 @@
 
 Ext.define('cau.view.pessoa.PessoaForm',{
 	
-	extend: 'Ext.panel.Panel',	
+	extend: 'Ext.tab.Panel',	
 	alias: 'widget.pessoaform',
 
 	height: 200,
@@ -18,11 +18,14 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 
 	items: [
 		{
+			title: 'Dados Gerais',
 			xtype: 'form',
 			bodyPadding: 10,
 			defaults: {
 				anchor: '100%'
 			},
+			autoScroll:true,
+			itemId: 'gerais',
 			items: [
 					{
 						xtype: 'hiddenfield',
@@ -38,44 +41,56 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 						xtype: 'textfield',
 				        name: 'cpf',
 				        fieldLabel: 'Cpf'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'dataNascimento',
+				        fieldLabel: 'Data Nascimento'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'enum_sexo',
+				        fieldLabel: 'Sexo'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'nomePai',
+				        fieldLabel: 'Nome do Pai'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'nomeMae',
+				        fieldLabel: 'Nome da Mâe'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'enum_cor',
+				        fieldLabel: 'Cor'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'naturalidade',
+				        fieldLabel: 'Naturalidade'
+					},
+					{
+						xtype: 'textfield',
+				        name: 'nacionalidade',
+				        fieldLabel: 'Nacionalidade'
 					}
-//					{
-//						xtype: 'textfield',
-//				        name: 'dataNascimento',
-//				        fieldLabel: 'Data Nascimento'
-//					},
-//					{
-//						xtype: 'textfield',
-//				        name: 'enum_sexo',
-//				        fieldLabel: 'Sexo'
-//					},
-//					{
-//						xtype: 'textfield',
-//				        name: 'nomePai',
-//				        fieldLabel: 'Nome do Pai'
-//					},
-//					{
-//						xtype: 'textfield',
-//				        name: 'nomeMae',
-//				        fieldLabel: 'Nome da Mâe'
-//					},
-//					{
-//						xtype: 'textfield',
-//				        name: 'enum_cor',
-//				        fieldLabel: 'Cor'
-//					},
-//					{
-//						xtype: 'textfield',
-//				        name: 'naturalidade',
-//				        fieldLabel: 'Naturalidade'
-//					},
-//					{
-//						xtype: 'textfield',
-//				        name: 'nacionalidade',
-//				        fieldLabel: 'Nacionalidade'
-//					}
 				]
-		}
+		}, {
+	        title: 'Endereço',
+	        html: 'Tickets',
+	        itemId: 'endereco'
+	    }, {
+	        title: 'Contato',
+	        html: 'Contatos',
+	        itemId: 'contato'
+	    }, {
+	        title: 'Documentos',
+	        html: 'Documentos',
+	        itemId: 'documento'
+	    }
 	],
 	dockedItems: [
 		{

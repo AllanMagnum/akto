@@ -81,7 +81,7 @@ Ext.define('cau.controller.Main', {
 
             var pessoa = Ext.create('cau.model.Pessoa',{
             	
-            	nome: 			  	values.nome,
+//            	nome: 			  	values.nome,
 //            	telefoneMovel: 		values.telefoneMovel,
 //            	telefoneFixo: 		values.telefoneFixo,
 //            	telefoneAdicional: 	values.telefoneAdicional,
