@@ -26,7 +26,7 @@ class PessoaFisicaDAO{
 		$this->sql = "update pessoafisica set nome= '" . $o_pessoaFisica->getNome() . "', cpf= '" . $o_pessoaFisica->getCpf() . "', datanascimento=  '" . $o_pessoaFisica->getDataNascimento() . "', " . 
 		              "estadocivil = '" . $o_pessoaFisica->getEnumEstadoCivil() . "', sexo= '" . $o_pessoaFisica->getEnumSexo() . "', nomePai= '" . $o_pessoaFisica->getNomePai() . "', " .
 		              "nomeMae = '" . $o_pessoaFisica->getNomeMae() . "', cor= '" . $o_pessoaFisica->getEnumCor() . "', naturalidade= '" . $o_pessoaFisica->getNaturalidade() . "', " .
-		              "nacionalidade = '" . $o_pessoaFisica->getNacionalidade() . "', dataAtualizacao= '" . $o_pessoaFisica->getDataAtualizacao() . "'" .
+		              "nacionalidade = '" . $o_pessoaFisica->getNacionalidade() . "', dataatualizacao= '" . $o_pessoaFisica->getDataAtualizacao() . "'" .
 		             " where id='" . $o_pessoaFisica->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
