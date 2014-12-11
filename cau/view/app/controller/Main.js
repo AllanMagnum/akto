@@ -45,7 +45,11 @@ Ext.define('cau.controller.Main', {
             },
             "pessoaform button#save": {
                 click : this.onSaveClick
+            },
+            "pessoaform button#save2": {
+                click : this.onSave2Click
             }
+            
             
         });
     },
@@ -123,6 +127,35 @@ Ext.define('cau.controller.Main', {
 
         store.sync();
 
+    },    
+
+    onSave2Click: function(btn, e, eOpts){
+
+        var form = this.getPessoaForm().getForm(),
+            values = form.getValues(),
+            record = form.getRecord(),
+            grid = Ext.ComponentQuery.query('pessoagrid')[0],
+            store = grid.getStore();
+
+        var pessoa = Ext.create('cau.model.Pessoa',{
+        	
+        	nome: 			  	values.nome,
+        	cpf: 				values.cpf,
+        	dataNascimento:		values.dataNascimento,
+        	enum_estadoCivil: 	values.enum_estadoCivil,
+        	enum_sexo: 			values.enum_sexo,
+        	nomePai:		 	values.nomePai,
+        	nomeMae: 			values.nomeMae,
+        	enum_cor: 			values.enum_cor,
+        	naturalidade: 		values.naturalidade,
+        	nacionalidade: 		values.nacionalidade
+        });
+
+        store.insert(0,pessoa);
+
+        store.sync();
+
     }    
-    	
+    
+    
 });
