@@ -17,7 +17,7 @@ class UsuarioDAO{
 	public function cadastrar($o_usuario){
 		$this->sql = "insert into usuario (login, senha, idperfil, idpessoa, dataCadastro, dataAtualizacao) " .
 				"values ('" . $o_usuario->getLogin() . "', '" . $o_usuario->getSenha() . "', '" .
-				         $o_usuario->getOPerfil()->getId() . "', '" . $o_usuario->getOPessoa()->getId() . "', '" .
+				         $o_usuario->getOPerfil()->getId() . "', '" . $o_usuario->getOPessoaFisica()->getId() . "', '" .
 				         $o_usuario->getDataCadastro() . "', '" . $o_usuario->getDataAtualizacao() .
 				"')";
 		if (!mysqli_query($this->con, $this->sql)) {
@@ -28,7 +28,7 @@ class UsuarioDAO{
 	
 	public function atualizar($o_usuario){
 		$this->sql = "update usuario set login= '" . $o_usuario->getLogin() . "', senha= '" . $o_usuario->getSenha() .
-				                       "', idperfil= '" .  $o_usuario->getOPerfil()->getId() . "', idpessoa= '" . $o_usuario->getOPessoa()->getId() .
+				                       "', idperfil= '" .  $o_usuario->getOPerfil()->getId() . "', idpessoa= '" . $o_usuario->getOPessoaFisica()->getId() .
 				                       "', dataCadastro= '" . $o_usuario->getDataCadastro() . "', dataAtualizacao= '" . $o_usuario->getDataAtualizacao() . "'" .
 				    " where id='" . $o_usuario->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {

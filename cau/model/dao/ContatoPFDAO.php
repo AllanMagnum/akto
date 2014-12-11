@@ -56,7 +56,7 @@ class ContatoPfDAO{
 	
 
 	function qtdTotalPorPessoa($o_contatoPF){
-		$this->sql= "select count(*) as quantidade from contato_pf where idpessoa=" . $o_contatoPF->getOPessoaFisica()->getId()  . ;
+		$this->sql= "select count(*) as quantidade from contato_pf where idpessoa=" . $o_contatoPF->getOPessoaFisica()->getId()  ;
 		$st_query = mysqli_query($this->con, $this->sql);
 		
 		if (!$st_query) {

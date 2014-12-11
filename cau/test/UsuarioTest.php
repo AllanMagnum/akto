@@ -1,10 +1,10 @@
 <?php
-include_once '../model/bean/Usuario.php';
-include_once '../model/bean/PessoaFisica.php';
-include_once '../control/PessoaFisicaControl.php';
-include_once '../model/bean/Perfil.php';
-include_once '../control/PerfilControl.php';
-include_once '../control/UsuarioControl.php';
+require_once '../model/bean/Usuario.php';
+require_once '../model/bean/PessoaFisica.php';
+require_once '../control/PessoaFisicaControl.php';
+require_once '../model/bean/Perfil.php';
+require_once '../control/PerfilControl.php';
+require_once '../control/UsuarioControl.php';
 
 $datahora = date ( "Y-m-d H:i:s" );
 
@@ -28,7 +28,7 @@ try {
 	$o_usuario->setLogin ( 'allan' );
 	$o_usuario->setSenha ( '12345' );
 	$o_usuario->setOPerfil ( $o_perfil );
-	$o_usuario->setOPessoa ( $o_pessoaFisica );
+	$o_usuario->setOPessoaFisica ( $o_pessoaFisica );
 	$o_usuario->setDataCadastro ( $datahora );
 	$o_usuario->setDataAtualizacao ( "0000-00-00 00:00:00" );
 	

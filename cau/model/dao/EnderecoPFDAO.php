@@ -60,7 +60,7 @@ class EnderecoPFDAO{
 	
 
 	function qtdTotalPorPessoa($o_enderecoPF){
-		$this->sql= "select count(*) as quantidade from endereco_pf WHERE idpessoa=" . $o_enderecoPF->getOPessoaFisica()->getId()  . ";
+		$this->sql= "select count(*) as quantidade from endereco_pf WHERE idpessoa=" . $o_enderecoPF->getOPessoaFisica()->getId()  ;
 		$st_query = mysqli_query($this->con, $this->sql);
 		
 		if (!$st_query) {

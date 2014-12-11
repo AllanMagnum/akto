@@ -1,6 +1,6 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFisica.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Perfil.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFisica.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Perfil.php';
 
 class Usuario extends PessoaFisica implements JsonSerializable{
 	private $id;
@@ -45,11 +45,11 @@ class Usuario extends PessoaFisica implements JsonSerializable{
 	public function setOPerfil($o_perfil) {
 		$this->o_perfil = $o_perfil;
 	}
-	public function getOPessoa() {
-		return $this->o_pessoa;
+	public function getOPessoaFisica() {
+		return $this->o_pessoaFisica;
 	}
-	public function setOPessoa($o_pessoa) {
-		$this->o_pessoa = $o_pessoa;
+	public function setOPessoaFisica($o_pessoaFisica) {
+		$this->o_pessoaFisica = $o_pessoaFisica;
 	}
 	public function getDataCadastro() {
 		return $this->dataCadastro;
@@ -65,7 +65,7 @@ class Usuario extends PessoaFisica implements JsonSerializable{
 	}
 	
 	public function __toString() {
-		return "Usuario [id=" . $this->id . ", login=" . $this->login . ", senha=" . $this->senha . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . ", pessoa=" . $this->o_pessoa . ", perfil=" . $this->o_perfil . "]";  
+		return "Usuario [id=" . $this->id . ", login=" . $this->login . ", senha=" . $this->senha . ", data cadastro=" . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . ", " . $this->o_pessoaFisica . ", perfil=" . $this->o_perfil . "]";  
 	}
 
 	public function jsonSerialize() {
