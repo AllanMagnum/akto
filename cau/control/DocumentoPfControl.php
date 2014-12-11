@@ -1,38 +1,38 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/DocumentoPfDAO.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/DocumentoPf.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/DocumentoPFDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/DocumentoPF.php';
 
 class PerfilControl{
 	protected $con;
-	protected $o_documentoPf;
-	protected $o_documentoPfDAO;
+	protected $o_documentoPF;
+	protected $o_documentoPFDAO;
 
-	function __construct($o_documentoPf=""){
+	function __construct($o_documentoPF=""){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
-		$this->o_documentoPfDAO = new DocumentoPfDAO($this->con);
-		$this->o_documentoPf = $o_documentoPf;
+		$this->o_documentoPFDAO = new DocumentoPFDAO($this->con);
+		$this->o_documentoPF = $o_documentoPF;
 	}
 
 	function cadastrar(){
-		$this->o_documentoPfDAO->cadastrar($this->o_documentoPf);
+		$this->o_documentoPFDAO->cadastrar($this->o_documentoPF);
 	}
 
 	function atualizar(){
-		$this->o_documentoPfDAO->atualizar($this->o_documentoPf);
+		$this->o_documentoPFDAO->atualizar($this->o_documentoPF);
 	}
 
 	function deletar(){
-		$this->o_documentoPfDAO->deletar($this->o_documentoPf);
+		$this->o_documentoPFDAO->deletar($this->o_documentoPF);
 	}
 
 	function buscarPorId(){
-		return $this->o_documentoPfDAO->buscarPorId($this->o_documentoPf);
+		return $this->o_documentoPFDAO->buscarPorId($this->o_documentoPF);
 	}
 
 	function listarPorPessoa(){
-		return $this->o_documentoPfDAO->listarPorPessoa($this->o_documentoPf);
+		return $this->o_documentoPFDAO->listarPorPessoa($this->o_documentoPF);
 	}
 
 }

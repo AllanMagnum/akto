@@ -1,5 +1,5 @@
 <?php
-class EnderecoPfDAO{
+class EnderecoPFDAO{
 	private $con;
 	private $sql;
 	private $v_o_enderecoPF = array();
@@ -39,7 +39,7 @@ class EnderecoPfDAO{
 		mysqli_close($this->con);
 	}
 	
-	function listarPorPessoa($o_enderecoPF, $start, $limit){
+	function listarPaginadoPorPessoa($o_enderecoPF, $start, $limit){
 		mysqli_set_charset($this->con, "utf8");
 			
 		$this->sql= "select * from endereco_pf WHERE idpessoa=" . $o_enderecoPF->getOPessoaFisica()->getId()  . " limit " . $start . ", " . $limit;
@@ -50,7 +50,7 @@ class EnderecoPfDAO{
 		}
 			
 		while($row = mysqli_fetch_object($query)){
-			$o_enderecoPF = new EnderecoPf($row->id, $row->tipo, $row->logradouro, $row->numero,
+			$o_enderecoPF = new EnderecoPF($row->id, $row->tipo, $row->logradouro, $row->numero,
 					$row->complemento, $row->bairro, $row->cep,	$row->datacadastro, $row->dataatualizacao);
 			array_push($this->v_o_enderecoPF, $o_enderecoPF);
 		}
@@ -59,8 +59,8 @@ class EnderecoPfDAO{
 	}
 	
 
-	function qtdTotal(){
-		$this->sql= "select count(*) as quantidade from endereco_pf";
+	function qtdTotalPorPessoa($o_enderecoPF){
+		$this->sql= "select count(*) as quantidade from endereco_pf WHERE idpessoa=" . $o_enderecoPF->getOPessoaFisica()->getId()  . ";
 		$st_query = mysqli_query($this->con, $this->sql);
 		
 		if (!$st_query) {
@@ -78,4 +78,3 @@ class EnderecoPfDAO{
 	}
 	
 }	
-?>

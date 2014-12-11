@@ -1,5 +1,5 @@
 <?php
-class ContatoPf implements JsonSerializable{
+class ContatoPF implements JsonSerializable{
 	private $id;
 	private $o_tipoContato;
 	private $o_operadoraContato;

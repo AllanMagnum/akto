@@ -36,7 +36,7 @@ class ContatoPfDAO{
 		mysqli_close($this->con);
 	}
 	
-	function listarPorPessoa($o_contatoPF, $start, $limit){
+	function listarPaginadoPorPessoa($o_contatoPF, $start, $limit){
 		mysqli_set_charset($this->con, "utf8");
 			
 		$this->sql= "select * from contato_pf WHERE idpessoa=" . $o_contatoPF->getOPessoaFisica()->getId()  . " limit " . $start . ", " . $limit;
@@ -50,13 +50,13 @@ class ContatoPfDAO{
 			$o_contatoPF = new EnderecoPf($row->id, $row->tipo, $row->operadora, $row->contato,$row->datacadastro, $row->dataatualizacao);
 			array_push($this->v_o_contatoPF, $o_contatoPF);
 		}
-		return $this->v_o_contatoPF;
+		return $this->v_o_contatoPf;
 		mysqli_close($this->con);
 	}
 	
 
-	function qtdTotal(){
-		$this->sql= "select count(*) as quantidade from contato_pf";
+	function qtdTotalPorPessoa($o_contatoPF){
+		$this->sql= "select count(*) as quantidade from contato_pf where idpessoa=" . $o_contatoPF->getOPessoaFisica()->getId()  . ;
 		$st_query = mysqli_query($this->con, $this->sql);
 		
 		if (!$st_query) {

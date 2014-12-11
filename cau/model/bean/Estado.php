@@ -5,7 +5,7 @@ class Estado implements JsonSerializable{
 	private $sigla;
 	private $o_pais;
 
-	public function __toString($id="", $nome="", $sigla="", $o_pais){
+	public function __construct($id="", $nome="", $sigla="", $o_pais){
 		$this->id = $id;
 		$this->nome = $nome;
 		$this->sigla = $sigla;
@@ -38,7 +38,7 @@ class Estado implements JsonSerializable{
 	}
 	
 	public function __toString(){
-		"Estado [ id= " . $this->id . ", nome= " . $this->nome . ", sigla= " . $this->sigla . ", " . $this->o_pais . " ]";
+		return "Estado [ id= " . $this->id . ", nome= " . $this->nome . ", sigla= " . $this->sigla . ", " . $this->o_pais . " ]";
 	}
 
 	public function jsonSerialize() {

@@ -1,5 +1,5 @@
 <?php
-class EnderecoPf implements JsonSerializable{
+class EnderecoPF implements JsonSerializable{
 	private $id;
 	private $o_tipoEndereco;
 	private $logradouro;
