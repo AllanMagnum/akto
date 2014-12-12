@@ -114,8 +114,14 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 				},
 				{
 					xtype: 'button',
-					text: 'Salvar',
+					text: 'Atualizar',
 					itemId: 'save',
+					iconCls: 'icon-save'
+				},
+				{
+					xtype: 'button',
+					text: 'Salvar',
+					itemId: 'save2',
 					iconCls: 'icon-save'
 				}
 			]

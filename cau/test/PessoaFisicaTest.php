@@ -8,7 +8,7 @@
 	
 	$datahora = date("Y-m-d H:i:s");
 	$o_pessoaFisica = new PessoaFisica();
-	$o_pessoaFisica->setNome('allan');
+	$o_pessoaFisica->setNome('alex');
 	$o_pessoaFisica->setCpf('9293442610');
 	$o_pessoaFisica->setDataNascimento("1987-03-14 00:00:00");
 	$o_pessoaFisica->setEnumEstadoCivil('solteiro');
@@ -21,7 +21,7 @@
 	$o_pessoaFisica->setDataCadastro($datahora);
 	$o_pessoaFisica->setDataAtualizacao("0000-00-00 00:00:00");
 	
-	for ($i = 0; $i < 1000; $i++) {
+	for ($i = 0; $i < 2; $i++) {
 		$pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
 		$pessoaFisicaControl->cadastrar();
 	}

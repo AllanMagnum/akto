@@ -20,20 +20,30 @@ class PessoaFisicaDAO{
 			die('Error: ' . mysqli_error($this->con));
 		}
 		
-		echo '<br>';
-		echo '<br>';
-		echo mysql_insert_id();
-		echo '<br>';
-		echo '<br>';
+		return mysqli_insert_id($this->con);
 		
 		mysqli_close($this->con);
+	}
+	
+	function cadastrarEndereco($o_pessoaFisica){
+		foreach ($o_pessoaFisica->getVOEndereco() as $o_enderecoPF) {
+			$this->sql = "insert into endereco_pf (tipo, logradouro, numero, complemento, bairro, cep, idcidade, idpessoa, dataCadastro, dataAtualizacao) " .
+					     "values ('" . $o_enderecoPF->getOTipoEndereco()->getDescricao() . "', '" . $o_enderecoPF->getLogradouro() . "', '" . $o_enderecoPF->getNumero() . "'," .
+				         "'" . $o_enderecoPF->getComplemento() . "', '" . $o_enderecoPF->getBairro() . "', '" . $o_enderecoPF->getCep() . "'," .
+				         "'" . $o_enderecoPF->getOCidade()->getId() . "', '" . $o_enderecoPF->getOPessoaFisica()->getId()  . "', '" . $o_enderecoPF->getDataCadastro() . "', '" . $o_enderecoPF->getDataAtualizacao() .
+				         "')";
+		    if (!mysqli_query($this->con, $this->sql)) {
+				die('Error: ' . mysqli_error($this->con));
+			}
+			mysqli_close($this->con);
+		}
 	}
 	
 	function atualizar($o_pessoaFisica){
 		$this->sql = "update pessoafisica set nome= '" . $o_pessoaFisica->getNome() . "', cpf= '" . $o_pessoaFisica->getCpf() . "', datanascimento=  '" . $o_pessoaFisica->getDataNascimento() . "', " . 
 		              "estadocivil = '" . $o_pessoaFisica->getEnumEstadoCivil() . "', sexo= '" . $o_pessoaFisica->getEnumSexo() . "', nomePai= '" . $o_pessoaFisica->getNomePai() . "', " .
 		              "nomeMae = '" . $o_pessoaFisica->getNomeMae() . "', cor= '" . $o_pessoaFisica->getEnumCor() . "', naturalidade= '" . $o_pessoaFisica->getNaturalidade() . "', " .
-		              "nacionalidade = '" . $o_pessoaFisica->getNacionalidade() . "', dataatualizacao= '" . $o_pessoaFisica->getDataAtualizacao() . "'" .
+		              "nacionalidade = '" . $o_pessoaFisica->getNacionalidade() . "'" .
 		             " where id='" . $o_pessoaFisica->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
@@ -119,4 +129,4 @@ class PessoaFisicaDAO{
 	}
 	
 }	
-?>
+

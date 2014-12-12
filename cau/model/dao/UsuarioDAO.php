@@ -119,7 +119,7 @@ class UsuarioDAO{
 		
 		if ($registro > 0) {
 			while($row = mysqli_fetch_object($st_query)){
-				if (base64_decode($row->senha) == base64_decode($o_usuario->getSenha())){
+				if ($row->senha == $o_usuario->getSenha()){
 					$resposta = 1;
 				}
 			}	
