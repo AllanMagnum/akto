@@ -19,6 +19,13 @@ class PessoaFisicaDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
+		
+		echo '<br>';
+		echo '<br>';
+		echo mysql_insert_id();
+		echo '<br>';
+		echo '<br>';
+		
 		mysqli_close($this->con);
 	}
 	
