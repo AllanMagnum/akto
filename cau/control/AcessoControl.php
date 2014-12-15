@@ -1,14 +1,14 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Acesso.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/AcessoDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Acesso.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/AcessoDAO.php';
 
 class AcessoControl{
 	protected $con;
 	protected $o_acesso;
 	protected $o_acessoDAO;
 
-	function __construct($o_acesso=""){
+	function __construct(Acesso $o_acesso= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->acessoDAO = new AcessoDAO($this->con);

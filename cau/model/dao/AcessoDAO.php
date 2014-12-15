@@ -1,24 +1,25 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Opcoes.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/OpcoesControl.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Perfil.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/PerfilControl.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Sistema.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/SistemaControl.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Usuario.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/UsuarioControl.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Opcoes.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/OpcoesControl.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Perfil.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/PerfilControl.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Sistema.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/SistemaControl.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Usuario.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/UsuarioControl.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Acesso.php';
 
 class AcessoDAO{
 	private $con;
 	private $sql;
+	private $o_acesso;
 	private $v_o_acesso = array();
 
 	function __construct($con){
 		$this->con = $con;
 	}
 
-	function cadastrar($o_acesso){
+	function cadastrar(Acesso $o_acesso){
 		$this->sql = "insert into acesso (idusuario, idperfil, idsistema, idopcoes, " .
 				"visualizar, cadastrar, consultar, atualizar, deletar, dataCadastro, dataAtualizacao) " .
 				"values ('" . $o_acesso->getOUsuario()->getId() . "', '" . $o_acesso->getOPerfil()->getId() . "', '" . $o_acesso->getOSistema()->getId() . "', '" .
@@ -32,7 +33,7 @@ class AcessoDAO{
 		mysqli_close($this->con);
 	}
 
-	function atualizar($o_acesso){
+	function atualizar(Acesso $o_acesso){
 		$this->sql = "update acesso set idusuario= '" . $o_acesso->getOUsuario()->getId() . "', idperfil= '" . $o_acesso->getOPerfil()->getId() . "', idsistema=  '" . $o_acesso->getOSistema()->getId() . "'," .
 				"idopcoes = '" . $o_acesso->getOOpcoes()->getId() . "', visualizar= '" . $o_acesso->getVisualizar() . "', cadastrar= '" . $o_acesso->getCadastrar() . "'," .
 				"consultar = '" . $o_acesso->getConsultar() . "', atualizar= '" . $o_acesso->getAtualizar() . "', deletar= '" . $o_acesso->getDeletar() . "'," .
@@ -45,7 +46,7 @@ class AcessoDAO{
 		mysqli_close($this->con);
 	}
 
-	function deletarPorUsuario($o_acesso){
+	function deletarPorUsuario(Acesso $o_acesso){
 		$this->sql = "delete from acesso where idusuario='" . $o_acesso->getOUsuario()->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
@@ -54,7 +55,7 @@ class AcessoDAO{
 		mysqli_close($this->con);
 	}
 	
-	function deletarPorPerfil($o_acesso){
+	function deletarPorPerfil(Acesso $o_acesso){
 		$this->sql = "delete from acesso where idperfil='" . $o_acesso->getOPerfil()->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
@@ -63,7 +64,7 @@ class AcessoDAO{
 		mysqli_close($this->con);
 	}
 	
-	function deletarPorSistema($o_acesso){
+	function deletarPorSistema(Acesso $o_acesso){
 		$this->sql = "delete from acesso where idsistema='" . $o_acesso->getOSistema()->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
@@ -104,10 +105,10 @@ class AcessoDAO{
 			$o_opcoesControl = new OpcoesControl($o_opcoes);
 			$o_opcoes = $o_opcoesControl->buscarPorId();
 			
-			$o_acesso = new Acesso($o_usuario, $o_perfil, $o_sistema,
+			$this->o_acesso = new Acesso($o_usuario, $o_perfil, $o_sistema,
 					               $o_opcoes, $row->visualizar, $row->cadastrar, $row->consultar,
 					               $row->atualizar, $row->deletar, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_acesso, $o_acesso);
+			array_push($this->v_o_acesso, $this->o_acesso);
 		}
 		
 		return $this->v_o_acesso;
@@ -115,7 +116,7 @@ class AcessoDAO{
 		mysqli_close($this->con);
 	}
 
-	public function buscarPorUsuario($o_acesso){
+	public function buscarPorUsuario(Acesso $o_acesso){
 		$this->sql= "select * from acesso where idusuario= '" . $o_acesso->getOUsuario()->getId() . "'";
 		$query = mysqli_query($this->con, $this->sql);
 		if (!$query) {
@@ -144,11 +145,11 @@ class AcessoDAO{
 			$o_opcoesControl = new OpcoesControl($o_opcoes);
 			$o_opcoes = $o_opcoesControl->buscarPorId();
 			
-			$o_acesso = new Acesso($o_usuario, $o_perfil, $o_sistema,
+			$this->o_acesso = new Acesso($o_usuario, $o_perfil, $o_sistema,
 					               $o_opcoes, $row->visualizar, $row->cadastrar, $row->consultar,
 					               $row->atualizar, $row->deletar, $row->datacadastro, $row->dataatualizacao);
 			
-			array_push($this->v_o_acesso, $o_acesso);
+			array_push($this->v_o_acesso, $this->o_acesso);
 		}
 		
 		return $this->v_o_acesso;
@@ -156,7 +157,7 @@ class AcessoDAO{
 		mysqli_close($this->con);
 	}
 	
-	function buscarPorPerfil($o_acesso){
+	function buscarPorPerfil(Acesso $o_acesso){
 		$this->sql= "select * from acesso where idperfil= '" . $o_acesso->getOPerfil()->getId() . "'";
 		$query = mysqli_query($this->con, $this->sql);
 		if (!$query) {
@@ -184,18 +185,18 @@ class AcessoDAO{
 			$o_opcoesControl = new OpcoesControl($o_opcoes);
 			$o_opcoes = $o_opcoesControl->buscarPorId();
 				
-			$o_acesso = new Acesso($o_usuario, $o_perfil, $o_sistema,
+			$this->o_acesso = new Acesso($o_usuario, $o_perfil, $o_sistema,
 								   $o_opcoes, $row->visualizar, $row->cadastrar, $row->consultar,
 								   $row->atualizar, $row->deletar, $row->datacadastro, $row->dataatualizacao);
 			
-			array_push($this->v_o_acesso, $o_acesso);
+			array_push($this->v_o_acesso, $this->o_acesso);
 		}
 		return $this->v_o_acesso;
 		
 		mysqli_close($this->con);
 	}
 	
-	function buscarPorSistema($o_acesso){
+	function buscarPorSistema(Acesso $o_acesso){
 		$this->sql= "select * from acesso where idsistema= '" . $o_acesso->getOSistema()->getId() . "'";
 		$query = mysqli_query($this->con, $this->sql);
 		if (!$query) {
@@ -223,10 +224,10 @@ class AcessoDAO{
 			$o_opcoesControl = new OpcoesControl($o_opcoes);
 			$o_opcoes = $o_opcoesControl->buscarPorId();
 				
-			$o_acesso = new Acesso($o_usuario, $o_perfil, $o_sistema,
+			$this->o_acesso = new Acesso($o_usuario, $o_perfil, $o_sistema,
 								   $o_opcoes, $row->visualizar, $row->cadastrar, $row->consultar,
 					               $row->atualizar, $row->deletar, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_acesso, $o_acesso);
+			array_push($this->v_o_acesso, $this->o_acesso);
 		}
 		return $this->v_o_acesso;
 

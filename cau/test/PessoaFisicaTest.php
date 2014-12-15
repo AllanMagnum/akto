@@ -18,12 +18,26 @@
 	$o_pessoaFisica->setEnumCor('PARDA');
 	$o_pessoaFisica->setNaturalidade('amazonense');
 	$o_pessoaFisica->setNacionalidade('brasileiro');
+	
+	$o_enderecoPF = new EnderecoPF();
+	$o_enderecoPF->setOTipoEndereco("ENTREGA");
+	$o_enderecoPF->setLogradouro("Av. camapuã");
+	$o_enderecoPF->setNumero("462");
+	$o_enderecoPF->setComplemento("nucleo 9");
+	$o_enderecoPF->setBairro("Cidade Nova 2");
+	$o_enderecoPF->setOCidade("Manaus");
+	$o_enderecoPF->setDataCadastro($datahora);
+	$o_enderecoPF->setDataAtualizacao("0000-00-00 00:00:00");
+ 
+	array_push($o_pessoaFisica->getVOEndereco(), $o_enderecoPF);
 	$o_pessoaFisica->setDataCadastro($datahora);
 	$o_pessoaFisica->setDataAtualizacao("0000-00-00 00:00:00");
 	
 	for ($i = 0; $i < 2; $i++) {
 		$pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
 		$pessoaFisicaControl->cadastrar();
+		
+		
 	}
 	
 	echo "<font color=\'#FF0000\'> cadastrar pessoa allan </font>";

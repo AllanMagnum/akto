@@ -1,21 +1,23 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Sistema.php';
+
 class Opcoes implements JsonSerializable {
 	private $id;
 	private $nome;
 	private $tipo;
 	private $url;
+	private $o_sistema;
 	private $dataCadastro;
 	private $dataAtualizacao;
-	private $o_sistema;
 	
-	function __construct($id = "", $nome = "", $tipo = "", $url = "", $dataCadastro = "", $dataAtualizacao = "", $o_sistema="") {
+	function __construct($id = null, $nome = null, $tipo = null, $url = null, Sistema $o_sistema=null, $dataCadastro = null, $dataAtualizacao = null) {
 		$this->id = $id;
 		$this->nome = $nome;
 		$this->tipo = $tipo;
 		$this->url = $url;
+		$this->o_sistema = $o_sistema;
 		$this->dataCadastro = $dataCadastro;
 		$this->dataAtualizacao = $dataAtualizacao;
-		$this->o_sistema = $o_sistema;
 	}
 	
 	public function getId() {
@@ -42,6 +44,12 @@ class Opcoes implements JsonSerializable {
 	public function setUrl($url) {
 		$this->url = $url;
 	}
+	public function getOSistema() {
+		return $this->o_sistema;
+	}
+	public function setOSistema($o_sistema) {
+		$this->o_sistema = $o_sistema;
+	}
 	public function getDataCadastro() {
 		return $this->dataCadastro;
 	}
@@ -53,12 +61,6 @@ class Opcoes implements JsonSerializable {
 	}
 	public function setDataAtualizacao($dataAtualizacao) {
 		$this->dataAtualizacao = $dataAtualizacao;
-	}
-	public function getOSistema() {
-		return $this->o_sistema;
-	}
-	public function setOSistema($o_sistema) {
-		$this->o_sistema = $o_sistema;
 	}
 	
 	public function __toString(){

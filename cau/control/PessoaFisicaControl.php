@@ -3,8 +3,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/PessoaFisicaDAO.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFisica.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/EnderecoPF.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/EnderecoPFControl.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/ContatoPF.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/ContatoPFControl.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/DocumentoPF.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/DocumentoPFControl.php';
 
 class PessoaFisicaControl{
 	protected $con;
@@ -12,11 +15,11 @@ class PessoaFisicaControl{
 	protected $o_pessoaFisicaDAO;
 	private $ultimoId;
 	
-	function __construct($o_pessoa=""){
+	function __construct(PessoaFisica $o_pessoaFisica= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->pessoaFisicaDAO = new PessoaFisicaDAO($this->con);
-		$this->o_pessoaFisica = $o_pessoa;
+		$this->o_pessoaFisica = $o_pessoaFisica;
 	}
 	
 	public function getUltimoId() {
@@ -25,6 +28,14 @@ class PessoaFisicaControl{
 	
 	function cadastrar(){
 		$this->ultimoId = $this->pessoaFisicaDAO->cadastrar($this->o_pessoaFisica);
+		
+		$this->o_pessoaFisica->setId($this->ultimoId);
+		
+		foreach ($this->o_pessoaFisica->getVOEndereco() as $o_enderecoPF) {
+			$o_enderecoPF->setOPessoaFisica($this->o_pessoaFisica);
+			$o_enderecoPFControl = new EnderecoPFControl($o_enderecoPF);
+			$o_enderecoPFControl->cadastrar(); 
+		}
 	}
 	
 	function atualizar(){
@@ -50,18 +61,6 @@ class PessoaFisicaControl{
 	function qtdTotal(){
 		return $this->pessoaFisicaDAO->qtdTotal();
 	}
-	
-	function adicionarEndereco($o_endereco){
-		array_push($this->o_pessoaFisica->getVOEndereco(), $o_endereco);
-	}
-	
-	function adicionarContato($o_contato){
-		array_push($this->o_pessoaFisica->getVOEndereco(), $o_contato);
-	}
-	
-	function adicionar($o_documento){
-		array_push($this->o_pessoaFisica->getVODocumento(), $o_documento);
-	}
-	
+
 }
 ?>

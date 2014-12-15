@@ -1,4 +1,8 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/EnderecoPF.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/ContatoPF.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/DocumentoPF.php';
+
 class PessoaFisica implements JsonSerializable{
 	private  $id;
 	private $nome;
@@ -12,13 +16,13 @@ class PessoaFisica implements JsonSerializable{
 	private $enum_cor;
 	private $naturalidade;
 	private $nacionalidade;
-	private $v_o_endereco;
-	private $v_o_contato;
-	private $v_o_documento;
+	private $v_o_enderecoPF = array();
+	private $v_o_contatoPF = array();
+	private $v_o_documentoPF = array();
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	function __construct($id = "", $nome = "", $cpf = "", $dataNascimento = "", $enum_estadoCivil = "", $enum_sexo = "", $nomePai = "", $nomeMae = "", $enum_cor="", $naturalidade="", $nacionalidade="", $v_o_endereco = "", $v_o_contato = "", $v_o_documento = "", $dataCadastro = "", $dataAtualizacao = "") {
+	function __construct($id = null, $nome = null, $cpf = null, $dataNascimento = null, $enum_estadoCivil = null, $enum_sexo = null, $nomePai = null, $nomeMae = null, $enum_cor=null, $naturalidade=null, $nacionalidade=null, $v_o_enderecoPF = null, $v_o_contatoPF = null, $v_o_documentoPF = null, $dataCadastro = null, $dataAtualizacao = null) {
 		$this->id = $id;
 		$this->nome = $nome;
 		$this->cpf = $cpf;
@@ -30,9 +34,9 @@ class PessoaFisica implements JsonSerializable{
 		$this->enum_cor = $enum_cor;
 		$this->naturalidade = $naturalidade;
 		$this->nacionalidade = $nacionalidade;
-		$this->v_o_endereco = $v_o_endereco;
-		$this->v_o_contato = $v_o_contato;
-		$this->v_o_documento = $v_o_documento;
+		$this->v_o_enderecoPF = $v_o_enderecoPF;
+		$this->v_o_contatoPF = $v_o_contatoPF;
+		$this->v_o_documentoPF = $v_o_documentoPF;
 		$this->dataCadastro = $dataCadastro;
 		$this->dataAtualizacao = $dataAtualizacao;
 	}
@@ -109,23 +113,23 @@ class PessoaFisica implements JsonSerializable{
 	public function setNacionalidade($nacionalidade) {
 		$this->nacionalidade = $nacionalidade;
 	}
-	public function getVOEndereco() {
-		return $this->v_o_endereco;
+	public function getVOEnderecoPF() {
+		return $this->v_o_enderecoPF;
 	}
-	public function setVOEndereco($v_o_endereco) {
-		$this->v_o_endereco = $v_o_endereco;
+	public function setVOEnderecoPF($v_o_enderecoPF) {
+		$this->v_o_enderecoPF = $v_o_enderecoPF;
 	}
-	public function getVOContato() {
-		return $this->v_o_contato;
+	public function getVOContatoPF() {
+		return $this->v_o_contatoPF;
 	}
-	public function setVOContato($v_o_contato) {
-		$this->v_o_contato = $v_o_contato;
+	public function setVOContato($v_o_contatoPF) {
+		$this->v_o_contatoPF = $v_o_contatoPF;
 	}
-	public function getVODocumento() {
-		return $this->v_o_documento;
+	public function getVODocumentoPF() {
+		return $this->v_o_documentoPF;
 	}
-	public function setVODocumento($v_o_documento) {
-		$this->v_o_documento = $v_o_documento;
+	public function setVODocumentoPF($v_o_documentoPF) {
+		$this->v_o_documentoPF = $v_o_documentoPF;
 	}
 	public function getDataCadastro() {
 		return $this->dataCadastro;

@@ -11,7 +11,7 @@ class Usuario extends PessoaFisica implements JsonSerializable{
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	function __construct($id="", $login="", $senha="", $o_perfil="", $o_pessoaFisica="", $dataCadastro="", $dataAtualizacao=""){
+	function __construct($id=null, $login=null, $senha=null, Perfil $o_perfil=null, PessoaFisica $o_pessoaFisica=null, $dataCadastro=null, $dataAtualizacao=null){
 		$this->id = $id;
 		$this->login = $login;
 		$this->senha= $senha;

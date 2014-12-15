@@ -1,14 +1,14 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/SistemaDAO.php'; 
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Sistema.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/SistemaDAO.php'; 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Sistema.php';
 
 class SistemaControl{
 	protected $con;
 	protected $o_sistema;
 	protected $o_sistemaDAO;
 
-	function __construct($o_sistema=""){
+	function __construct(Sistema $o_sistema= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->o_sistemaDAO = new SistemaDAO($this->con);

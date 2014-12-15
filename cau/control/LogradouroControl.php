@@ -1,14 +1,14 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Logradouro.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/LogradouroDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Logradouro.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/LogradouroDAO.php';
 
 class BairroControl{
 	protected $con;
 	protected $o_logradouro;
 	protected $o_logradouroDAO;
 
-	function __construct($o_logradouro=""){
+	function __construct(Logradouro $o_logradouro= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->o_logradouroDAO = new LogradouroDAO($this->con);
@@ -28,11 +28,11 @@ class BairroControl{
 	}
 
 	function buscarPorId(){
-		$this->o_logradouroDAO->buscarPorId($this->o_logradouro);
+		return $this->o_logradouroDAO->buscarPorId($this->o_logradouro);
 	}
 
 	function listarTodos(){
-		$this->o_logradouroDAO->listarTodos();
+		return $this->o_logradouroDAO->listarTodos();
 	}
 }
 ?>

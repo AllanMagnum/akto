@@ -1,8 +1,7 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/BairroControl.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Bairro.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Logradouro.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/BairroControl.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Bairro.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Logradouro.php';
 
 class LogradouroDAO{
 	private $con;
@@ -14,7 +13,7 @@ class LogradouroDAO{
 		$this->con = $con;
 	}
 	
-	function cadastrar($o_logradouro){
+	function cadastrar(Logradouro $o_logradouro){
 		$this->sql = "insert into logradouro (cep, tipo, endereco,  idbairro) " .
 				"values ('" . $o_logradouro->getCep() . "', '" . $o_logradouro->getTipo() . "', '" . $o_logradouro->getEndereco() . "', '" . $o_logradouro->getOBairro()->getId() . "')";
 		if (!mysqli_query($this->con, $this->sql)) {
@@ -23,7 +22,7 @@ class LogradouroDAO{
 		mysqli_close($this->con);
 	}
 	
-	function atualizar($o_logradouro){
+	function atualizar(Logradouro $o_logradouro){
 		$this->sql = "update logradouro set cep= '" . $o_logradouro->getCep() . "', tipo= '" . $o_logradouro->getTipo() . "', endereco= '" . $o_logradouro->getEndereco() . "', idbairro= '" . $o_logradouro->getBairro()->getId() . "'" .
 				" where id='" . $o_logradouro->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
@@ -32,7 +31,7 @@ class LogradouroDAO{
 		mysqli_close($this->con);
 	}
 	
-	function deletar($o_logradouro){
+	function deletar(Logradouro $o_logradouro){
 		$this->sql = "delete from logradouro where id='" . $o_logradouro->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
@@ -40,7 +39,7 @@ class LogradouroDAO{
 		mysqli_close($this->con);
 	}
 	
-	function buscarPorId($o_logradouro){
+	function buscarPorId(Logradouro $o_logradouro){
 		$this->sql= "select * from logradouro where id= '" . $o_logradouro->getId() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {

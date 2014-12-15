@@ -1,4 +1,6 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Bairro.php'; 
+
 class Logradouro implements JsonSerializable{
 	private $id;
 	private $cep;
@@ -6,7 +8,7 @@ class Logradouro implements JsonSerializable{
 	private $endereco;
 	private $o_bairro;
 	
-	function __construct($id="", $cep="", $tipo="", $endereco="", $o_bairro=""){
+	function __construct($id=null, $cep=null, $tipo=null, $endereco=null, Bairro $o_bairro=null){
 		$this->id = $id;
 		$this->cep = $cep;
 		$this->tipo = $tipo;
@@ -41,9 +43,8 @@ class Logradouro implements JsonSerializable{
 	public function getOBairro() {
 		return $this->o_bairro;
 	}
-	public function setOBairro($o_bairro) {
+	public function setOBairro(Bairro $o_bairro) {
 		$this->o_bairro = $o_bairro;
-		return $this;
 	}
 	
 	function __toString(){

@@ -1,14 +1,14 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Opcoes.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/OpcoesDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Opcoes.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/OpcoesDAO.php';
 
 class OpcoesControl{
 	protected $con;
 	protected $o_opcoes;
 	protected $o_opcoesDAO;
 
-	function __construct($o_opcoes=""){
+	function __construct(Opcoes $o_opcoes= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->opcoesDAO = new OpcoesDAO($this->con);

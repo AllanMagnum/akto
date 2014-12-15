@@ -1,10 +1,12 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Estado.php';
+
 class Cidade implements JsonSerializable{
 	private $id;
 	private $nome;
 	private $o_estado;
 	
-	function __construct($id="", $nome="", $o_estado=""){
+	function __construct($id=null, $nome=null, Estado $o_estado=null){
 		$this->id= $id;
 		$this->nome= $nome;
 		$this->o_estado = $o_estado;
@@ -25,7 +27,7 @@ class Cidade implements JsonSerializable{
 	public function getOEstado() {
 		return $this->o_estado;
 	}
-	public function setOEstado($o_estado) {
+	public function setOEstado(Estado $o_estado) {
 		$this->o_estado = $o_estado;
 	}
 	

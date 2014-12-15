@@ -5,7 +5,7 @@ class TipoContato implements JsonSerializable{
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	public function __construct($id="", $descricao="" , $dataCadastro="", $dataAtualizacao=""){
+	public function __construct($id=null, $descricao=null , $dataCadastro=null, $dataAtualizacao=null){
 		$this->id = $id;
 		$this->descricao = $descricao;	
 	}

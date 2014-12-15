@@ -8,7 +8,7 @@ class PerfilControl{
 	protected $o_documentoPF;
 	protected $o_documentoPFDAO;
 
-	function __construct($o_documentoPF=""){
+	function __construct(DocumentoPF $o_documentoPF= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->o_documentoPFDAO = new DocumentoPFDAO($this->con);

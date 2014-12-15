@@ -8,13 +8,14 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Usuario.
 class UsuarioDAO{
 	private $con;
 	private $sql;
+	private $o_usuario;
 	private $v_o_usuario = array();
 
 	public function __construct($con){
 		$this->con = $con;
 	}
 
-	public function cadastrar($o_usuario){
+	public function cadastrar(Usuario $o_usuario){
 		$this->sql = "insert into usuario (login, senha, idperfil, idpessoa, dataCadastro, dataAtualizacao) " .
 				"values ('" . $o_usuario->getLogin() . "', '" . $o_usuario->getSenha() . "', '" .
 				         $o_usuario->getOPerfil()->getId() . "', '" . $o_usuario->getOPessoaFisica()->getId() . "', '" .
@@ -26,7 +27,7 @@ class UsuarioDAO{
 		mysqli_close($this->con);
 	}
 	
-	public function atualizar($o_usuario){
+	public function atualizar(Usuario $o_usuario){
 		$this->sql = "update usuario set login= '" . $o_usuario->getLogin() . "', senha= '" . $o_usuario->getSenha() .
 				                       "', idperfil= '" .  $o_usuario->getOPerfil()->getId() . "', idpessoa= '" . $o_usuario->getOPessoaFisica()->getId() .
 				                       "', dataCadastro= '" . $o_usuario->getDataCadastro() . "', dataAtualizacao= '" . $o_usuario->getDataAtualizacao() . "'" .
@@ -37,7 +38,7 @@ class UsuarioDAO{
 		mysqli_close($this->con);
 	}
 	
-	public function deletar($o_usuario){
+	public function deletar(Usuario $o_usuario){
 		$this->sql = "delete from usuario where id='" . $o_usuario->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
@@ -68,15 +69,15 @@ class UsuarioDAO{
 			$o_pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
 			$o_pessoaFisica = $o_pessoaFisicaControl->buscarPorId();
 			
-			$o_usuario = new Usuario($row->id, $row->login, $row->senha, $o_perfil,
+			$this->o_usuario = new Usuario($row->id, $row->login, $row->senha, $o_perfil,
 					                 $o_pessoaFisica, $row->datacadastro, $row->dataatualizacao);
-			array_push($this->v_o_usuario, $o_usuario);
+			array_push($this->v_o_usuario, $this->o_usuario);
 		}
 		return $this->v_o_usuario;
 		mysqli_close($this->con);
 	}
 	
-	public function buscarPorId($o_usuario){
+	public function buscarPorId(Usuario $o_usuario){
 		$this->sql= "select * from usuario where id= '" . $o_usuario->getId() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {
@@ -96,17 +97,17 @@ class UsuarioDAO{
 			$o_pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
 			$o_pessoaFisica = $o_pessoaFisicaControl->buscarPorId();
 			
-			$o_usuario = new Usuario($row->id, $row->login, $row->senha, $o_perfil,
+			$this->o_usuario = new Usuario($row->id, $row->login, $row->senha, $o_perfil,
 					                 $o_pessoaFisica, $row->datacadastro, $row->dataatualizacao);
 			
 		}
 
-		return $o_usuario;
+		return $this->o_usuario;
 		
 		mysqli_close($this->con);
 	}
 	
-	public function autenticar($o_usuario){
+	public function autenticar(Usuario $o_usuario){
 		
 		$resposta = 0;
 		$this->sql= "select * from usuario where login= '" . $o_usuario->getLogin() . "'";

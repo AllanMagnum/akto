@@ -6,7 +6,7 @@ class Sistema implements JsonSerializable {
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	function __construct($id = "", $nome = "", $sigla = "", $dataCadastro = "", $dataAtualizacao = "") {
+	function __construct($id = null, $nome = null, $sigla = null, $dataCadastro = null, $dataAtualizacao = null) {
 		$this->id = $id;
 		$this->nome = $nome;
 		$this->sigla = $sigla;

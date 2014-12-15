@@ -8,7 +8,7 @@ class ContatoPFControl{
 	protected $o_contatoPF;
 	protected $o_contatoPFDAO;
 	
-	function __construct($o_contatoPF=""){
+	function __construct(ContatoPF $o_contatoPF= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->o_contatoPFDAO = new ContatoPFDAO($this->con);
@@ -28,10 +28,10 @@ class ContatoPFControl{
 	}
 	
 	function listarPaginadoPorPessoa($start, $limit){
-		$this->o_contatoPFDAO->listarPaginadoPorPessoa($this->o_contatoPF, $start, $limit);
+		return $this->o_contatoPFDAO->listarPaginadoPorPessoa($this->o_contatoPF, $start, $limit);
 	}
 	
 	function qtdeTotalPorPessoa(){
-		$this->o_contatoPFDAO->qtdTotalPorPessoa($this->o_contatoPF);
+		return $this->o_contatoPFDAO->qtdTotalPorPessoa($this->o_contatoPF);
 	}
 }

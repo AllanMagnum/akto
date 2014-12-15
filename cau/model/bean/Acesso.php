@@ -1,4 +1,9 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Usuario.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Perfil.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Sistema.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Opcoes.php';
+
 class Acesso implements JsonSerializable{
 	private $o_usuario;
 	private $o_perfil;
@@ -12,7 +17,7 @@ class Acesso implements JsonSerializable{
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	function __construct($o_usuario="", $o_perfil="", $o_sistema="", $o_opcoes="", $visualizar="", $cadastrar="", $consultar="", $atualizar="", $deletar="", $dataCadastro="", $dataAtualizacao=""){
+	function __construct(Usuario $o_usuario=null, Perfil $o_perfil=null, Sistema $o_sistema=null, Opcoes $o_opcoes=null, $visualizar=null, $cadastrar=null, $consultar=null, $atualizar=null, $deletar=null, $dataCadastro=null, $dataAtualizacao=null){
 		$this->o_usuario = $o_usuario;
 		$this->o_perfil = $o_perfil;
 		$this->o_sistema = $o_sistema;
@@ -29,25 +34,25 @@ class Acesso implements JsonSerializable{
 	public function getOUsuario() {
 		return $this->o_usuario;
 	}
-	public function setOUsuario($o_usuario) {
+	public function setOUsuario(Usuario $o_usuario) {
 		$this->o_usuario = $o_usuario;
 	}
 	public function getOPerfil() {
 		return $this->o_perfil;
 	}
-	public function setOPerfil($o_perfil) {
+	public function setOPerfil(Perfil $o_perfil) {
 		$this->o_perfil = $o_perfil;
 	}
 	public function getOSistema() {
 		return $this->o_sistema;
 	}
-	public function setOSistema($o_sistema) {
+	public function setOSistema(Sistema $o_sistema) {
 		$this->o_sistema = $o_sistema;
 	}
 	public function getOOpcoes() {
 		return $this->o_opcoes;
 	}
-	public function setOOpcoes($o_opcoes) {
+	public function setOOpcoes(Opcoes $o_opcoes) {
 		$this->o_opcoes = $o_opcoes;
 	}
 	public function getVisualizar() {

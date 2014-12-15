@@ -1,14 +1,14 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Estado.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/EstadoDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Estado.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/EstadoDAO.php';
 
 class EstadoControl{
 	protected $con;
 	protected $o_estado;
 	protected $o_estadoDAO;
 	
-	function __construct($o_estado=""){
+	function __construct(Estado $o_estado= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->o_estadoDAO = new EstadoDAO($this->con);
@@ -28,15 +28,15 @@ class EstadoControl{
 	}
 	
 	function buscarPorId(){
-		$this->o_estadoDAO->buscarPorId($this->o_estado);
+		return $this->o_estadoDAO->buscarPorId($this->o_estado);
 	}
 	
 	function listarPorNome(){
-		$this->o_estadoDAO->listarPorNome($this->o_estado);
+		return $this->o_estadoDAO->listarPorNome($this->o_estado);
 	}
 	
-	function listarTodso(){
-		$this->o_estadoDAO->listarTodos();
+	function listarTodos(){
+		return $this->o_estadoDAO->listarTodos();
 	}
 }
 ?>

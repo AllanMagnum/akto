@@ -1,5 +1,4 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/CidadeControl.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Cidade.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Bairro.php';
@@ -14,7 +13,7 @@ class BairroDAO{
 		$this->con = $con;
 	}
 	
-	function cadastrar($o_bairro){
+	function cadastrar(Bairro $o_bairro){
 		$this->sql = "insert into bairro (nome, idbairro) " .
 				"values ('" . $o_bairro->getNome() . "', '" . $o_bairro->getOCidade() . "')";
 		if (!mysqli_query($this->con, $this->sql)) {
@@ -23,7 +22,7 @@ class BairroDAO{
 		mysqli_close($this->con);
 	}
 	
-	function atualizar($o_bairro){
+	function atualizar(Bairro $o_bairro){
 		$this->sql = "update bairro set nome= '" . $o_bairro->getNome() . "', idcidade= '" . $o_bairro->getOCidade()->getId() . "'" .
 				" where id='" . $o_bairro->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
@@ -32,7 +31,7 @@ class BairroDAO{
 		mysqli_close($this->con);
 	}
 	
-	function deletar($o_bairro){
+	function deletar(Bairro $o_bairro){
 		$this->sql = "delete from bairro where id='" . $o_bairro->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
@@ -40,7 +39,7 @@ class BairroDAO{
 		mysqli_close($this->con);
 	}
 	
-	function buscarPorId($o_bairro){
+	function buscarPorId(Bairro $o_bairro){
 		$this->sql= "select * from bairro where id= '" . $o_bairro->getId() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {
@@ -84,7 +83,7 @@ class BairroDAO{
 		mysqli_close($this->con);
 	}
 	
-	function listarPorNome($o_bairro){
+	function listarPorNome(Bairro $o_bairro){
 		$this->sql= "select * from bairro where nome like '" . $o_bairro->getNome() . "%'" ;
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {

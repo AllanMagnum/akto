@@ -1,14 +1,14 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Cidade.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/CidadeDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Cidade.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/CidadeDAO.php';
 
 class CidadeControl{
 	protected $con;
 	protected $o_cidade;
 	protected $o_cidadeDAO;
 	
-	function __construct($o_cidade=""){
+	function __construct(Cidade $o_cidade= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->o_cidadeDAO = new CidadeDAO($this->con);
@@ -28,15 +28,15 @@ class CidadeControl{
 	}
 	
 	function buscarPorId(){
-		$this->o_cidadeDAO->buscarPorId($this->o_cidade);
+		return $this->o_cidadeDAO->buscarPorId($this->o_cidade);
 	}
 	
 	function listarPorNome(){
-		$this->o_cidadeDAO->listarPorNome($this->o_cidade);
+		return $this->o_cidadeDAO->listarPorNome($this->o_cidade);
 	}
 	
 	function listarTodos(){
-		$this->o_cidadeDAO->listarTodos();
+		return $this->o_cidadeDAO->listarTodos();
 	}
 }
 ?>

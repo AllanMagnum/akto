@@ -1,14 +1,14 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/PaisDAO.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Pais.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/PaisDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Pais.php';
 
 class PaisControl{
 	protected $con;
 	protected $o_pais;
 	protected $o_paisDAO;
 
-	function __construct($o_pais=""){
+	function __construct(Pais $o_pais=""){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->o_paisDAO = new PaisDAO($this->con);

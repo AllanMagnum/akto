@@ -1,14 +1,14 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/PerfilDAO.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Perfil.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/PerfilDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Perfil.php';
 
 class PerfilControl{
 	protected $con;
 	protected $o_perfil;
 	protected $o_perfilDAO;
 
-	function __construct($o_perfil=""){
+	function __construct(Perfil $o_perfil= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->perfilDAO = new PerfilDAO($this->con);

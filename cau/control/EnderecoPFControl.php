@@ -8,7 +8,7 @@ class EnderecoPFControl{
 	protected $o_enderecoPF;
 	protected $o_enderecoPFDAO;
 	
-	function __construct($o_enderecoPF=""){
+	function __construct(EnderecoPF $o_enderecoPF= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->o_enderecoPFDAO = new EnderecoPFDAO($this->con);
@@ -28,10 +28,10 @@ class EnderecoPFControl{
 	}
 	
 	function listarPaginadoPorPessoa($start, $limit){
-		$this->o_enderecoPFDAO->listarPaginadoPorPessoa($this->o_enderecoPF, $start, $limit);
+		return $this->o_enderecoPFDAO->listarPaginadoPorPessoa($this->o_enderecoPF, $start, $limit);
 	}
 	
 	function qtdeTotalPorPessoa(){
-		$this->o_enderecoPFDAO->qtdTotalPorPessoa($this->o_enderecoPF);
+		return $this->o_enderecoPFDAO->qtdTotalPorPessoa($this->o_enderecoPF);
 	}
 }

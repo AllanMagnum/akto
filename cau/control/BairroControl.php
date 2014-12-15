@@ -1,14 +1,14 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Bairro.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/BairroDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Bairro.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/BairroDAO.php';
 
 class BairroControl{
 	protected $con;
 	protected $o_bairro;
 	protected $o_bairroDAO;
 	
-	function __construct($o_bairro=""){
+	function __construct(Bairro $o_bairro= null){
 		$conexao = new Conexao();
 		$this->con = $conexao->getConnection();
 		$this->o_bairroDAO = new BairroDAO($this->con);
@@ -28,15 +28,15 @@ class BairroControl{
 	}
 	
 	function buscarPorId(){
-		$this->o_bairroDAO->buscarPorId($this->o_bairro);
+		return $this->o_bairroDAO->buscarPorId($this->o_bairro);
 	}
 	
 	function listarPorNome(){
-		$this->o_bairroDAO->listarPorNome($this->o_bairro);
+		return $this->o_bairroDAO->listarPorNome($this->o_bairro);
 	}
 	
 	function listarTodos(){
-		$this->o_bairroDAO->listarTodos();
+		return $this->o_bairroDAO->listarTodos();
 	}
 }
 ?>

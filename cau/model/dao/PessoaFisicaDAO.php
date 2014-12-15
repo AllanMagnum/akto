@@ -1,14 +1,17 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFisica.php';
+
 class PessoaFisicaDAO{
 	private $con;
 	private $sql;
+	private $o_pessoaFisisca;
 	private $v_o_pessoaFisica = array();
 	
 	function __construct($con){
 		$this->con = $con;
 	}
 	
-	function cadastrar($o_pessoaFisica){
+	function cadastrar(PessoaFisica $o_pessoaFisica){
 		$this->sql = "insert into pessoafisica (nome, cpf, datanascimento, estadocivil, sexo, nomepai, " .
 	                                     "nomemae, cor, naturalidade, nacionalidade, dataCadastro, dataAtualizacao) " .			    
 				     "values ('" . $o_pessoaFisica->getNome() . "', '" . $o_pessoaFisica->getCpf() . "', '" . $o_pessoaFisica->getDataNascimento() . "', '" . $o_pessoaFisica->getEnumEstadoCivil() . "'," .
@@ -25,7 +28,7 @@ class PessoaFisicaDAO{
 		mysqli_close($this->con);
 	}
 	
-	function cadastrarEndereco($o_pessoaFisica){
+	function cadastrarEndereco(PessoaFisica $o_pessoaFisica){
 		foreach ($o_pessoaFisica->getVOEndereco() as $o_enderecoPF) {
 			$this->sql = "insert into endereco_pf (tipo, logradouro, numero, complemento, bairro, cep, idcidade, idpessoa, dataCadastro, dataAtualizacao) " .
 					     "values ('" . $o_enderecoPF->getOTipoEndereco()->getDescricao() . "', '" . $o_enderecoPF->getLogradouro() . "', '" . $o_enderecoPF->getNumero() . "'," .
@@ -39,7 +42,7 @@ class PessoaFisicaDAO{
 		}
 	}
 	
-	function atualizar($o_pessoaFisica){
+	function atualizar(PessoaFisica $o_pessoaFisica){
 		$this->sql = "update pessoafisica set nome= '" . $o_pessoaFisica->getNome() . "', cpf= '" . $o_pessoaFisica->getCpf() . "', datanascimento=  '" . $o_pessoaFisica->getDataNascimento() . "', " . 
 		              "estadocivil = '" . $o_pessoaFisica->getEnumEstadoCivil() . "', sexo= '" . $o_pessoaFisica->getEnumSexo() . "', nomePai= '" . $o_pessoaFisica->getNomePai() . "', " .
 		              "nomeMae = '" . $o_pessoaFisica->getNomeMae() . "', cor= '" . $o_pessoaFisica->getEnumCor() . "', naturalidade= '" . $o_pessoaFisica->getNaturalidade() . "', " .
@@ -51,7 +54,7 @@ class PessoaFisicaDAO{
 		mysqli_close($this->con);
 	}
 	
-	function deletar($o_pessoaFisica){
+	function deletar(PessoaFisica $o_pessoaFisica){
 		$this->sql = "delete from pessoafisica where id='" . $o_pessoaFisica->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
@@ -78,7 +81,7 @@ class PessoaFisicaDAO{
 		mysqli_close($this->con);
 	}
 	
-	function buscarPorId($o_pessoaFisica){
+	function buscarPorId(PessoaFisica $o_pessoaFisica){
 		$this->sql= "select * from pessoafisica where id= '" . $o_pessoaFisica->getId() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {
@@ -86,15 +89,15 @@ class PessoaFisicaDAO{
 		}
 		while($row = mysqli_fetch_object($st_query)){
 			$o_pessoaFisica = new PessoaFisica($row->id, $row->nome, $row->cpf, $row->datanascimento, $row->estadocivil, $row->sexo,
-					$row->nomepai, $row->nomemae, $row->cor, $row->naturalidade,
-					$row->nacionalidade, $row->datacadastro, $row->dataatualizacao);
+											   $row->nomepai, $row->nomemae, $row->cor, $row->naturalidade,
+											   $row->nacionalidade, $row->datacadastro, $row->dataatualizacao);
 			return $o_pessoaFisica;
 		}
 		
 		mysqli_close($this->con);
 	}
 	
-	function buscarPorNome($o_pessoaFisica){
+	function buscarPorNome(PessoaFisica $o_pessoaFisica){
 		$this->sql= "select * from pessoafisica where nome like '" . $o_pessoaFisica->getNome() . "%'";
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {

@@ -4,7 +4,7 @@ class Pais implements JsonSerializable{
 	private $nome;
 	private $sigla;
 	
-	public function __construct($id="", $nome="", $sigla=""){
+	public function __construct($id=null, $nome=null, $sigla=null){
 		$this->id = $id;
 		$this->nome = $nome;
 		$this->sigla = $sigla;

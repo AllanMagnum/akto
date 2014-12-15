@@ -1,4 +1,8 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/TipoEndereco.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFisica.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Cidade.php';
+
 class EnderecoPF implements JsonSerializable{
 	private $id;
 	private $o_tipoEndereco;
@@ -12,7 +16,7 @@ class EnderecoPF implements JsonSerializable{
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	public function __construct($id="", $o_tipoEndereco = "", $logradouro="",  $numero="", $complemento="", $bairro="", $cep="", $o_pessoaFisica="",  $o_cidade="", $dataCadastro="", $dataAtualizacao=""){
+	public function __construct($id=null, TipoEndereco $o_tipoEndereco = null, $logradouro=null,  $numero=null, $complemento=null, $bairro=null, $cep=null, PessoaFisica $o_pessoaFisica=null,  Cidade $o_cidade=null, $dataCadastro=null, $dataAtualizacao=null){
 		$this->id = $id;
 		$this->o_tipoEndereco = $o_tipoEndereco;
 		$this->logradouro = $logradouro;
@@ -35,7 +39,7 @@ class EnderecoPF implements JsonSerializable{
 	public function getOTipoEndereco() {
 		return $this->o_tipoEndereco;
 	}
-	public function setOTipoEndereco($o_tipoEndereco) {
+	public function setOTipoEndereco(TipoEndereco $o_tipoEndereco) {
 		$this->o_tipoEndereco = $o_tipoEndereco;
 	}
 	public function getLogradouro() {
@@ -71,13 +75,13 @@ class EnderecoPF implements JsonSerializable{
 	public function getOPessoaFisica() {
 		return $this->o_pessoaFisica;
 	}
-	public function setOPessoaFisica($o_pessoaFisica) {
+	public function setOPessoaFisica(PessoaFisica $o_pessoaFisica) {
 		$this->o_pessoaFisica = $o_pessoaFisica;
 	}
 	public function getOCidade() {
 		return $this->o_cidade;
 	}
-	public function setOCidade($o_cidade) {
+	public function setOCidade(Cidade $o_cidade) {
 		$this->o_cidade = $o_cidade;
 	}
 	public function getDataCadastro() {

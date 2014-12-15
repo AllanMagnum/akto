@@ -1,5 +1,4 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/EstadoControl.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Estado.php';
 include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Cidade.php';
@@ -15,7 +14,7 @@ class CidadeDAO{
 		$this->con = $con;
 	}
 	
-	function cadastrar($o_cidade){
+	function cadastrar(Cidade $o_cidade){
 		$this->sql = "insert into cidade (nome, idestado) " .
 				"values ('" . $o_cidade->getNome() . "', '" . $o_cidade->getOEstado() . "')";
 		if (!mysqli_query($this->con, $this->sql)) {
@@ -24,7 +23,7 @@ class CidadeDAO{
 		mysqli_close($this->con);
 	}
 	
-	function atualizar($o_cidade){
+	function atualizar(Cidade $o_cidade){
 		$this->sql = "update cidade set nome= '" . $o_cidade->getNome() . "', idestado= '" . $o_cidade->getOEstado()->getId() . "'" .
 				" where id='" . $o_cidade->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
@@ -33,7 +32,7 @@ class CidadeDAO{
 		mysqli_close($this->con);
 	}
 	
-	function deletar($o_cidade){
+	function deletar(Cidade $o_cidade){
 		$this->sql = "delete from cidade where id='" . $o_cidade->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
@@ -41,7 +40,7 @@ class CidadeDAO{
 		mysqli_close($this->con);
 	}
 	
-	function buscarPorId($o_cidade){
+	function buscarPorId(Cidade $o_cidade){
 		$this->sql= "select * from cidade where id= '" . $o_cidade->getId() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {
@@ -85,7 +84,7 @@ class CidadeDAO{
 		mysqli_close($this->con);
 	}
 	
-	function listarPorNome($o_cidade){
+	function listarPorNome(Cidade $o_cidade){
 		$this->sql= "select * from cidade where nome like '" . $o_cidade->getNome() . "%'" ;
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {

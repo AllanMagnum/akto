@@ -1,4 +1,6 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFisica.php';
+
 class DocumentoPF implements JsonSerializable{
 	private $id;
 	private $enum_tipo;
@@ -10,7 +12,7 @@ class DocumentoPF implements JsonSerializable{
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	public function __construct($id="", $enum_tipo="", $numero="", $dataEmissao="", $orgaoEmissaor="", $via="", $o_pessoaFisica="", $dataCadastro="", $dataAtualizacao=""){
+	public function __construct($id=null, $enum_tipo=null, $numero=null, $dataEmissao=null, $orgaoEmissaor=null, $via=null, PessoaFisica $o_pessoaFisica=null, $dataCadastro=null, $dataAtualizacao=null){
 		$this->id = $id;
 		$this->enum_tipo = $enum_tipo;
 		$this->numero = $numero;
@@ -61,7 +63,7 @@ class DocumentoPF implements JsonSerializable{
 	public function getOPessoafisica() {
 		return $this->o_pessoaFisica;
 	}
-	public function setOPessoafisica($o_pessoaFisica) {
+	public function setOPessoafisica(PessoaFisica $o_pessoaFisica) {
 		$this->o_pessoaFisica = $o_pessoaFisica;
 	}
 	public function getDataCadastro() {
