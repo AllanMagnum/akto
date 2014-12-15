@@ -19,7 +19,6 @@ class EstadoDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function atualizar($o_estado){
@@ -28,7 +27,6 @@ class EstadoDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function deletar(Estado $o_estado){
@@ -36,7 +34,6 @@ class EstadoDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function buscarPorId(Estado $o_estado){
@@ -56,8 +53,6 @@ class EstadoDAO{
 		}
 	
 		return $this->o_estado;
-	
-		mysqli_close($this->con);
 	}
 	
 	function listarTodos(){
@@ -79,8 +74,6 @@ class EstadoDAO{
 		}
 	
 		return $this->v_o_estado;
-	
-		mysqli_close($this->con);
 	}
 	
 	function listarPorNome(Estado $o_estado){
@@ -102,8 +95,6 @@ class EstadoDAO{
 		}
 	
 		return $this->v_o_estado;
-	
-		mysqli_close($this->con);
 	}
 }
 ?>

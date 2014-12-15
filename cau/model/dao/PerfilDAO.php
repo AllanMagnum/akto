@@ -17,8 +17,6 @@ class PerfilDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-
-		mysqli_close($this->con);
 	}
 
 	function atualizar(Perfil $o_perfil){
@@ -27,8 +25,6 @@ class PerfilDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		
-		mysqli_close($this->con);
 	}
 
 	function deletar(Perfil $o_perfil){
@@ -36,8 +32,6 @@ class PerfilDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-	
-		mysqli_close($this->con);
 	}
 
 	function listarTodos(){
@@ -54,8 +48,6 @@ class PerfilDAO{
 			array_push($this->v_o_perfil, $this->o_perfil);
 		}
 		return $this->v_o_perfil;
-		
-		mysqli_close($this->con);
 	}
 
 	function buscarPorId(Perfil $o_perfil){
@@ -69,8 +61,6 @@ class PerfilDAO{
 		}
 		
 		return $this->o_perfil;
-		
-		mysqli_close($this->con);
 	}
 }
 ?>

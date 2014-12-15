@@ -19,7 +19,6 @@ class BairroDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function atualizar(Bairro $o_bairro){
@@ -28,7 +27,6 @@ class BairroDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function deletar(Bairro $o_bairro){
@@ -36,7 +34,6 @@ class BairroDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function buscarPorId(Bairro $o_bairro){
@@ -56,8 +53,6 @@ class BairroDAO{
 		}
 	
 		return $this->o_bairro;
-	
-		mysqli_close($this->con);
 	}
 	
 	function listarTodos(){
@@ -79,8 +74,6 @@ class BairroDAO{
 		}
 	
 		return $this->v_o_bairro;
-	
-		mysqli_close($this->con);
 	}
 	
 	function listarPorNome(Bairro $o_bairro){
@@ -102,8 +95,6 @@ class BairroDAO{
 		}
 	
 		return $this->v_o_bairro;
-	
-		mysqli_close($this->con);
 	}
 }
 ?>

@@ -20,7 +20,6 @@ class EnderecoPFDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function atualizar(EnderecoPF $o_enderecoPF){
@@ -31,7 +30,6 @@ class EnderecoPFDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function deletar(EnderecoPF $o_enderecoPF){
@@ -39,7 +37,6 @@ class EnderecoPFDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function listarPaginadoPorPessoa(EnderecoPF $o_enderecoPF, $start, $limit){
@@ -58,7 +55,6 @@ class EnderecoPFDAO{
 			array_push($this->v_o_enderecoPF, $this->o_enderecoPF);
 		}
 		return $this->v_o_enderecoPF;
-		mysqli_close($this->con);
 	}
 	
 
@@ -76,8 +72,6 @@ class EnderecoPFDAO{
 		}
 		
 		return $total;
-		
-		mysqli_close($this->con);
 	}
 	
 }	

@@ -98,7 +98,7 @@ class EnderecoPF implements JsonSerializable{
 	}
 	
 	public function __toString(){
-		"Endereco [ id= " . $this->id . ", " . $this->o_tipoEndereco . ", logradouro= " . $this->logradouro . ", numero= " . $this->numero . ", complemento= " . $this->complemento . ", bairro= " . $this->bairro . "cep= " . $this->cep . ", " . $this->o_pessoaFisica . ", " . $this->o_cidade . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . " ]";  	
+		return "Endereco [ id= " . $this->id . ", " . $this->o_tipoEndereco . ", logradouro= " . $this->logradouro . ", numero= " . $this->numero . ", complemento= " . $this->complemento . ", bairro= " . $this->bairro . "cep= " . $this->cep . ", " . $this->o_pessoaFisica . ", " . $this->o_cidade . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . " ]";  	
 	}
 	
 	public function jsonSerialize() {

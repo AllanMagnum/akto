@@ -24,8 +24,6 @@ class PessoaFisicaDAO{
 		}
 		
 		return mysqli_insert_id($this->con);
-		
-		mysqli_close($this->con);
 	}
 	
 	function cadastrarEndereco(PessoaFisica $o_pessoaFisica){
@@ -38,7 +36,6 @@ class PessoaFisicaDAO{
 		    if (!mysqli_query($this->con, $this->sql)) {
 				die('Error: ' . mysqli_error($this->con));
 			}
-			mysqli_close($this->con);
 		}
 	}
 	
@@ -51,7 +48,6 @@ class PessoaFisicaDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function deletar(PessoaFisica $o_pessoaFisica){
@@ -59,7 +55,6 @@ class PessoaFisicaDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function listarPaginado($start, $limit){
@@ -78,7 +73,6 @@ class PessoaFisicaDAO{
 			array_push($this->v_o_pessoaFisica, $o_pessoaFisica);
 		}
 		return $this->v_o_pessoaFisica;
-		mysqli_close($this->con);
 	}
 	
 	function buscarPorId(PessoaFisica $o_pessoaFisica){
@@ -93,8 +87,6 @@ class PessoaFisicaDAO{
 											   $row->nacionalidade, $row->datacadastro, $row->dataatualizacao);
 			return $o_pessoaFisica;
 		}
-		
-		mysqli_close($this->con);
 	}
 	
 	function buscarPorNome(PessoaFisica $o_pessoaFisica){
@@ -110,7 +102,6 @@ class PessoaFisicaDAO{
 			array_push($this->v_o_pessoaFisica, $o_pessoaFisica);
 		}
 		return $this->v_o_pessoaFisica;
-		mysqli_close($this->con);
 	}
 	
 	function qtdTotal(){
@@ -127,8 +118,6 @@ class PessoaFisicaDAO{
 		}
 		
 		return $total;
-		
-		mysqli_close($this->con);
 	}
 	
 }	

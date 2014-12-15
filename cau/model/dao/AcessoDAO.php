@@ -30,7 +30,6 @@ class AcessoDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 
 	function atualizar(Acesso $o_acesso){
@@ -42,8 +41,6 @@ class AcessoDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-	
-		mysqli_close($this->con);
 	}
 
 	function deletarPorUsuario(Acesso $o_acesso){
@@ -51,8 +48,6 @@ class AcessoDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		
-		mysqli_close($this->con);
 	}
 	
 	function deletarPorPerfil(Acesso $o_acesso){
@@ -60,8 +55,6 @@ class AcessoDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-	
-		mysqli_close($this->con);
 	}
 	
 	function deletarPorSistema(Acesso $o_acesso){
@@ -69,8 +62,6 @@ class AcessoDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		
-		mysqli_close($this->con);
 	}
 
 	function listarTodos(){
@@ -112,8 +103,6 @@ class AcessoDAO{
 		}
 		
 		return $this->v_o_acesso;
-		
-		mysqli_close($this->con);
 	}
 
 	public function buscarPorUsuario(Acesso $o_acesso){
@@ -153,8 +142,6 @@ class AcessoDAO{
 		}
 		
 		return $this->v_o_acesso;
-		
-		mysqli_close($this->con);
 	}
 	
 	function buscarPorPerfil(Acesso $o_acesso){
@@ -192,8 +179,6 @@ class AcessoDAO{
 			array_push($this->v_o_acesso, $this->o_acesso);
 		}
 		return $this->v_o_acesso;
-		
-		mysqli_close($this->con);
 	}
 	
 	function buscarPorSistema(Acesso $o_acesso){
@@ -230,8 +215,6 @@ class AcessoDAO{
 			array_push($this->v_o_acesso, $this->o_acesso);
 		}
 		return $this->v_o_acesso;
-
-		mysqli_close($this->con);
 	}
 
 }

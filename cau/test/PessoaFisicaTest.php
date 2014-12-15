@@ -1,6 +1,6 @@
 <?php
-	include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFisica.php';
-	include_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/PessoaFisicaControl.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFisica.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/PessoaFisicaControl.php';
 	
 	
 	
@@ -19,17 +19,35 @@
 	$o_pessoaFisica->setNaturalidade('amazonense');
 	$o_pessoaFisica->setNacionalidade('brasileiro');
 	
+	$o_tipoEndereco = new TipoEndereco();
+	$o_tipoEndereco->setDescricao("ENTREGA");
+	$o_tipoEndereco->setDataCadastro($datahora);
+	$o_tipoEndereco->setDataAtualizacao("0000-00-00 00:00:00");
+	
+	$o_pais = new Pais();
+	$o_pais->setNome("Brasil");
+	$o_pais->setSigla("BRA");
+	
+	$o_estado = new Estado();
+	$o_estado->setNome("Amazonas");
+	$o_estado->setOPais($o_pais);
+	
+	$o_cidade = new Cidade();
+	$o_cidade->setId(1);
+	$o_cidade->setNome("Manaus");
+	$o_cidade->setOEstado($o_estado);
+	
 	$o_enderecoPF = new EnderecoPF();
-	$o_enderecoPF->setOTipoEndereco("ENTREGA");
-	$o_enderecoPF->setLogradouro("Av. camapuã");
+	$o_enderecoPF->setOTipoEndereco($o_tipoEndereco);
+	$o_enderecoPF->setLogradouro("Avenida camapua");
 	$o_enderecoPF->setNumero("462");
 	$o_enderecoPF->setComplemento("nucleo 9");
 	$o_enderecoPF->setBairro("Cidade Nova 2");
-	$o_enderecoPF->setOCidade("Manaus");
+	$o_enderecoPF->setOCidade($o_cidade);
 	$o_enderecoPF->setDataCadastro($datahora);
 	$o_enderecoPF->setDataAtualizacao("0000-00-00 00:00:00");
  
-	array_push($o_pessoaFisica->getVOEndereco(), $o_enderecoPF);
+	$o_pessoaFisica->adicionarEndereco($o_enderecoPF);
 	$o_pessoaFisica->setDataCadastro($datahora);
 	$o_pessoaFisica->setDataAtualizacao("0000-00-00 00:00:00");
 	
@@ -90,7 +108,7 @@
 	$o_pessoaFisica->setDataCadastro($datahora);
 	$o_pessoaFisica->setDataAtualizacao("0000-00-00 00:00:00");
 	
-	$pessoaFisicaControl = new PessoaFisicaControl($o_pessoa);
+	$pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
 	$pessoaFisicaControl->atualizar();
 	echo $o_pessoaFisica;
 	echo "<br>";

@@ -28,7 +28,6 @@ class ContatoPFDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function deletar(ContatoPF $o_contatoPF){
@@ -36,7 +35,6 @@ class ContatoPFDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function listarPaginadoPorPessoa(ContatoPF $o_contatoPF, $start, $limit){
@@ -54,7 +52,6 @@ class ContatoPFDAO{
 			array_push($this->v_o_contatoPF, $this->o_contatoPF);
 		}
 		return $this->v_o_contatoPF;
-		mysqli_close($this->con);
 	}
 	
 
@@ -72,8 +69,6 @@ class ContatoPFDAO{
 		}
 		
 		return $total;
-		
-		mysqli_close($this->con);
 	}
 	
 }	

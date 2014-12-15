@@ -19,7 +19,6 @@ class DocumentoPFDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 
 	function atualizar(DocumentoPF $o_documentoPF){
@@ -28,7 +27,6 @@ class DocumentoPFDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 
 	function deletar($o_documentoPF){
@@ -36,7 +34,6 @@ class DocumentoPFDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 
 	function buscarPorId(DocumentoPF $o_documentoPF){
@@ -56,8 +53,6 @@ class DocumentoPFDAO{
 		}
 
 		return $this->o_documentoPF;
-
-		mysqli_close($this->con);
 	}
 	
 	function listarPorPessoa(DocumentoPF $o_documentoPF){
@@ -79,8 +74,6 @@ class DocumentoPFDAO{
 		}
 
 		return $this->v_o_documentosPF;
-
-		mysqli_close($this->con);
 	}
 }
 ?>

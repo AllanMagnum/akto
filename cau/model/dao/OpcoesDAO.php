@@ -17,7 +17,6 @@ class OpcoesDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function atualizar(Opcoes $o_opcoes){
@@ -26,7 +25,6 @@ class OpcoesDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function deletar($o_opcoes){
@@ -34,7 +32,6 @@ class OpcoesDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function buscarPorId(Opcoes $o_opcoes){
@@ -54,8 +51,6 @@ class OpcoesDAO{
 			$this->o_opcoes = new Opcoes($row->id, $row->nome, $row->tipo, $row->url, $row->datacadastro, $row->dataatualizacao, $o_sistema);
 		}
 		return $this->o_opcoes;
-		
-		mysqli_close($this->con);
 	}
 }
 ?>

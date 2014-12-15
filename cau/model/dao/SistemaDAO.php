@@ -18,7 +18,6 @@ class SistemaDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 
 	function atualizar(Sistema $o_sistema){
@@ -27,7 +26,6 @@ class SistemaDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 
 	function deletar(Sistema $o_sistema){
@@ -35,7 +33,6 @@ class SistemaDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 
 	function listarTodos(){
@@ -53,8 +50,6 @@ class SistemaDAO{
 			array_push($this->v_o_sistema, $this->o_sistema);
 		}
 		return $this->v_o_sistema;
-		
-		mysqli_close($this->con);
 	}
 
 	function buscarPorId(Sistema $o_sistema){
@@ -91,8 +86,6 @@ class SistemaDAO{
 			array_push($this->v_o_opcoes, $o_opcoes);
 		}
 		return $this->v_o_opcoes;
-		
-		mysqli_close($this->con);
 	}
 
 }

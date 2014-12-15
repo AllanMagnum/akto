@@ -17,7 +17,6 @@ class PaisDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 
 	function atualizar(Pais $o_pais){
@@ -26,7 +25,6 @@ class PaisDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 
 	function deletar(Pais $o_pais){
@@ -34,7 +32,6 @@ class PaisDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 
 	function buscarPorId(Pais $o_pais){
@@ -48,8 +45,6 @@ class PaisDAO{
 		}
 
 		return $this->o_pais;
-
-		mysqli_close($this->con);
 	}
 	
 	function listarTodos(){
@@ -66,8 +61,6 @@ class PaisDAO{
 		}
 
 		return $this->v_o_pais;
-
-		mysqli_close($this->con);
 	}
 	
 	function listarPorNome(Pais $o_pais){
@@ -84,8 +77,6 @@ class PaisDAO{
 		}
 	
 		return $this->v_o_pais;
-	
-		mysqli_close($this->con);
 	}
 }
 ?>

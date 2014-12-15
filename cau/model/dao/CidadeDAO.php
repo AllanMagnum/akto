@@ -20,7 +20,6 @@ class CidadeDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function atualizar(Cidade $o_cidade){
@@ -29,7 +28,6 @@ class CidadeDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function deletar(Cidade $o_cidade){
@@ -37,7 +35,6 @@ class CidadeDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function buscarPorId(Cidade $o_cidade){
@@ -57,8 +54,6 @@ class CidadeDAO{
 		}
 	
 		return $this->o_cidade;
-	
-		mysqli_close($this->con);
 	}
 	
 	function listarTodos(){
@@ -80,8 +75,6 @@ class CidadeDAO{
 		}
 	
 		return $this->v_o_cidade;
-	
-		mysqli_close($this->con);
 	}
 	
 	function listarPorNome(Cidade $o_cidade){
@@ -103,8 +96,6 @@ class CidadeDAO{
 		}
 	
 		return $this->v_o_cidade;
-	
-		mysqli_close($this->con);
 	}
 }
 ?>

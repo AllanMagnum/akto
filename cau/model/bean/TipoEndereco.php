@@ -38,7 +38,7 @@ class TipoEndereco implements JsonSerializable{
 	}
 	
 	public function __toString(){
-		"Tipo endereco [ id= " . $this->id . ", descricao= " . $this->descricao . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . "]";
+		return "Tipo endereco [ id= " . $this->id . ", descricao= " . $this->descricao . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . "]";
 	} 
 	
 	public function jsonSerialize() {

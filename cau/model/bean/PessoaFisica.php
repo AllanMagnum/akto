@@ -22,7 +22,7 @@ class PessoaFisica implements JsonSerializable{
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	function __construct($id = null, $nome = null, $cpf = null, $dataNascimento = null, $enum_estadoCivil = null, $enum_sexo = null, $nomePai = null, $nomeMae = null, $enum_cor=null, $naturalidade=null, $nacionalidade=null, $v_o_enderecoPF = null, $v_o_contatoPF = null, $v_o_documentoPF = null, $dataCadastro = null, $dataAtualizacao = null) {
+	function __construct($id = null, $nome = null, $cpf = null, $dataNascimento = null, $enum_estadoCivil = null, $enum_sexo = null, $nomePai = null, $nomeMae = null, $enum_cor=null, $naturalidade=null, $nacionalidade=null, $dataCadastro = null, $dataAtualizacao = null) {
 		$this->id = $id;
 		$this->nome = $nome;
 		$this->cpf = $cpf;
@@ -34,9 +34,6 @@ class PessoaFisica implements JsonSerializable{
 		$this->enum_cor = $enum_cor;
 		$this->naturalidade = $naturalidade;
 		$this->nacionalidade = $nacionalidade;
-		$this->v_o_enderecoPF = $v_o_enderecoPF;
-		$this->v_o_contatoPF = $v_o_contatoPF;
-		$this->v_o_documentoPF = $v_o_documentoPF;
 		$this->dataCadastro = $dataCadastro;
 		$this->dataAtualizacao = $dataAtualizacao;
 	}
@@ -142,6 +139,10 @@ class PessoaFisica implements JsonSerializable{
 	}
 	public function setDataAtualizacao($dataAtualizacao) {
 		$this->dataAtualizacao = $dataAtualizacao;
+	}
+	
+	public function adicionarEndereco(EnderecoPF $o_enderecoPF){
+		array_push($this->v_o_enderecoPF, $o_enderecoPF);
 	}
 	
 	public function __toString(){

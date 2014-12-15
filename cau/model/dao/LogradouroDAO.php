@@ -19,7 +19,6 @@ class LogradouroDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function atualizar(Logradouro $o_logradouro){
@@ -28,7 +27,6 @@ class LogradouroDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function deletar(Logradouro $o_logradouro){
@@ -36,7 +34,6 @@ class LogradouroDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function buscarPorId(Logradouro $o_logradouro){
@@ -56,8 +53,6 @@ class LogradouroDAO{
 		}
 	
 		return $this->o_logradouro;
-	
-		mysqli_close($this->con);
 	}
 	
 	function listarTodos(){
@@ -79,8 +74,6 @@ class LogradouroDAO{
 		}
 	
 		return $this->v_o_logradouro;
-	
-		mysqli_close($this->con);
 	}
 	
 }

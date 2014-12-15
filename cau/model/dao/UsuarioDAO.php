@@ -24,7 +24,6 @@ class UsuarioDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	public function atualizar(Usuario $o_usuario){
@@ -35,7 +34,6 @@ class UsuarioDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	public function deletar(Usuario $o_usuario){
@@ -43,7 +41,6 @@ class UsuarioDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
 	}
 	
 	function listarTodos(){
@@ -74,7 +71,6 @@ class UsuarioDAO{
 			array_push($this->v_o_usuario, $this->o_usuario);
 		}
 		return $this->v_o_usuario;
-		mysqli_close($this->con);
 	}
 	
 	public function buscarPorId(Usuario $o_usuario){
@@ -103,8 +99,6 @@ class UsuarioDAO{
 		}
 
 		return $this->o_usuario;
-		
-		mysqli_close($this->con);
 	}
 	
 	public function autenticar(Usuario $o_usuario){

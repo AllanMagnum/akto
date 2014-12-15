@@ -30,7 +30,7 @@ class PessoaFisicaControl{
 		
 		$this->o_pessoaFisica->setId($this->ultimoId);
 		
-		foreach ($this->o_pessoaFisica->getVOEndereco() as $o_enderecoPF) {
+		foreach ($this->o_pessoaFisica->getVOEnderecoPF() as $o_enderecoPF) {
 			$o_enderecoPF->setOPessoaFisica($this->o_pessoaFisica);
 			$o_enderecoPFControl = new EnderecoPFControl($o_enderecoPF);
 			$o_enderecoPFControl->cadastrar(); 
