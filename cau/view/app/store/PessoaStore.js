@@ -10,15 +10,7 @@ Ext.define('cau.store.PessoaStore',{
 	model: 'cau.model.Pessoa',
 
 	proxy: {
-		//type: 'ajax',
 		type: 'rest',
-		
-//		api:{
-//			create: 'rest/pessoa.php',
-//			read: 'rest/pessoa.php',
-//			update: 'rest/pessoa.php',
-//			destroy: 'rest/pessoa.php',
-//		},
 		
 		url: 'rest/pessoa.php',
 		
@@ -30,7 +22,8 @@ Ext.define('cau.store.PessoaStore',{
 		writer: {
 			type: 'json',
 			root: 'data',
-			encode: true
+			encode: true,
+			writeAllFields: false
 		}
 	}
 });/**

@@ -81,16 +81,26 @@ Ext.define('cau.controller.Main', {
     },
 
     onDeleteClick: function(btn, e, eOpts){
+  
+    	 Ext.MessageBox.confirm({
+             title          : 'Aviso!'
+             ,animateTarget : btn.el
+             ,msg           : 'Deseja apagar esse registro(s)?'
+             ,buttons       : Ext.MessageBox.YESNO
+             ,icon          : 'icon-window-question'
+             ,scope         : this
+             ,fn            : function(button) {
+                 if(button === 'yes') {
+                	 var grid = btn.up('grid');
+                   var records = grid.getSelectionModel().getSelection();
+                   var store = grid.getStore();
+                   store.remove(records);
+                   store.sync();
+                	 
+                 }
+             }
+         });
 
-        var grid = btn.up('grid');
-
-        var records = grid.getSelectionModel().getSelection();
-
-        var store = grid.getStore();
-
-        store.remove(records);
-
-        store.sync();
     },
 
 
@@ -154,6 +164,7 @@ Ext.define('cau.controller.Main', {
         store.insert(0,pessoa);
 
         store.sync();
+        grid.getView().refresh();
 
     }    
     

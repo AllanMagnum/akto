@@ -57,8 +57,8 @@ function cadastraPessoa() {
 	$o_pessoaFisica->setNome($data->nome);
 	$o_pessoaFisica->setCpf($data->cpf);
 	$o_pessoaFisica->setDataNascimento("1987-03-14 00:00:00");
-	$o_pessoaFisica->setEnumEstadoCivil('solteiro');
-	$o_pessoaFisica->setEnumSexo('MASCULINO');
+	$o_pessoaFisica->setEnumEstadoCivil($data->enum_estadoCivil);
+	$o_pessoaFisica->setEnumSexo($data->enum_sexo);
 	$o_pessoaFisica->setNomePai($data->nomePai);
 	$o_pessoaFisica->setNomeMae($data->nomeMae);
 	$o_pessoaFisica->setEnumCor('PARDA');
@@ -67,11 +67,17 @@ function cadastraPessoa() {
 	$o_pessoaFisica->setDataCadastro($datahora);
 	$o_pessoaFisica->setDataAtualizacao($datahora);
 	
-// 	$o_pessoaFisica = new PessoaFisica($data->id, $data->nome, $data->cpf, "1987-03-14 00:00:00", $data->enum_estadoCivil,
-// 			$data->enum_sexo,$data->nomePai, $data->nomeMae, $data->enum_cor, $data->naturalidade, $data->nacionalidade, "1987-03-03 00:00:00","1987-03-03 00:00:00" );
-	
 	$o_pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
 	$o_pessoaFisicaControl->cadastrar();
+	
+	$o_pessoaFisica->setId($o_pessoaFisicaControl->getUltimoId());
+	
+	
+	// encoda para formato JSON
+	echo json_encode(array(
+			"success" => 0,
+			"data" => $o_pessoaFisica
+	));
 	
 }
 

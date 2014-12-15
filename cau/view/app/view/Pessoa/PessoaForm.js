@@ -4,6 +4,7 @@
  * Desenvolvedores : Allan Magnum e Nilton Caldas Jr.
  */
 
+
 Ext.define('cau.view.pessoa.PessoaForm',{
 	
 	extend: 'Ext.tab.Panel',	
@@ -24,6 +25,7 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 			defaults: {
 				anchor: '100%'
 			},
+			frame:true,
 			autoScroll:true,
 			itemId: 'gerais',
 			items: [
@@ -38,24 +40,47 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 				        allowBlank: false
 					},
 					{
-						xtype: 'textfield',
-				        name: 'cpf',
-				        fieldLabel: 'Cpf'
-					},
-					{
-						xtype: 'textfield',
-				        name: 'dataNascimento',
-				        fieldLabel: 'Data Nascimento'
-					},
-					{
-						xtype: 'textfield',
-				        name: 'enum_estadoCivil',
-				        fieldLabel: 'Estado Civil'
-					},
-					{
-						xtype: 'textfield',
-				        name: 'enum_sexo',
-				        fieldLabel: 'Sexo'
+						// column layout with 2 columns
+						layout:'column',
+
+						// defaults for columns
+						defaults:{
+							 columnWidth:0.5,
+							 layout:'form',
+							 border:false,
+							 xtype:'panel',
+							 bodyStyle:'padding:0 18px 0 0',
+							 frame:true
+						},
+						items:[{
+							// left column
+							// defaults for fields
+							 defaults:{anchor:'100%'},
+							 items:[{
+								 xtype:'textfield',
+								 fieldLabel:'CPF',
+								 name: 'cpf'
+							},{
+								 xtype:'datefield',
+								 fieldLabel:'Data Nascimento',
+								 name: 'dataNascimento'	
+							}]
+						},{
+							// right column
+							// defaults for fields
+							 defaults:{anchor:'100%'},
+							 items:[{
+								 xtype:'combo',
+								 fieldLabel:'Estado Civil',
+								 name: 'enum_estadoCivil',	
+								 store:["SOLTEIRO","CASADO","DIVORCIADO","VIUVO"]
+							},{
+								 xtype:'combo',
+								 fieldLabel:'Sexo',
+								 name: 'enum_sexo',	
+								 store:["MASCULINO","FEMININO"]
+							}]
+						}]
 					},
 					{
 						xtype: 'textfield',
@@ -68,9 +93,10 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 				        fieldLabel: 'Nome da Mâe'
 					},
 					{
-						xtype: 'textfield',
+						xtype: 'combo',
 				        name: 'enum_cor',
-				        fieldLabel: 'Cor'
+				        fieldLabel: 'Cor',
+				        store:["BRANCA","FEMININO"]
 					},
 					{
 						xtype: 'textfield',
