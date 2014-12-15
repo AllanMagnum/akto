@@ -9,8 +9,7 @@ class UsuarioControl{
 	protected $o_usuarioDAO;
 	
 	function __construct($o_usuario=""){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_usuarioDAO = new UsuarioDAO($this->con);
 		$this->o_usuario = $o_usuario;
 	}

@@ -9,8 +9,7 @@ class PerfilControl{
 	protected $o_perfilDAO;
 
 	function __construct(Perfil $o_perfil= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->perfilDAO = new PerfilDAO($this->con);
 		$this->o_perfil = $o_perfil;
 	}

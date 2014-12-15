@@ -16,8 +16,7 @@ class PessoaFisicaControl{
 	private $ultimoId;
 	
 	function __construct(PessoaFisica $o_pessoaFisica= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->pessoaFisicaDAO = new PessoaFisicaDAO($this->con);
 		$this->o_pessoaFisica = $o_pessoaFisica;
 	}

@@ -3,14 +3,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Logradouro.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/LogradouroDAO.php';
 
-class BairroControl{
+class LogradouroControl{
 	protected $con;
 	protected $o_logradouro;
 	protected $o_logradouroDAO;
 
 	function __construct(Logradouro $o_logradouro= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_logradouroDAO = new LogradouroDAO($this->con);
 		$this->o_logradouro = $o_logradouro;
 	}

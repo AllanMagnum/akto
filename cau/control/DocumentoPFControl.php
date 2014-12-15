@@ -3,14 +3,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Conexao.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/dao/DocumentoPFDAO.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/DocumentoPF.php';
 
-class PerfilControl{
+class DocumentoPFControl{
 	protected $con;
 	protected $o_documentoPF;
 	protected $o_documentoPFDAO;
 
 	function __construct(DocumentoPF $o_documentoPF= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_documentoPFDAO = new DocumentoPFDAO($this->con);
 		$this->o_documentoPF = $o_documentoPF;
 	}

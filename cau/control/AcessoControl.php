@@ -9,8 +9,7 @@ class AcessoControl{
 	protected $o_acessoDAO;
 
 	function __construct(Acesso $o_acesso= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->acessoDAO = new AcessoDAO($this->con);
 		$this->o_acesso = $o_acesso;
 	}

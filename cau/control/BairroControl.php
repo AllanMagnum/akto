@@ -9,8 +9,7 @@ class BairroControl{
 	protected $o_bairroDAO;
 	
 	function __construct(Bairro $o_bairro= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_bairroDAO = new BairroDAO($this->con);
 		$this->o_bairro = $o_bairro;
 	}

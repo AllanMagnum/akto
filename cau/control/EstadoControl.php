@@ -9,8 +9,7 @@ class EstadoControl{
 	protected $o_estadoDAO;
 	
 	function __construct(Estado $o_estado= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_estadoDAO = new EstadoDAO($this->con);
 		$this->o_estado = $o_estado;
 	}

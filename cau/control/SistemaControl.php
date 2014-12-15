@@ -9,8 +9,7 @@ class SistemaControl{
 	protected $o_sistemaDAO;
 
 	function __construct(Sistema $o_sistema= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_sistemaDAO = new SistemaDAO($this->con);
 		$this->o_sistema = $o_sistema;
 	}

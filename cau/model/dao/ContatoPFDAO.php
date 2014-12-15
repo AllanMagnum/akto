@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/ContatoPF.php';
 
-class ContatoPfDAO{
+class ContatoPFDAO{
 	private $con;
 	private $sql;
 	private $o_contatoPF;

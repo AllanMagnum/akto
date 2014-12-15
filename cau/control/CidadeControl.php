@@ -9,8 +9,7 @@ class CidadeControl{
 	protected $o_cidadeDAO;
 	
 	function __construct(Cidade $o_cidade= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_cidadeDAO = new CidadeDAO($this->con);
 		$this->o_cidade = $o_cidade;
 	}

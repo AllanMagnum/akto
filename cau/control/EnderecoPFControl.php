@@ -9,8 +9,7 @@ class EnderecoPFControl{
 	protected $o_enderecoPFDAO;
 	
 	function __construct(EnderecoPF $o_enderecoPF= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_enderecoPFDAO = new EnderecoPFDAO($this->con);
 		$this->o_enderecoPF = $o_enderecoPF;
 	}	

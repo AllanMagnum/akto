@@ -9,8 +9,7 @@ class ContatoPFControl{
 	protected $o_contatoPFDAO;
 	
 	function __construct(ContatoPF $o_contatoPF= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_contatoPFDAO = new ContatoPFDAO($this->con);
 		$this->o_contatoPF = $o_contatoPF;
 	}

@@ -9,8 +9,7 @@ class OpcoesControl{
 	protected $o_opcoesDAO;
 
 	function __construct(Opcoes $o_opcoes= null){
-		$conexao = new Conexao();
-		$this->con = $conexao->getConnection();
+		$this->con = Conexao::getInstance()->getConexao();
 		$this->opcoesDAO = new OpcoesDAO($this->con);
 		$this->o_opcoes = $o_opcoes;
 	}
