@@ -145,9 +145,18 @@ class PessoaFisica implements JsonSerializable{
 		array_push($this->v_o_enderecoPF, $o_enderecoPF);
 	}
 	
+	public function adicionarContato(ContatoPF $o_contatoPF){
+		array_push($this->v_o_contatoPF, $o_contatoPF);
+	}
+	
+	public function adicionarDocumento(DocumentoPF $o_documentoPF){
+		array_push($this->v_o_documentoPF, $o_documentoPF);
+	}
+	
 	public function __toString(){
 		return "Pessoa [id=" . $this->id . ", nome=" . $this->nome . ", cpf=" . $this->cpf . ", data nascimento=" . $this->dataNascimento . ", estado civil=" . $this->enum_estadoCivil . ", sexo=" . $this->enum_sexo . ", nome do pai=" . $this->nomePai . ", nome da mae=" . $this->nomeMae . ", cor= " . $this->enum_cor. ", naturalidade=" . $this->naturalidade . ", nacionalidade= " . $this->nacionalidade . ", " . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
 	}
+	
 	public function jsonSerialize() {
 		return [ 
 			   	'id' => $this->id,

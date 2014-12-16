@@ -12,13 +12,14 @@ class ContatoPFDAO{
 	}
 	
 	function cadastrar(ContatoPF $o_contatoPF){
+		
 		$this->sql = "insert into contato_pf (tipo, operadora, contato, idpessoa, dataCadastro, dataAtualizacao) " .			    
-				     "values ('" . $o_contatoPF->getOTipocontato()->getDescricao() . "', '" . $o_contatoPF->getOOperadoracontato()->getDescricao() . "', '" . 
-				               "', '" . $o_contatoPF->getContato() . "', '" . $o_contatoPF->getOPessoa()->getId() . "'," . $o_contatoPF->getDataCadastro() . "', '" . $o_contatoPF->getDataAtualizacao() . "')";
+				     "values ('" . $o_contatoPF->getOTipocontato()->getDescricao() . "', '" . $o_contatoPF->getOOperadoracontato()->getDescricao() .
+				               "', '" . $o_contatoPF->getContato() . "', '" . $o_contatoPF->getOPessoa()->getId() . "', '" . $o_contatoPF->getDataCadastro() . "', '" . $o_contatoPF->getDataAtualizacao() . "')";
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-		mysqli_close($this->con);
+	
 	}
 	
 	function atualizar(ContatoPF $o_contatoPF){

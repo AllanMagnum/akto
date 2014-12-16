@@ -35,6 +35,19 @@ class PessoaFisicaControl{
 			$o_enderecoPFControl = new EnderecoPFControl($o_enderecoPF);
 			$o_enderecoPFControl->cadastrar(); 
 		}
+		
+		foreach ($this->o_pessoaFisica->getVOContatoPF() as $o_contatoPF){
+			$o_contatoPF->setOPessoaFisica($this->o_pessoaFisica);
+			$o_contatoPFControl = new ContatoPFControl($o_contatoPF);
+			$o_contatoPFControl->cadastrar();
+		}
+		
+		foreach ($this->o_pessoaFisica->getVODocumentoPF() as $o_documentoPF){
+			$o_documentoPF->setOPessoaFisica($this->pessoaFisica);
+			$o_documentoPFControl = new DocumentoPFControl($o_documentoPF);
+			$o_documentoPFControl->cadastrar();
+		}
+		
 	}
 	
 	function atualizar(){

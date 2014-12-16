@@ -1,7 +1,13 @@
 <?php
 	require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFisica.php';
 	require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/PessoaFisicaControl.php';
-	
+	require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/EnderecoPF.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/DocumentoPF.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/ContatoPF.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/TipoContato.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/TipoContatoControl.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/OperadoraContato.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/OperadoraContatoControl.php';
 	
 	
 	//cadastrar pessoa allan
@@ -47,15 +53,49 @@
 	$o_enderecoPF->setDataCadastro($datahora);
 	$o_enderecoPF->setDataAtualizacao("0000-00-00 00:00:00");
  
+	$o_tipoContato = new TipoContato();
+	$o_tipoContato->setId(1);
+	$o_tipoContatoControl = new TipoContatoControl($o_tipoContato);
+	$o_tipoContato = $o_tipoContatoControl->buscarPorId();
+	
+	$o_operadoraContato = new OperadoraContato();
+	$o_operadoraContato->setId(1);
+	$o_operadoraContatoControl = new OperadoraContatoControl($o_operadoraContato);
+	$o_operadoraContato = $o_operadoraContatoControl->buscarPorId();
+	
+	$o_tipoContato2 = new TipoContato();
+	$o_tipoContato2->setId(2);
+	$o_tipoContatoControl = new TipoContatoControl($o_tipoContato2);
+	$o_tipoContato2 = $o_tipoContatoControl->buscarPorId();
+	
+	$o_operadoraContato2 = new OperadoraContato();
+	$o_operadoraContato2->setId(2);
+	$o_operadoraContatoControl = new OperadoraContatoControl($o_operadoraContato2);
+	$o_operadoraContato2 = $o_operadoraContatoControl->buscarPorId();
+	
+	$o_contatoPF = new ContatoPF();
+	$o_contatoPF->setOTipocontato($o_tipoContato);
+	$o_contatoPF->setOOperadoracontato($o_operadoraContato);
+	$o_contatoPF->setContato("allan.magnum@gmail.com");
+	$o_contatoPF->setDataCadastro($datahora);
+	$o_contatoPF->setDataAtualizacao("0000-00-00 00:00:00");
+	
+	$o_contatoPF2 = new ContatoPF();
+	$o_contatoPF2->setOTipocontato($o_tipoContato2);
+	$o_contatoPF2->setOOperadoracontato($o_operadoraContato2);
+	$o_contatoPF2->setContato("092993442610");
+	$o_contatoPF2->setDataCadastro($datahora);
+	$o_contatoPF2->setDataAtualizacao("0000-00-00 00:00:00");
+	
+	$o_pessoaFisica->adicionarContato($o_contatoPF);
+	$o_pessoaFisica->adicionarContato($o_contatoPF2);
 	$o_pessoaFisica->adicionarEndereco($o_enderecoPF);
 	$o_pessoaFisica->setDataCadastro($datahora);
 	$o_pessoaFisica->setDataAtualizacao("0000-00-00 00:00:00");
 	
-	for ($i = 0; $i < 2; $i++) {
+	for ($i = 0; $i < 1; $i++) {
 		$pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
 		$pessoaFisicaControl->cadastrar();
-		
-		
 	}
 	
 	echo "<font color=\'#FF0000\'> cadastrar pessoa allan </font>";
