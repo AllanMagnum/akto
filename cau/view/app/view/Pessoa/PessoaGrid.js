@@ -4,7 +4,6 @@
  * Desenvolvedores : Allan Magnum e Nilton Caldas Jr.
  */
 
-
 Ext.define('cau.view.pessoa.PessoaGrid',{
 	extend: 'Ext.grid.Panel',
 	alias: 'widget.pessoagrid',
@@ -13,17 +12,16 @@ Ext.define('cau.view.pessoa.PessoaGrid',{
 	store: 'PessoaStore',
 
 	columns: [
-		{ text: 'Id',  dataIndex: 'id' },
-        { text: 'Nome', dataIndex: 'nome', flex: 1 },
+		{ text: 'Id',  dataIndex: 'id', width: 50},
+        { text: 'Nome', dataIndex: 'nome', width: 150},
         { text: 'CPF', dataIndex: 'cpf' },
-        { text: 'Data Nascimento', dataIndex: 'dataNascimento' },
+        { text: 'Data Nascimento', dataIndex: 'dataNascimento', renderer : Ext.util.Format.dateRenderer('d/m/Y')},
         { text: 'Estado Civil', dataIndex: 'enum_estadoCivil' },
         { text: 'Sexo', dataIndex: 'enum_sexo' },
         { text: 'Cor', dataIndex: 'enum_cor' },
         { text: 'Naturalidade', dataIndex: 'naturalidade' },
         { text: 'Nacionalidade', dataIndex: 'nacionalidade' },
-        { text: 'Data cadastro', dataIndex: 'dataCadastro' },
-        { text: 'Data atualizacao', dataIndex: 'dataAtualizacao' }
+        { text: 'Data cadastro', dataIndex: 'dataCadastro', renderer : Ext.util.Format.dateRenderer('d/m/Y')}
 	],
 
 	dockedItems: [
