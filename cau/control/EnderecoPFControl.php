@@ -26,11 +26,7 @@ class EnderecoPFControl{
 		$this->o_enderecoPFDAO->deletar($this->o_enderecoPF);
 	}
 	
-	function listarPaginadoPorPessoa($start, $limit){
-		return $this->o_enderecoPFDAO->listarPaginadoPorPessoa($this->o_enderecoPF, $start, $limit);
-	}
-	
-	function qtdeTotalPorPessoa(){
-		return $this->o_enderecoPFDAO->qtdTotalPorPessoa($this->o_enderecoPF);
+	function listarPorPessoa(){
+		return $this->o_enderecoPFDAO->listarPorPessoa($this->o_enderecoPF);
 	}
 }

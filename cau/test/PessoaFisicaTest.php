@@ -87,9 +87,19 @@
 	$o_contatoPF2->setDataCadastro($datahora);
 	$o_contatoPF2->setDataAtualizacao("0000-00-00 00:00:00");
 	
+	$o_documentoPF = new DocumentoPF();
+	$o_documentoPF->setEnumTipo("RG");
+	$o_documentoPF->setNumero("191657-3");
+	$o_documentoPF->setDataEmissao("0000-00-00 00:00:00");
+	$o_documentoPF->setOrgaoEmissor("SESEG");
+	$o_documentoPF->setVia(1);
+	$o_documentoPF->setDataCadastro($datahora);
+	$o_documentoPF->setDataAtualizacao("0000-00-00 00:00:00");
+	
 	$o_pessoaFisica->adicionarContato($o_contatoPF);
 	$o_pessoaFisica->adicionarContato($o_contatoPF2);
 	$o_pessoaFisica->adicionarEndereco($o_enderecoPF);
+	$o_pessoaFisica->adicionarDocumento($o_documentoPF);
 	$o_pessoaFisica->setDataCadastro($datahora);
 	$o_pessoaFisica->setDataAtualizacao("0000-00-00 00:00:00");
 	

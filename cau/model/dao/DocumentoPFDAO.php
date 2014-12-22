@@ -14,23 +14,23 @@ class DocumentoPFDAO{
 	}
 
 	function cadastrar(DocumentoPF $o_documentoPF){
-		$this->sql = "insert into documentos_pf (tipo, numero, dataemissao, orgaoemissor, via, idpessoa, datacadastro, dataatualizacao) " .
-				"values ('" . $o_documentoPF->getEnumTipo() . "', '" . $o_documentoPF->getNumero() .  "', '" . $o_documentoPF->getDataEmissao() . "', '" . $o_documentoPF->getOrgaoEmissor() . "', '" . $o_documentoPF->getVia() . "', '" . $o_documentoPF->getPessoa()->getId() . "', '" . $o_documentoPF->getDataCadastro() . "', '" . $o_documentoPF->getDataAtualizacao() . "')";
+		$this->sql = "insert into documentos_pf (tipo, numero, dataemissao, orgaoemissor, via, idpessoafisica, datacadastro, dataatualizacao) " .
+				"values ('" . $o_documentoPF->getEnumTipo() . "', '" . $o_documentoPF->getNumero() .  "', '" . $o_documentoPF->getDataEmissao() . "', '" . $o_documentoPF->getOrgaoEmissor() . "', '" . $o_documentoPF->getVia() . "', '" . $o_documentoPF->getOPessoaFisica()->getId() . "', '" . $o_documentoPF->getDataCadastro() . "', '" . $o_documentoPF->getDataAtualizacao() . "')";
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
 	}
 
 	function atualizar(DocumentoPF $o_documentoPF){
-		$this->sql = "update documentos_pf set tipo= '" . $o_documentoPF->getEnumTipo() . "', numero= '" . $o_documentoPF->getNumero() . "', dataEmissao= '" . $o_documentoPF->getDataEmissao() . "', orgaoEmissor= '" . $o_documentoPF->getOrgaoEmissor() . "', via= '" . $o_documentoPF->getVia() . "', idpessoa= '" . $o_documentoPF->getPessoa()->getId() . "'" . "', dataCadastro= '" . $o_documentoPF->getDataCadastro() . "'" . "', idpessoa= '" . $o_documentoPF->getAtualizacao . "'" .
+		$this->sql = "update documentos_pf set tipo= '" . $o_documentoPF->getEnumTipo() . "', numero= '" . $o_documentoPF->getNumero() . "', dataEmissao= '" . $o_documentoPF->getDataEmissao() . "', orgaoEmissor= '" . $o_documentoPF->getOrgaoEmissor() . "', via= '" . $o_documentoPF->getVia() . "', idpessoafisica= '" . $o_documentoPF->getOPessoaFisica()->getId() . "'" . "', dataCadastro= '" . $o_documentoPF->getDataCadastro() . "'" . "', idpessoafisica= '" . $o_documentoPF->getAtualizacao . "'" .
 				" where id='" . $o_documentoPF->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
 	}
 
-	function deletar($o_documentoPF){
-		$this->sql = "delete from documentos_pf where id='" . $o_documentoPF->getId() ."'" ;
+	function deletar(DocumentoPF $o_documentoPF){
+		$this->sql = "delete from documentos_pf where idpessoafisica='" . $o_documentoPF->getOPessoafisica()->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
@@ -56,7 +56,7 @@ class DocumentoPFDAO{
 	}
 	
 	function listarPorPessoa(DocumentoPF $o_documentoPF){
-		$this->sql= "select * from documentos_pf where idpessoa= '" . $o_documentoPF->getPessoa()->getId() . "'";
+		$this->sql= "select * from documentos_pf where idpessoafisica= '" . $o_documentoPF->getOPessoaFisica()->getId() . "'";
 		$st_query = mysqli_query($this->con, $this->sql);
 		if (!$st_query) {
 			die('Error: ' . mysqli_error($this->con));
@@ -70,10 +70,10 @@ class DocumentoPFDAO{
 			
 			$this->o_documentoPF = new DocumentoPF($row->id, $row->tipo, $row->numero, $row->dataemissao, $row->orgaoemissor, $row->via, $o_pessoaFisica, $row->datacadastro, $row->dataatualizacao);
 			
-			array_push($this->v_o_documentosPF, $this->o_documentoPF);
+			array_push($this->v_o_documentoPF, $this->o_documentoPF);
 		}
 
-		return $this->v_o_documentosPF;
+		return $this->v_o_documentoPF;
 	}
 }
 ?>

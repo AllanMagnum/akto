@@ -154,7 +154,13 @@ class PessoaFisica implements JsonSerializable{
 	}
 	
 	public function __toString(){
-		return "Pessoa [id=" . $this->id . ", nome=" . $this->nome . ", cpf=" . $this->cpf . ", data nascimento=" . $this->dataNascimento . ", estado civil=" . $this->enum_estadoCivil . ", sexo=" . $this->enum_sexo . ", nome do pai=" . $this->nomePai . ", nome da mae=" . $this->nomeMae . ", cor= " . $this->enum_cor. ", naturalidade=" . $this->naturalidade . ", nacionalidade= " . $this->nacionalidade . ", " . $this->dataCadastro . ", data atualizacao=" . $this->dataAtualizacao . "]";
+		return "Pessoa [id=" . $this->id . ", nome=" . $this->nome . ", cpf=" . $this->cpf . 
+		       ", data nascimento=" . $this->dataNascimento . ", estado civil=" . $this->enum_estadoCivil . 
+		       ", sexo=" . $this->enum_sexo . ", nome do pai=" . $this->nomePai . ", nome da mae=" . 
+		       $this->nomeMae . ", cor= " . $this->enum_cor. ", naturalidade=" . $this->naturalidade . 
+		       ", nacionalidade= " . $this->nacionalidade . ", " . $this->dataCadastro . 
+		       ", data atualizacao=" . $this->dataAtualizacao . "]" .
+		       $this->v_o_contatoPF ;
 	}
 	
 	public function jsonSerialize() {

@@ -47,11 +47,11 @@ class ContatoPF implements JsonSerializable{
 	public function setContato($contato) {
 		$this->contato = $contato;
 	}
-	public function getOPessoa() {
-		return $this->o_pessoa;
+	public function getOPessoaFisica() {
+		return $this->o_pessoaFisica;
 	}
 	public function setOPessoaFisica(PessoaFisica $o_pessoaFisica) {
-		$this->o_pessoa = $o_pessoaFisica;
+		$this->o_pessoaFisica = $o_pessoaFisica;
 	}
 	public function getDataCadastro() {
 		return $this->dataCadastro;

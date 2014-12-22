@@ -26,11 +26,7 @@ class ContatoPFControl{
 		$this->o_contatoPFDAO->deletar($this->o_contatoPF);
 	}
 	
-	function listarPaginadoPorPessoa($start, $limit){
-		return $this->o_contatoPFDAO->listarPaginadoPorPessoa($this->o_contatoPF, $start, $limit);
-	}
-	
-	function qtdeTotalPorPessoa(){
-		return $this->o_contatoPFDAO->qtdTotalPorPessoa($this->o_contatoPF);
+	function listarPorPessoa(){
+		return $this->o_contatoPFDAO->listarPorPessoa($this->o_contatoPF);
 	}
 }
