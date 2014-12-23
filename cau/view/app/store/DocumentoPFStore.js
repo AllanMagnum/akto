@@ -12,7 +12,7 @@ Ext.define('cau.store.DocumentoPFStore',{
 	proxy: {
 		type: 'rest',
 		
-		url: 'rest/documentoopf.php',
+		url: 'rest/documentopf.php',
 		
 		reader: {
 			type: 'json',

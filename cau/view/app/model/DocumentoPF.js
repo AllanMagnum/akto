@@ -9,7 +9,7 @@ Ext.define('cau.model.DocumentoPF',{
 
 	fields: [
 		{name: 'id',  				type: 'int'},
-		{name: 'tipoDocumento',		  		type: 'string'},
+		{name: 'tipoDocumento',		type: 'string'},
 		{name: 'numero',  			type: 'string'},
 		{name: 'dataEmissao',  		type: 'date' , dateFormat: 'c'},
 		{name: 'orgaoEmissor',		type: 'string'},

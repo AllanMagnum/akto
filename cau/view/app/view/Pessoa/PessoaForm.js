@@ -137,9 +137,9 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 		    },
 	        items:[
 	               {flex: 2,
-	            	xtype: 'enderecopfgrid'},
+	            	xtype: 'contatopfgrid'},
 	               {flex: 2,
-	            	xtype: 'documentopfform'}
+	            	xtype: 'contatopfform'}
 	        ],
 	        itemId: 'contato'
 	    }, 
@@ -153,7 +153,7 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 		    },
 	        items:[
 	               {flex: 2,
-	            	xtype: 'enderecopfgrid'},
+	            	xtype: 'documentopfgrid'},
 	               {flex: 2,
 	            	xtype: 'documentopfform'}
 	        ],

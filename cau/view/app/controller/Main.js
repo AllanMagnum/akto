@@ -27,10 +27,9 @@ Ext.define('cau.controller.Main', {
             	'cau.view.enderecopf.EnderecoPFForm',
                 'cau.view.enderecopf.EnderecoPFGrid',
             	'cau.view.documentopf.DocumentoPFForm',
+                'cau.view.documentopf.DocumentoPFGrid',            	
             	'cau.view.contatopf.ContatoPFForm',
             	'cau.view.contatopf.ContatoPFGrid',
-//                'cau.view.documentopf.DocumentoPFGrid',
-                
     ],
 
     refs: [{

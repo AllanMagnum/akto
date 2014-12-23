@@ -21,6 +21,8 @@ Ext.define('cau.Application', {
     stores: [
         // TODO: add stores here
         'PessoaStore',
-        'EnderecoPFStore'
+        'EnderecoPFStore',
+        'ContatoPFStore',
+        'DocumentoPFStore',
     ]
 });
