@@ -159,8 +159,7 @@ class PessoaFisica implements JsonSerializable{
 		       ", sexo=" . $this->enum_sexo . ", nome do pai=" . $this->nomePai . ", nome da mae=" . 
 		       $this->nomeMae . ", cor= " . $this->enum_cor. ", naturalidade=" . $this->naturalidade . 
 		       ", nacionalidade= " . $this->nacionalidade . ", " . $this->dataCadastro . 
-		       ", data atualizacao=" . $this->dataAtualizacao . "]" .
-		       $this->v_o_contatoPF ;
+		       ", data atualizacao=" . $this->dataAtualizacao . "]";
 	}
 	
 	public function jsonSerialize() {
