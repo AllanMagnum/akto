@@ -8,16 +8,29 @@ Ext.define('cau.controller.Main', {
     extend: 'Ext.app.Controller',
 
     models: [
-             	'cau.model.Pessoa'
+             	'cau.model.Pessoa',
+             	'cau.model.EnderecoPF',
+             	'cau.model.DocumentoPF',
+             	'cau.model.ContatoPF'
     ],
 
     stores: [
-             	'cau.store.PessoaStore'
+             	'cau.store.PessoaStore',
+             	'cau.store.EnderecoPFStore',
+             	'cau.store.DocumentoPFStore',
+             	'cau.store.ContatoPFStore'
     ],
 
     views: [
              	'cau.view.pessoa.PessoaForm',
-                'cau.view.pessoa.PessoaGrid'
+                'cau.view.pessoa.PessoaGrid',
+            	'cau.view.enderecopf.EnderecoPFForm',
+                'cau.view.enderecopf.EnderecoPFGrid',
+            	'cau.view.documentopf.DocumentoPFForm',
+            	'cau.view.contatopf.ContatoPFForm',
+            	'cau.view.contatopf.ContatoPFGrid',
+//                'cau.view.documentopf.DocumentoPFGrid',
+                
     ],
 
     refs: [{
@@ -102,7 +115,6 @@ Ext.define('cau.controller.Main', {
          });
 
     },
-
 
     onSaveClick: function(btn, e, eOpts){
 

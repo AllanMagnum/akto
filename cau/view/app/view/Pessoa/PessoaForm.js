@@ -18,6 +18,7 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 	autoShow: true,
 
 	items: [
+//	        1. Aba dados GERAIS -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		{
 			title: 'Dados Gerais',
 			xtype: 'form',
@@ -109,17 +110,53 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 				        fieldLabel: 'Nacionalidade'
 					}
 				]
-		}, {
-	        title: 'Endereço',
-	        html: 'Tickets',
+		}, 
+//        2. Aba Lista de Endereços -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		{
+			title: 'Endereço',
+			xtype: 'panel',
+			layout: {
+		        type: 'vbox',
+		        align: 'stretch'
+		    },
+	        items:[
+	               {flex: 2,
+	            	xtype: 'enderecopfgrid'},
+	               {flex: 2,
+	            	xtype: 'enderecopfform'}
+	        ],
 	        itemId: 'endereco'
-	    }, {
+	    }, 
+//        3. Aba Lista de Contatos -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+	    {
 	        title: 'Contato',
-	        html: 'Contatos',
+			xtype: 'panel',
+			layout: {
+		        type: 'vbox',
+		        align: 'stretch'
+		    },
+	        items:[
+	               {flex: 2,
+	            	xtype: 'enderecopfgrid'},
+	               {flex: 2,
+	            	xtype: 'documentopfform'}
+	        ],
 	        itemId: 'contato'
-	    }, {
+	    }, 
+//        4. Aba Lista de Documentos -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+	    {
 	        title: 'Documentos',
-	        html: 'Documentos',
+			xtype: 'panel',
+			layout: {
+		        type: 'vbox',
+		        align: 'stretch'
+		    },
+	        items:[
+	               {flex: 2,
+	            	xtype: 'enderecopfgrid'},
+	               {flex: 2,
+	            	xtype: 'documentopfform'}
+	        ],
 	        itemId: 'documento'
 	    }
 	],
