@@ -37,7 +37,7 @@ class TipoContato implements JsonSerializable{
 	}
 	
 	public function __toString(){
-		return "Tipo Contato [ id= " . $this->id . ", nome= " . $this->nome . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . " ]" ;
+		return "Tipo Contato [ id= " . $this->id . ", nome= " . $this->descricao . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . " ]" ;
 	}
 	public function jsonSerialize() {
 		return [

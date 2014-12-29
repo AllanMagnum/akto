@@ -8,7 +8,7 @@ class PaisControl{
 	protected $o_pais;
 	protected $o_paisDAO;
 
-	function __construct(Pais $o_pais=""){
+	function __construct(Pais $o_pais= null){
 		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_paisDAO = new PaisDAO($this->con);
 		$this->o_pais = $o_pais;

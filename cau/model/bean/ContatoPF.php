@@ -5,17 +5,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/PessoaFi
 
 class ContatoPF implements JsonSerializable{
 	private $id;
-	private $o_tipoContato;
-	private $o_operadoraContato;
+	private $tipoContato;
+	private $operadoraContato;
 	private $contato;
-	private $o_pessoaFisica;
-	private $dataCadastro;
+	private $o_pessoaFisica; 
+	private $dataCadastro; 
 	private $dataAtualizacao; 
 	
-	public function __construct($id=null, TipoContato $o_tipoContato=null, OperadoraContato $o_operadoraContato =null, $contato=null, PessoaFisica $o_pessoaFisica=null, $dataCadastro=null, $dataAtualizacao=null){
+	public function __construct($id=null, $tipoContato=null, $operadoraContato =null, $contato=null, PessoaFisica $o_pessoaFisica=null, $dataCadastro=null, $dataAtualizacao=null){
 		$this->id= $id;
-		$this->o_tipoContato = $o_tipoContato ;
-		$this->o_operadoraContato = $o_operadoraContato;
+		$this->tipoContato = $tipoContato ;
+		$this->operadoraContato = $operadoraContato;
 		$this->contato = $contato;
 		$this->o_pessoaFisica = $o_pessoaFisica;
 		$this->dataCadastro = $dataCadastro;
@@ -29,17 +29,17 @@ class ContatoPF implements JsonSerializable{
 		$this->id = $id;
 		return $this;
 	}
-	public function getOTipocontato() {
-		return $this->o_tipoContato;
+	public function getTipocontato() {
+		return $this->tipoContato;
 	}
-	public function setOTipocontato(TipoContato $o_tipoContato) {
-		$this->o_tipoContato = $o_tipoContato;
+	public function setTipocontato($tipoContato) {
+		$this->tipoContato = $tipoContato;
 	}
-	public function getOOperadoracontato() {
-		return $this->o_operadoraContato;
+	public function getOperadoracontato() {
+		return $this->operadoraContato;
 	}
-	public function setOOperadoracontato(OperadoraContato $o_operadoraContato) {
-		$this->o_operadoraContato = $o_operadoraContato;
+	public function setOperadoracontato($operadoraContato) {
+		$this->operadoraContato = $operadoraContato;
 	}
 	public function getContato() {
 		return $this->contato;
@@ -67,7 +67,7 @@ class ContatoPF implements JsonSerializable{
 	}
 	
 	public function __toString(){
-		return "Contato [ id= " . $this->id . ", tipo contato= " . $this->o_tipoContato . ", operadora= " .$this->o_operadoraContato . ", contato= " . $this->contato . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . "]"	;
+		return "Contato [ id= " . $this->id . ", tipo=" . $this->tipoContato . ", operadora= " .$this->operadoraContato . ", contato= " . $this->contato . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . "]"	;
 	}
 	
 	public function jsonSerialize() {

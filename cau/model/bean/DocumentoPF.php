@@ -80,7 +80,7 @@ class DocumentoPF implements JsonSerializable{
 	}
 	
 	public function __toString(){
-		"DocumentoPF [ id= " . $this->id . ", tipo= " . $this->enum_tipo . ", numero= " . $this->numero . ", data de emissao= " . $this->dataEmissao . ", orgao emissor= " . $this->orgaoEmissor . ", via= " . $this->via . ", " . $this->o_pessoaFisica . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . " ]";
+		return "DocumentoPF [ id= " . $this->id . ", tipo= " . $this->enum_tipo . ", numero= " . $this->numero . ", data de emissao= " . $this->dataEmissao . ", orgao emissor= " . $this->orgaoEmissor . ", via= " . $this->via . ", " . $this->o_pessoaFisica . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . " ]";
 	}
 	
 	public function jsonSerialize() {

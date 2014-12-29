@@ -5,7 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Cidade.p
 
 class EnderecoPF implements JsonSerializable{
 	private $id;
-	private $o_tipoEndereco;
+	private $tipoEndereco;
 	private $logradouro;
 	private $numero;
 	private $complemento;
@@ -16,9 +16,9 @@ class EnderecoPF implements JsonSerializable{
 	private $dataCadastro;
 	private $dataAtualizacao;
 	
-	public function __construct($id=null, TipoEndereco $o_tipoEndereco = null, $logradouro=null,  $numero=null, $complemento=null, $bairro=null, $cep=null, PessoaFisica $o_pessoaFisica=null,  Cidade $o_cidade=null, $dataCadastro=null, $dataAtualizacao=null){
+	public function __construct($id=null, $tipoEndereco = null, $logradouro=null,  $numero=null, $complemento=null, $bairro=null, $cep=null, PessoaFisica $o_pessoaFisica=null,  Cidade $o_cidade=null, $dataCadastro=null, $dataAtualizacao=null){
 		$this->id = $id;
-		$this->o_tipoEndereco = $o_tipoEndereco;
+		$this->tipoEndereco = $tipoEndereco;
 		$this->logradouro = $logradouro;
 		$this->numero = $numero;
 		$this->complemento = $complemento;
@@ -36,11 +36,11 @@ class EnderecoPF implements JsonSerializable{
 	public function setId($id) {
 		$this->id = $id;
 	}
-	public function getOTipoEndereco() {
-		return $this->o_tipoEndereco;
+	public function getTipoEndereco() {
+		return $this->tipoEndereco;
 	}
-	public function setOTipoEndereco(TipoEndereco $o_tipoEndereco) {
-		$this->o_tipoEndereco = $o_tipoEndereco;
+	public function setTipoEndereco($tipoEndereco) {
+		$this->tipoEndereco = $tipoEndereco;
 	}
 	public function getLogradouro() {
 		return $this->logradouro;
@@ -98,7 +98,7 @@ class EnderecoPF implements JsonSerializable{
 	}
 	
 	public function __toString(){
-		return "Endereco [ id= " . $this->id . ", " . $this->o_tipoEndereco . ", logradouro= " . $this->logradouro . ", numero= " . $this->numero . ", complemento= " . $this->complemento . ", bairro= " . $this->bairro . "cep= " . $this->cep . ", " . $this->o_pessoaFisica . ", " . $this->o_cidade . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . " ]";  	
+		return "EnderecoPF [ id= " . $this->id . ", tipo endereco =" . $this->tipoEndereco . ", logradouro= " . $this->logradouro . ", numero= " . $this->numero . ", complemento= " . $this->complemento . ", bairro= " . $this->bairro . ", cep=" . $this->cep . ", " . $this->o_pessoaFisica . ", " . $this->o_cidade . ", data de cadastro= " . $this->dataCadastro . ", data de atualizacao= " . $this->dataAtualizacao . " ]";  	
 	}
 	
 	public function jsonSerialize() {

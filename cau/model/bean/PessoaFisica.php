@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/EnderecoPF.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/ContatoPF.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/DocumentoPF.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'util/Util.php';
 
 class PessoaFisica implements JsonSerializable{
 	private  $id;
@@ -154,12 +155,12 @@ class PessoaFisica implements JsonSerializable{
 	}
 	
 	public function __toString(){
-		return "Pessoa [id=" . $this->id . ", nome=" . $this->nome . ", cpf=" . $this->cpf . 
-		       ", data nascimento=" . $this->dataNascimento . ", estado civil=" . $this->enum_estadoCivil . 
-		       ", sexo=" . $this->enum_sexo . ", nome do pai=" . $this->nomePai . ", nome da mae=" . 
-		       $this->nomeMae . ", cor= " . $this->enum_cor. ", naturalidade=" . $this->naturalidade . 
-		       ", nacionalidade= " . $this->nacionalidade . ", " . $this->dataCadastro . 
-		       ", data atualizacao=" . $this->dataAtualizacao . "]";
+ 		return "Pessoa [id=" . $this->id . ", nome=" . $this->nome . ", cpf=" . $this->cpf . 
+ 		       ", data nascimento=" . $this->dataNascimento . ", estado civil=" . $this->enum_estadoCivil . 
+ 		       ", sexo=" . $this->enum_sexo . ", nome do pai=" . $this->nomePai . ", nome da mae=" . 
+ 		       $this->nomeMae . ", cor= " . $this->enum_cor. ", naturalidade=" . $this->naturalidade . 
+ 		       ", nacionalidade= " . $this->nacionalidade . ", data cadastro=" . $this->dataCadastro . 
+ 		       ", data atualizacao=" . $this->dataAtualizacao  . "]"; 
 	}
 	
 	public function jsonSerialize() {
@@ -180,8 +181,4 @@ class PessoaFisica implements JsonSerializable{
 		        ];
 		
 	}
-	
-	
-
 }
-?>
