@@ -25,25 +25,8 @@ Ext.define('cau.view.contatopf.ContatoPFForm',{
 	},
 	
 	items: [
-			// left column
-			// defaults for fields
-			 defaults:{anchor:'100%'},
-			 items:[{
-				 xtype:'textfield',
-				 fieldLabel:'Tipo',
-				 name: 'tipoDocumento'
-			},{
-				 xtype:'textfield',
-				 fieldLabel:'Numero',
-				 name: 'numero'	
-			},{
-				 xtype:'datefield',
-				 fieldLabel:'Data Emissão',
-				 name: 'dataEmissao'	
-			}]
-		}
-	        
-	        
+        
+       
 			{
 				xtype: 'hiddenfield',
 		        name: 'id'
