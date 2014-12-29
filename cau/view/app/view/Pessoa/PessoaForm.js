@@ -120,12 +120,12 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 		        align: 'stretch'
 		    },
 	        items:[
-	               {flex: 2,
-	            	xtype: 'enderecopfgrid'},
-	               {flex: 2,
-	            	xtype: 'enderecopfform'}
+	               {flex: 1,
+	            	xtype: 'enderecopfgrid'}
+//	               {flex: 2,
+//	            	xtype: 'enderecopfform'}
 	        ],
-	        itemId: 'endereco'
+	        itemId: 'enderecopf'
 	    }, 
 //        3. Aba Lista de Contatos -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	    {
@@ -136,12 +136,12 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 		        align: 'stretch'
 		    },
 	        items:[
-	               {flex: 2,
-	            	xtype: 'contatopfgrid'},
-	               {flex: 2,
-	            	xtype: 'contatopfform'}
+	               {flex: 1,
+	            	xtype: 'contatopfgrid'}
+//	               {flex: 2,
+//	            	xtype: 'contatopfform'}
 	        ],
-	        itemId: 'contato'
+	        itemId: 'contatopf'
 	    }, 
 //        4. Aba Lista de Documentos -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 	    {
@@ -152,12 +152,12 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 		        align: 'stretch'
 		    },
 	        items:[
-	               {flex: 2,
-	            	xtype: 'documentopfgrid'},
-	               {flex: 2,
-	            	xtype: 'documentopfform'}
+	               {flex: 1,
+	            	xtype: 'documentopfgrid'}
+//	               {flex: 2,
+//	            	xtype: 'documentopfform'}
 	        ],
-	        itemId: 'documento'
+	        itemId: 'documentopf'
 	    }
 	],
 	dockedItems: [

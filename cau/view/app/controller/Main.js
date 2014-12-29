@@ -49,6 +49,15 @@ Ext.define('cau.controller.Main', {
             "pessoagrid button#add": {
                 click : this.onAddClick
             },
+            "enderecopfgrid button#addenderecopf": {
+                click : this.onAddEnderecoPFClick
+            },
+            "contatopfgrid button#addcontatopf": {
+                click : this.onAddContatoPFClick
+            },
+            "documentopfgrid button#adddocumentopf": {
+                click : this.onAddDocumentoPFClick
+            },
             "pessoagrid button#delete": {
                 click : this.onDeleteClick
             },
@@ -62,13 +71,52 @@ Ext.define('cau.controller.Main', {
                 click : this.onSave2Click
             }
             
-            
         });
     },
 
     onGridRender: function(grid, eOpts){
 		grid.getStore().load();
 	},
+
+    openFormEnderecoPF: function(title){
+
+        var win = Ext.create('cau.view.enderecopf.EnderecoPFForm');
+
+        win.setTitle(title);
+
+        return win;
+    },
+
+    openFormContatoPF: function(title){
+
+        var win = Ext.create('cau.view.contatopf.ContatoPFForm');
+
+        win.setTitle(title);
+
+        return win;
+    },
+    
+    openFormDocumentoPF: function(title){
+
+        var win = Ext.create('cau.view.documentopf.DocumentoPFForm');
+
+        win.setTitle(title);
+
+        return win;
+    },
+
+    
+    onAddEnderecoPFClick: function(btn, e, eOpts ){
+        this.openFormEnderecoPF('Novo Endereço');
+    },
+
+    onAddContatoPFClick: function(btn, e, eOpts ){
+        this.openFormContatoPF('Novo Contato');
+    },
+
+    onAddDocumentoPFClick: function(btn, e, eOpts ){
+        this.openFormDocumentoPF('Novo Documento');
+    },
     
     gridSelectionChange: function(model, records) {
 

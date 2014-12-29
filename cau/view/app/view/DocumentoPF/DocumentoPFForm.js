@@ -7,53 +7,80 @@
 
 Ext.define('cau.view.documentopf.DocumentoPFForm',{
 	
-	extend: 'Ext.panel.Panel',	
+	extend: 'Ext.window.Window',	
 	alias: 'widget.documentopfform',
 
-	height: 200,
+	height: 250,
 	width: 350,
-	layout:'column',
+	layout: 'fit',
+	iconCls: 'icon-user',
+	title: 'Editar/Criar Endereço PF',
+	autoShow: true,
 
-	// defaults for columns
-	defaults:{
-		columnWidth:0.5,
-		layout:'form',
-		border:false,
-		xtype:'panel',
-		bodyStyle:'padding:0 18px 0 0',
-		frame:true,
-		anchor:'100%'
-	},
-    items:[{
-    		
-		// left column
-		// defaults for fields
-		 defaults:{anchor:'100%'},
-		 items:[{
-			 xtype:'textfield',
-			 fieldLabel:'Tipo',
-			 name: 'tipoDocumento'
-		},{
-			 xtype:'textfield',
-			 fieldLabel:'Numero',
-			 name: 'numero'	
-		},{
-			 xtype:'datefield',
-			 fieldLabel:'Data Emissão',
-			 name: 'dataEmissao'	
-		}]
-	},{
-		// right column
-		// defaults for fields
-		 defaults:{anchor:'100%'},
-		 items:[{
-			 xtype:'textfield',
-			 fieldLabel:'Orgão Emissor',
-			 name: 'orgaoEmissor'
-		},{
-			 xtype:'textfield',
-			 fieldLabel:'Via',
-			 name: 'via'
-		}]
-	}]
+	items: [
+		{
+			xtype: 'form',
+			bodyPadding: 10,
+			defaults: {
+				anchor: '100%'
+			},
+			items: [
+				{
+					xtype: 'hiddenfield',
+			        name: 'id'
+				},
+				{
+					xtype: 'textfield',
+					fieldLabel:'Tipo',
+					name: 'tipoDocumento'
+				},
+				{
+					xtype: 'textfield',
+					 fieldLabel:'Numero',
+					 name: 'numero'	
+				},
+				{
+					xtype:'datefield',
+					fieldLabel:'Data Emissão',
+					name: 'dataEmissao'	
+				},
+				{
+					xtype: 'textfield',
+					fieldLabel:'Orgão Emissor',
+					name: 'orgaoEmissor'
+				},
+				{
+					xtype: 'textfield',
+					fieldLabel:'Via',
+					name: 'via'
+				}
+			]
+		}
+	],
+	
+	dockedItems: [
+		{
+			xtype: 'toolbar',
+			dock: 'bottom',
+			layout: {
+				type: 'hbox',
+				pack: 'end'
+			},
+			items: [
+				{
+					xtype: 'button',
+					text: 'Cancelar',
+					itemId: 'cancelenderecopf',
+					iconCls: 'icon-reset'
+				},
+				{
+					xtype: 'button',
+					text: 'Salvar',
+					itemId: 'saveenderecopf',
+					iconCls: 'icon-save'
+				}
+			]
+		}
+	]
+
 });

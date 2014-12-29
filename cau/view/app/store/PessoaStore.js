@@ -22,8 +22,7 @@ Ext.define('cau.store.PessoaStore',{
 		writer: {
 			type: 'json',
 			root: 'data',
-			encode: true,
-			writeAllFields: false
+			encode: true
 		}
 	}
 });/**
