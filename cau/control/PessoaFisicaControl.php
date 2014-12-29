@@ -133,7 +133,7 @@ class PessoaFisicaControl{
 		$o_enderecoPF->setOPessoaFisica($this->o_pessoaFisica);
 		$o_enderecoPFControl = new EnderecoPFControl($o_enderecoPF);
 		$v_o_enderecoPF = $o_enderecoPFControl->listarPorPessoa();
-		$this->o_pessoaFisica->setVODocumentoPF($v_o_enderecoPF);
+		$this->o_pessoaFisica->setVOEnderecoPF($v_o_enderecoPF);
 		
 		$o_contatoPF = new ContatoPF();
 		$o_contatoPF->setOPessoaFisica($this->o_pessoaFisica);
@@ -151,28 +151,6 @@ class PessoaFisicaControl{
 	}
 	
 	function listarPaginado($start, $limit){
-		$v_o_documentoPF = array();
-		$v_o_enderecoPF = array();
-		$v_o_contatoPF = array();
-		
-// 		$o_enderecoPF = new EnderecoPF();
-// 		$o_enderecoPF->setOPessoaFisica($this->o_pessoaFisica);
-// 		$o_enderecoPFControl = new EnderecoPFControl($o_enderecoPF);
-// 		$v_o_enderecoPF = $o_enderecoPFControl->listarPorPessoa();
-// 		$this->o_pessoaFisica->setVODocumentoPF($v_o_enderecoPF);
-		
-// 		$o_contatoPF = new ContatoPF();
-// 		$o_contatoPF->setOPessoaFisica($this->o_pessoaFisica);
-// 		$o_contatoPFControl = new ContatoPFControl($o_contatoPF);
-// 		$v_o_contatoPF = $o_contatoPFControl->listarPorPessoa();
-// 		$this->o_pessoaFisica->setVOContato($v_o_contatoPF);
-		
-// 		$o_documentoPF = new DocumentoPF();
-// 		$o_documentoPF->setOPessoaFisica($this->o_pessoaFisica);
-// 		$o_documentoPFControl = new DocumentoPFControl($o_documentoPF);
-// 		$v_o_documentoPF = $o_documentoPFControl->listarPorPessoa();
-// 		$this->o_pessoaFisica->setVODocumentoPF($v_o_documentoPF);
-		
 		return $this->pessoaFisicaDAO->listarPaginado($start, $limit);
 	}
 	

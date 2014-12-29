@@ -1,5 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/EnderecoPF.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'model/bean/Cidade.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/CidadeControl.php';
 
 class EnderecoPFDAO{
 	private $con;
@@ -13,7 +15,7 @@ class EnderecoPFDAO{
 	
 	function cadastrar(EnderecoPF $o_enderecoPF){
 		$this->sql = "insert into endereco_pf (tipo, logradouro, numero, complemento, bairro, cep, idcidade, idpessoafisica, dataCadastro, dataAtualizacao) " .			    
-				     "values ('" . $o_enderecoPF->getOTipoEndereco()->getDescricao() . "', '" . $o_enderecoPF->getLogradouro() . "', '" . $o_enderecoPF->getNumero() . "'," .
+				     "values ('" . $o_enderecoPF->getTipoEndereco() . "', '" . $o_enderecoPF->getLogradouro() . "', '" . $o_enderecoPF->getNumero() . "'," .
 				             "'" . $o_enderecoPF->getComplemento() . "', '" . $o_enderecoPF->getBairro() . "', '" . $o_enderecoPF->getCep() . "'," .
 				             "'" . $o_enderecoPF->getOCidade()->getId() . "', '" . $o_enderecoPF->getOPessoaFisica()->getId()  . "', '" . $o_enderecoPF->getDataCadastro() . "', '" . $o_enderecoPF->getDataAtualizacao() .
 		             "')";
@@ -40,7 +42,7 @@ class EnderecoPFDAO{
 	}
 	
 	function listarPorPessoa(EnderecoPF $o_enderecoPF){
-		$this->sql= "select * from endereco_pf WHERE idpessoafisica=" . $o_enderecoPF->getOPessoaFisica()->getId();
+		$this->sql= "select * from endereco_pf where idpessoafisica=" . $o_enderecoPF->getOPessoaFisica()->getId();
 		$query = mysqli_query($this->con, $this->sql);
 			
 		if (!$query) {
@@ -48,10 +50,16 @@ class EnderecoPFDAO{
 		}
 			
 		while($row = mysqli_fetch_object($query)){
+			$o_cidade = new Cidade();
+			$o_cidade->setId($row->idcidade);
+			$o_cidadeControl = new CidadeControl($o_cidade);
+			$o_cidade = $o_cidadeControl->buscarPorId($o_enderecoPF->getId());
+			
 			$this->o_enderecoPF = new EnderecoPF($row->id, $row->tipo, $row->logradouro, $row->numero,
-					$row->complemento, $row->bairro, $row->cep,	$row->datacadastro, $row->dataatualizacao);
+					$row->complemento, $row->bairro, $row->cep,	$o_enderecoPF->getOPessoaFisica(), $o_cidade, $row->datacadastro, $row->dataatualizacao);
 			array_push($this->v_o_enderecoPF, $this->o_enderecoPF);
 		}
+		
 		return $this->v_o_enderecoPF;
 	}
 	
