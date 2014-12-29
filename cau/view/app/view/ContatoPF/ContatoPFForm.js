@@ -4,7 +4,6 @@
  * Desenvolvedores : Allan Magnum e Nilton Caldas Jr.
  */
 
-
 Ext.define('cau.view.contatopf.ContatoPFForm',{
 	
 	extend: 'Ext.panel.Panel',	
