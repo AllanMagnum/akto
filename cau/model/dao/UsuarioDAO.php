@@ -24,6 +24,7 @@ class UsuarioDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
+		return mysqli_insert_id($this->con);
 	}
 	
 	public function atualizar(Usuario $o_usuario){

@@ -7,15 +7,20 @@ class DocumentoPFControl{
 	protected $con;
 	protected $o_documentoPF;
 	protected $o_documentoPFDAO;
-
+	private $ultimoId;
+	
 	function __construct(DocumentoPF $o_documentoPF= null){
 		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_documentoPFDAO = new DocumentoPFDAO($this->con);
 		$this->o_documentoPF = $o_documentoPF;
 	}
 
+	public function getUltimoId() {
+		return $this->ultimoId;
+	}
+	
 	function cadastrar(){
-		$this->o_documentoPFDAO->cadastrar($this->o_documentoPF);
+		$this->ultimoId = $this->o_documentoPFDAO->cadastrar($this->o_documentoPF);
 	}
 
 	function atualizar(){

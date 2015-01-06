@@ -7,6 +7,7 @@ class UsuarioControl{
 	protected $con;
 	protected $o_usuario;
 	protected $o_usuarioDAO;
+	private $ultimoId;
 	
 	function __construct($o_usuario=""){
 		$this->con = Conexao::getInstance()->getConexao();
@@ -14,8 +15,12 @@ class UsuarioControl{
 		$this->o_usuario = $o_usuario;
 	}
 	
-	public function cadastrar(){
-		$this->o_usuarioDAO->cadastrar($this->o_usuario);
+	public function getUltimoId() {
+		return $this->ultimoId;
+	}
+	
+	function cadastrar(){
+		$this->ultimoId = $this->o_usuarioDAO->cadastrar($this->o_usuario);
 	}
 	
 	public function atualizar(){

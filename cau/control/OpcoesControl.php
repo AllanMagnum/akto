@@ -7,15 +7,20 @@ class OpcoesControl{
 	protected $con;
 	protected $o_opcoes;
 	protected $o_opcoesDAO;
-
+	private $ultimoId;
+	
 	function __construct(Opcoes $o_opcoes= null){
 		$this->con = Conexao::getInstance()->getConexao();
 		$this->opcoesDAO = new OpcoesDAO($this->con);
 		$this->o_opcoes = $o_opcoes;
 	}
 
+	public function getUltimoId() {
+		return $this->ultimoId;
+	}
+	
 	function cadastrar(){
-		$this->opcoesDAO->cadastrar($this->o_opcoes);
+		$this->ultimoId = $this->opcoesDAO->cadastrar($this->o_opcoes);
 	}
 
 	function atualizar(){

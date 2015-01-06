@@ -7,15 +7,20 @@ class AcessoControl{
 	protected $con;
 	protected $o_acesso;
 	protected $o_acessoDAO;
-
+	private $ultimoId;
+	
 	function __construct(Acesso $o_acesso= null){
 		$this->con = Conexao::getInstance()->getConexao();
 		$this->acessoDAO = new AcessoDAO($this->con);
 		$this->o_acesso = $o_acesso;
 	}
 
+	public function getUltimoId() {
+		return $this->ultimoId;
+	}
+	
 	function cadastrar(){
-		$this->acessoDAO->cadastrar($this->o_acesso);
+		$this->ultimoId = $this->acessoDAO->cadastrar($this->o_acesso);
 	}
 
 	function atualizar(){

@@ -7,6 +7,7 @@ class OperadoraContatoControl{
 	protected $con;
 	protected $o_operadoraContato;
 	protected $o_operadoraContatoDAO;
+	private $ultimoId;
 	
 	function __construct(OperadoraContato $o_operadoraContato= null){
 		$this->con = Conexao::getInstance()->getConexao();
@@ -14,8 +15,12 @@ class OperadoraContatoControl{
 		$this->o_operadoraContato = $o_operadoraContato;
 	}
 	
+	public function getUltimoId() {
+		return $this->ultimoId;
+	}
+	
 	function cadastrar(){
-		$this->o_operadoraContatoDAO->cadastrar($this->o_operadoraContato);
+		$this->ultimoId = $this->o_operadoraContatoDAO->cadastrar($this->o_operadoraContato);
 	}
 	
 	function atualizar(){

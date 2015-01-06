@@ -17,6 +17,7 @@ class TipoEnderecoDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
+		return mysqli_insert_id($this->con);
 	}
 
 	function atualizar(TipoEndereco $o_tipoEndereco){

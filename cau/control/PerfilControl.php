@@ -7,15 +7,20 @@ class PerfilControl{
 	protected $con;
 	protected $o_perfil;
 	protected $o_perfilDAO;
-
+	private $ultimoId;
+	
 	function __construct(Perfil $o_perfil= null){
 		$this->con = Conexao::getInstance()->getConexao();
 		$this->perfilDAO = new PerfilDAO($this->con);
 		$this->o_perfil = $o_perfil;
 	}
 
+	public function getUltimoId() {
+		return $this->ultimoId;
+	}
+	
 	function cadastrar(){
-		$this->perfilDAO->cadastrar($this->o_perfil);
+		$this->ultimoId = $this->perfilDAO->cadastrar($this->o_perfil);
 	}
 
 	function atualizar(){

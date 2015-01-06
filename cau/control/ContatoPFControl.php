@@ -7,6 +7,7 @@ class ContatoPFControl{
 	protected $con;
 	protected $o_contatoPF;
 	protected $o_contatoPFDAO;
+	private $ultimoId;
 	
 	function __construct(ContatoPF $o_contatoPF= null){
 		$this->con = Conexao::getInstance()->getConexao();
@@ -14,8 +15,12 @@ class ContatoPFControl{
 		$this->o_contatoPF = $o_contatoPF;
 	}
 	
+	public function getUltimoId() {
+		return $this->ultimoId;
+	}
+	
 	function cadastrar(){
-		$this->o_contatoPFDAO->cadastrar($this->o_contatoPF);
+		$this->ultimoId =$this->o_contatoPFDAO->cadastrar($this->o_contatoPF);
 	}
 	
 	function atualizar(){

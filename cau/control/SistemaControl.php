@@ -7,15 +7,20 @@ class SistemaControl{
 	protected $con;
 	protected $o_sistema;
 	protected $o_sistemaDAO;
-
+	private $ultimoId;
+	
 	function __construct(Sistema $o_sistema= null){
 		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_sistemaDAO = new SistemaDAO($this->con);
 		$this->o_sistema = $o_sistema;
 	}
 
+	public function getUltimoId() {
+		return $this->ultimoId;
+	}
+	
 	function cadastrar(){
-		$this->o_sistemaDAO->cadastrar($this->o_sistema);
+		$this->ultimoId = $this->o_sistemaDAO->cadastrar($this->o_sistema);
 	}
 
 	function atualizar(){

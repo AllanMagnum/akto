@@ -7,15 +7,20 @@ class TipoEnderecoControl{
 	protected $con;
 	protected $o_tipoEndereco;
 	protected $o_tipoEnderecoDAO;
-
+	private $ultimoId;
+	
 	function __construct(TipoEndereco $o_tipoEndereco= null){
 		$this->con = Conexao::getInstance()->getConexao();
 		$this->o_tipoEnderecoDAO = new TipoEnderecoDAO($this->con);
 		$this->o_tipoEndereco = $o_tipoEndereco;
 	}
 
+	public function getUltimoId() {
+		return $this->ultimoId;
+	}
+	
 	function cadastrar(){
-		$this->o_tipoEnderecoDAO->cadastrar($this->o_tipoEndereco);
+		$this->ultimoId = $this->o_tipoEnderecoDAO->cadastrar($this->o_tipoEndereco);
 	}
 
 	function atualizar(){

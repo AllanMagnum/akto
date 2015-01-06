@@ -17,6 +17,7 @@ class OpcoesDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
+		return mysqli_insert_id($this->con);
 	}
 	
 	function atualizar(Opcoes $o_opcoes){

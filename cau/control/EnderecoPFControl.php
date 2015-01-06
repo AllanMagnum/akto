@@ -7,6 +7,7 @@ class EnderecoPFControl{
 	protected $con;
 	protected $o_enderecoPF;
 	protected $o_enderecoPFDAO;
+	private $ultimoId;
 	
 	function __construct(EnderecoPF $o_enderecoPF= null){
 		$this->con = Conexao::getInstance()->getConexao();
@@ -14,8 +15,12 @@ class EnderecoPFControl{
 		$this->o_enderecoPF = $o_enderecoPF;
 	}	
 	
+	public function getUltimoId() {
+		return $this->ultimoId;
+	}
+	
 	function cadastrar(){
-		$this->o_enderecoPFDAO->cadastrar($this->o_enderecoPF);
+		$this->ultimoId = $this->o_enderecoPFDAO->cadastrar($this->o_enderecoPF);
 	}
 	
 	function atualizar(){

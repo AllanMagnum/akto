@@ -19,7 +19,8 @@ class ContatoPFDAO{
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}
-	
+		
+		return mysqli_insert_id($this->con);
 	}
 	
 	function atualizar(ContatoPF $o_contatoPF){

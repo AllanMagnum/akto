@@ -7,6 +7,7 @@ class TipoContatoControl{
 	protected $con;
 	protected $o_tipoContato;
 	protected $o_tipoContatoDAO;
+	private $ultimoId;
 	
 	function __construct(TipoContato $o_tipoContato= null){
 		$this->con = Conexao::getInstance()->getConexao();
@@ -14,8 +15,12 @@ class TipoContatoControl{
 		$this->o_tipoContato = $o_tipoContato;
 	}
 	
+	public function getUltimoId() {
+		return $this->ultimoId;
+	}
+	
 	function cadastrar(){
-		$this->o_tipoContatoDAO->cadastrar($this->o_tipoContato);
+		$this->ultimoId = $this->o_tipoContatoDAO->cadastrar($this->o_tipoContato);
 	}
 	
 	function atualizar(){
