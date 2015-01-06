@@ -110,8 +110,8 @@ class EnderecoPF implements JsonSerializable{
 					'complemento' => $this->complemento,
 					'bairro' => $this->bairro,
 					'cep' => $this->cep,
-					'o_pessoaFisica' => $this->o_pessoaFisica->jsonSerialize(),
-					'o_cidade' => $this->o_cidade->jsonSerialize(),
+// 					'o_pessoaFisica' => $this->o_pessoaFisica->jsonSerialize(),
+// 					'o_cidade' => $this->o_cidade->jsonSerialize(),
 					'dataCadastro' => $this->dataCadastro,
 					'dataAtualizacao' => $this->dataAtualizacao
 				];
