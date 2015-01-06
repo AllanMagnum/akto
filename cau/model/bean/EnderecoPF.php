@@ -104,7 +104,7 @@ class EnderecoPF implements JsonSerializable{
 	public function jsonSerialize() {
 		return [
 					'id' => $this->id,
-					'o_tipoEndereco' => $this->o_tipoEndereco->jsonSerialize(),
+					'tipoEndereco' => $this->tipoEndereco,
 					'logradouro' => $this->logradouro,
 					'numero' => $this->numero,
 					'complemento' => $this->complemento,
