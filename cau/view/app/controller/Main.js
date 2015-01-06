@@ -22,6 +22,7 @@ Ext.define('cau.controller.Main', {
     ],
 
     views: [
+            	'cau.view.MenuPrincipal',
              	'cau.view.pessoa.PessoaForm',
                 'cau.view.pessoa.PessoaGrid',
             	'cau.view.enderecopf.EnderecoPFForm',
@@ -29,14 +30,18 @@ Ext.define('cau.controller.Main', {
             	'cau.view.documentopf.DocumentoPFForm',
                 'cau.view.documentopf.DocumentoPFGrid',            	
             	'cau.view.contatopf.ContatoPFForm',
-            	'cau.view.contatopf.ContatoPFGrid',
+            	'cau.view.contatopf.ContatoPFGrid'
     ],
 
-    refs: [{
-        ref: 'pessoaForm',
-        selector: 'form'
-    }],
-    
+    refs: [
+          {
+        	  ref: 'pessoaForm',
+        	  selector: 'form'
+          },{
+        	  ref: 'enderecoPFForm',
+        	  selector: 'form'
+          }
+    ],
     
     init: function() {
 
@@ -69,6 +74,12 @@ Ext.define('cau.controller.Main', {
             },
             "pessoaform button#save2": {
                 click : this.onSave2Click
+            },
+            "enderecopfform button#saveenderecopf":{
+            	click : this.onSaveEnderecoClick
+            },
+            "enderecopfform button#cancel":{
+            	click : this.onCancelClick
             }
             
         });
@@ -225,7 +236,53 @@ Ext.define('cau.controller.Main', {
         store.sync();
         grid.getView().refresh();
 
-    }    
+    },    
+    
+    onSaveEnderecoClick: function(btn, e, eOpts){
+
+        var form1 = this.getEnderecoPFForm().getForm(),
+            values1 = form1.getValues(),
+            record1 = form1.getRecord(),
+            grid1 = Ext.ComponentQuery.query('enderecopfgrid')[0],
+            store1 = grid1.getStore();
+
+        
+        
+        if (record1){ //edicao
+            
+            record1.set(values1);
+
+        } else { //novo registro
+        
+        	var endereco = Ext.create('cau.model.EnderecoPF',{
+        	
+        		id: 	         values1.id,
+        		tipoEndereco: 	 values1.tipoEndereco,
+        		logradouro: 	 values1.logradouro,
+        		numero:		     values1.numero,
+        		complemento: 	 values1.complemento,
+        		bairro: 		 values1.bairro,
+        		cep:		 	 values1.cep,
+        		cidade: 		 values1.cidade
+        	});
+        	
+        	//console.log(values.id);
+        	
+        	store1.insert(0,endereco);
+        	
+        }
+        
+        store1.sync();
+        
+        grid1.getView().refresh();
+
+    },
+    
+    onCancelEnderecoClick: function(btn, e, eOpts){
+        
+    	this.getEnderecoPFForm().getForm().reset();
+
+    } 
     
     
 });

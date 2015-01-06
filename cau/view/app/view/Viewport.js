@@ -59,9 +59,21 @@ Ext.define('cau.view.Viewport', {
 			// Topo da Tela Viewport
 			region: 'north',
 			xtype: 'panel',
-			height: 50,
-			bodyStyle: 'padding:3px',
-			html: '<table><tr><td><img src="/git/akto/cau/resources/images/logo.jpg"></td><td><h3>Controle e Autenticação de Usuário</h3></td></tr></table> '
+			layout: {
+		        type: 'vbox',
+		        align: 'stretch'
+		    },
+			height: 100,			
+			items: [
+			        {
+			        	height: 70,
+			        	html: '<table><tr><td><img src="/git/akto/cau/resources/images/logo.jpg"></td><td><h3>Controle e Autenticação de Usuário</h3></td></tr></table> '
+			        },
+			        {
+			        	xtype:'menuprincipal',
+			        	style: 'background-color: #990000;'
+			        }
+			]	
 		},
 		{
 			region: 'south',

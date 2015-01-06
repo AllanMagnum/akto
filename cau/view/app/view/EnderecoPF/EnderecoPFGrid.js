@@ -14,8 +14,10 @@ Ext.define('cau.view.enderecopf.EnderecoPFGrid',{
         { text: 'Tipo', dataIndex: 'tipoEndereco', width: 50},
         { text: 'Logradouro', dataIndex: 'logradouro', width: 250 },
         { text: 'Numero', dataIndex: 'numero', width: 50},
+        { text: 'Complemento', dataIndex: 'complemento', width: 75},
         { text: 'Bairro', dataIndex: 'bairro', width: 200 },
-        { text: 'CEP', dataIndex: 'cep' }
+        { text: 'CEP', dataIndex: 'cep' },
+        { text: 'Cidade', dataIndex: 'cidade', width: 200 }
 	],
 
 	dockedItems: [

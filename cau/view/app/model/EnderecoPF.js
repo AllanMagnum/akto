@@ -16,9 +16,7 @@ Ext.define('cau.model.EnderecoPF',{
 		{name: 'bairro', 			type: 'string'},
 		{name: 'cep', 				type: 'string'},
 		{name: 'pessoaFisica',		type: 'int'},
-		{name: 'cidade', 			type: 'string'},
-		{name: 'dataCadastro', 		type: 'date' , dateFormat: 'c'},
-		{name: 'dataAtualizacao', 	type: 'date', dateFormat: 'c'}
+		{name: 'cidade', 			type: 'string'}
 	]	
 	
 });
