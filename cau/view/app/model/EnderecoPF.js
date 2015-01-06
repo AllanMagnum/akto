@@ -14,9 +14,9 @@ Ext.define('cau.model.EnderecoPF',{
 		{name: 'numero',		  	type: 'string'},
 		{name: 'complemento', 		type: 'string'},
 		{name: 'bairro', 			type: 'string'},
-		{name: 'cep', 				type: 'string'},
-		{name: 'pessoaFisica',		type: 'int'},
-		{name: 'cidade', 			type: 'string'}
+		{name: 'cep', 				type: 'string'}
+//		{name: 'pessoaFisica',		type: 'int'},
+//		{name: 'cidade', 			type: 'int'}
 	]	
 	
 });

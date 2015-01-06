@@ -80,7 +80,7 @@ Ext.define('cau.view.enderecopf.EnderecoPFForm',{
 				{
 					xtype: 'button',
 					text: 'Cancelar',
-					itemId: 'cancel',
+					itemId: 'cancelenderecopf',
 					iconCls: 'icon-reset'
 				},
 				{

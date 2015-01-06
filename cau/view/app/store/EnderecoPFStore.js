@@ -10,8 +10,9 @@ Ext.define('cau.store.EnderecoPFStore',{
 	model: 'cau.model.EnderecoPF',
 
 	proxy: {
-		type: 'localstorage',
-		id: 'lista',
+		type: 'rest',
+		
+		url: 'rest/enderecoPF.php',
 		
 		reader: {
 			type: 'json',

@@ -37,16 +37,22 @@ Ext.define('cau.controller.Main', {
           {
         	  ref: 'pessoaForm',
         	  selector: 'form'
-          },{
-        	  ref: 'enderecoPFForm',
-        	  selector: 'form'
           }
+//          },{
+//        	  ref: 'enderecoPFForm',
+//        	  selector: 'form'
+//          }
     ],
     
     init: function() {
 
         this.control({
             'pessoagrid': {
+                selectionchange: this.gridSelectionChange,
+                viewready: this.onViewReady,
+                render : this.onGridRender,
+            },
+            'enderecopfgrid': {
                 selectionchange: this.gridSelectionChange,
                 viewready: this.onViewReady,
                 render : this.onGridRender,
@@ -76,7 +82,7 @@ Ext.define('cau.controller.Main', {
                 click : this.onSave2Click
             },
             "enderecopfform button#saveenderecopf":{
-            	click : this.onSaveEnderecoClick
+            	click : this.onSaveEnderecoPFClick
             },
             "enderecopfform button#cancel":{
             	click : this.onCancelClick
@@ -238,43 +244,43 @@ Ext.define('cau.controller.Main', {
 
     },    
     
-    onSaveEnderecoClick: function(btn, e, eOpts){
-
-        var form1 = this.getEnderecoPFForm().getForm(),
-            values1 = form1.getValues(),
-            record1 = form1.getRecord(),
-            grid1 = Ext.ComponentQuery.query('enderecopfgrid')[0],
-            store1 = grid1.getStore();
-
+    onSaveEnderecoPFClick: function(btn, e, eOpts){
+    	
+    	
+    	var win = btn.up('window'),
+        form = win.down('form'),
+        values = form.getValues(),
+        record = form.getRecord(),
+        grid = Ext.ComponentQuery.query('enderecopfgrid')[0],
+        store = grid.getStore();
+    	
         
-        
-        if (record1){ //edicao
+        if (record){ //edicao
             
-            record1.set(values1);
+            record.set(values);
 
         } else { //novo registro
         
         	var endereco = Ext.create('cau.model.EnderecoPF',{
         	
-        		id: 	         values1.id,
-        		tipoEndereco: 	 values1.tipoEndereco,
-        		logradouro: 	 values1.logradouro,
-        		numero:		     values1.numero,
-        		complemento: 	 values1.complemento,
-        		bairro: 		 values1.bairro,
-        		cep:		 	 values1.cep,
-        		cidade: 		 values1.cidade
+        		tipoEndereco: 	 values.tipoEndereco,
+        		logradouro: 	 values.logradouro,
+        		numero:		     values.numero,
+        		complemento: 	 values.complemento,
+        		bairro: 		 values.bairro,
+        		cep:		 	 values.cep,
+        		cidade: 		 values.cidade
         	});
         	
         	//console.log(values.id);
         	
-        	store1.insert(0,endereco);
+        	store.insert(0,endereco);
         	
         }
         
-        store1.sync();
+        store.sync();
         
-        grid1.getView().refresh();
+        win.close();
 
     },
     
