@@ -63,13 +63,8 @@ class DocumentoPFDAO{
 			die('Error: ' . mysqli_error($this->con));
 		}
 		while($row = mysqli_fetch_object($st_query)){
-			$o_pessoaFisica = new PessoaFisica();
-			$o_pessoaFisica->setId($row->id);
-			
-			$o_pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
-			$o_pessoaFisica = $o_pessoaFisicaControl->buscarPorId();
-			
-			$this->o_documentoPF = new DocumentoPF($row->id, $row->tipo, $row->numero, $row->dataemissao, $row->orgaoemissor, $row->via, $o_pessoaFisica, $row->datacadastro, $row->dataatualizacao);
+
+			$this->o_documentoPF = new DocumentoPF($row->id, $row->tipo, $row->numero, $row->dataemissao, $row->orgaoemissor, $row->via, $o_documentoPF->getOPessoafisica(), $row->datacadastro, $row->dataatualizacao);
 			
 			array_push($this->v_o_documentoPF, $this->o_documentoPF);
 		}
