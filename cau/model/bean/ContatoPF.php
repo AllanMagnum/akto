@@ -73,7 +73,7 @@ class ContatoPF implements JsonSerializable{
 	public function jsonSerialize() {
 		return [
 					'id' => $this->id,
-					'o_tipoContato' => $this->o_tipoContato->jsonSerialize(),
+					'tipoContato' => $this->tipoContato,
 					'o_operadoraContato' => $this->o_operadoraContato->jsonSerialize(),
 					'contato' => $this->contato,
 					'o_pessoa' => $this->o_pessoa->jsonSerialize(),
