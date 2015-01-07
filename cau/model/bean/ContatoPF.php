@@ -76,7 +76,7 @@ class ContatoPF implements JsonSerializable{
 					'tipoContato' => $this->tipoContato,
 					'operadoraContato' => $this->operadoraContato,
 					'contato' => $this->contato,
-					'o_pessoa' => $this->o_pessoa->jsonSerialize(),
+					'o_pessoaFisica' => $this->o_pessoaFisica->jsonSerialize(),
 					'dataCadastro' => $this->dataCadastro,
 					'dataAtualizacao' => $this->dataAtualizacao
 				];
