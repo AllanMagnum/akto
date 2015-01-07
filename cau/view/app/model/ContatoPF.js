@@ -11,10 +11,7 @@ Ext.define('cau.model.ContatoPF',{
 		{name: 'id',  				type: 'int'},
 		{name: 'tipoContato',  		type: 'string'},
 		{name: 'operadora',  		type: 'string'},
-		{name: 'contato',  			type: 'string'},
-		{name: 'pessoaFisica',		type: 'int'},
-		{name: 'datacadastro', 		type: 'date' , dateFormat: 'c'},
-		{name: 'dataatualizacao', 	type: 'date' , dateFormat: 'c'}
+		{name: 'contato',  			type: 'string'}
 	]	
 	
 });

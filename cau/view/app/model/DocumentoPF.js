@@ -13,10 +13,7 @@ Ext.define('cau.model.DocumentoPF',{
 		{name: 'numero',  			type: 'string'},
 		{name: 'dataEmissao',  		type: 'date' , dateFormat: 'c'},
 		{name: 'orgaoEmissor',		type: 'string'},
-		{name: 'via',  				type: 'int'},
-		{name: 'pessoaFisica',		type: 'int'},
-		{name: 'datacadastro', 		type: 'date' , dateFormat: 'c'},
-		{name: 'dataatualizacao', 	type: 'date', dateFormat: 'c'}
+		{name: 'via',  				type: 'int'}
 	]	
 	
 });

@@ -70,13 +70,13 @@ Ext.define('cau.view.documentopf.DocumentoPFForm',{
 				{
 					xtype: 'button',
 					text: 'Cancelar',
-					itemId: 'cancelenderecopf',
+					itemId: 'canceldocumentopf',
 					iconCls: 'icon-reset'
 				},
 				{
 					xtype: 'button',
 					text: 'Salvar',
-					itemId: 'saveenderecopf',
+					itemId: 'savedocumentopf',
 					iconCls: 'icon-save'
 				}
 			]

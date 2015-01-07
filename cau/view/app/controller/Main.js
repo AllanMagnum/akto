@@ -84,8 +84,29 @@ Ext.define('cau.controller.Main', {
             "enderecopfform button#saveenderecopf":{
             	click : this.onSaveEnderecoPFClick
             },
-            "enderecopfform button#cancel":{
-            	click : this.onCancelClick
+            "enderecopfform button#cancelenderecopf":{
+            	click : this.onCancelEnderecoClick
+            },
+            "enderecopfgrid button#deleteenderecopf":{
+            	click: this.onDeleteEnderecoClick
+            },
+            "contatopfform button#savecontatopf":{
+            	click : this.onSaveContatoPFClick
+            },
+            "contatopfform button#cancelcontatopf":{
+            	click : this.onCancelContatoClick
+            },
+            "contatopfgrid button#deletecontatopf":{
+            	click: this.onDeleteContatoClick
+            },
+            "documentopfform button#savedocumentopf":{
+            	click : this.onSaveDocumentoPFClick
+            },
+            "documentopfform button#canceldocumentopf":{
+            	click : this.onCancelDocumentoClick
+            },
+            "documentopfgrid button#deletedocumentopf":{
+            	click: this.onDeleteDocumentoClick
             }
             
         });
@@ -272,8 +293,6 @@ Ext.define('cau.controller.Main', {
         		cidade: 		 values.cidade
         	});
         	
-        	//console.log(values.id);
-        	
         	store.insert(0,endereco);
         	
         }
@@ -286,9 +305,173 @@ Ext.define('cau.controller.Main', {
     
     onCancelEnderecoClick: function(btn, e, eOpts){
         
-    	this.getEnderecoPFForm().getForm().reset();
+    	var win = btn.up('window');
+    	
+    	win.close();
 
-    } 
+    },
+
+    onDeleteEnderecoClick: function(btn, e, eOpts){
+  
+    	 Ext.MessageBox.confirm({
+             title          : 'Aviso!'
+             ,animateTarget : btn.el
+             ,msg           : 'Deseja apagar esse registro(s)?'
+             ,buttons       : Ext.MessageBox.YESNO
+             ,icon          : 'icon-window-question'
+             ,scope         : this
+             ,fn            : function(button) {
+                 if(button === 'yes') {
+                	 var grid = btn.up('grid');
+                   var records = grid.getSelectionModel().getSelection();
+                   var store = grid.getStore();
+                   store.remove(records);
+                   store.sync();
+                	 
+                 }
+             }
+         });
+
+    },
+    
+    onSaveContatoPFClick: function(btn, e, eOpts){
+    	
+    	
+    	var win = btn.up('window'),
+        form = win.down('form'),
+        values = form.getValues(),
+        record = form.getRecord(),
+        grid = Ext.ComponentQuery.query('contatopfgrid')[0],
+        store = grid.getStore();
+    	
+        
+        if (record){ //edicao
+            
+            record.set(values);
+
+        } else { //novo registro
+        
+        	var contato = Ext.create('cau.model.ContatoPF',{
+        	
+        		id: 	     values.id,
+        		tipoContato: values.tipoContato,
+        		operadora:   values.operadora,
+        		contato: 	 values.contato
+        	});
+        	
+        	//console.log(values.id);
+        	
+        	store.insert(0,contato);
+        	
+        }
+        
+        store.sync();
+        
+        win.close();
+
+    },
+    
+    onCancelContatoClick: function(btn, e, eOpts){
+    	
+    	var win = btn.up('window');
+    	
+    	win.close();
+
+    },
+
+    onDeleteContatoClick: function(btn, e, eOpts){
+  
+    	 Ext.MessageBox.confirm({
+             title          : 'Aviso!'
+             ,animateTarget : btn.el
+             ,msg           : 'Deseja apagar esse registro(s)?'
+             ,buttons       : Ext.MessageBox.YESNO
+             ,icon          : 'icon-window-question'
+             ,scope         : this
+             ,fn            : function(button) {
+                 if(button === 'yes') {
+                	 var grid = btn.up('grid');
+                   var records = grid.getSelectionModel().getSelection();
+                   var store = grid.getStore();
+                   store.remove(records);
+                   store.sync();
+                	 
+                 }
+             }
+         });
+
+    },
+    
+    onSaveDocumentoPFClick: function(btn, e, eOpts){
+    	
+    	
+    	var win = btn.up('window'),
+        form = win.down('form'),
+        values = form.getValues(),
+        record = form.getRecord(),
+        grid = Ext.ComponentQuery.query('documentopfgrid')[0],
+        store = grid.getStore();
+    	
+        
+        if (record){ //edicao
+            
+            record.set(values);
+
+        } else { //novo registro
+        
+        	var documento = Ext.create('cau.model.DocumentoPF',{
+        	
+        		id: 	       values.id,
+        		tipoDocumento: values.tipoDocumento,
+        		numero:        values.numero,
+        		dataEmissao:   values.dataEmissao,
+        		orgaoEmissor:  values.orgaoEmissor,
+        		via:           values.via
+        		
+        	});
+        	        	
+        	store.insert(0,documento);
+        	
+        }
+        
+        store.sync();
+        
+        win.close();
+
+    },
+    
+    onCancelDocumentoClick: function(btn, e, eOpts){
+    	
+    	var win = btn.up('window');
+    	
+    	win.close();
+
+    },
+
+    onDeleteDocumentoClick: function(btn, e, eOpts){
+    	 var grid = btn.up('grid');
+         var records = grid.getSelectionModel().getSelection();
+         if (records != null){
+    	 Ext.MessageBox.confirm({
+             title          : 'Aviso!'
+             ,animateTarget : btn.el
+             ,msg           : 'Deseja apagar esse registro(s)?'
+             ,buttons       : Ext.MessageBox.YESNO
+             ,icon          : 'icon-window-question'
+             ,scope         : this
+             ,fn            : function(button) {
+                 if(button === 'yes') {
+                	
+                   var store = grid.getStore();
+                   store.remove(records);
+                   store.sync();
+                	 
+                 }
+             }
+         });
+         }
+
+    }
     
     
 });

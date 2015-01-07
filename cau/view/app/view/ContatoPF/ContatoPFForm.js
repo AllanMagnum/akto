@@ -60,13 +60,13 @@ Ext.define('cau.view.contatopf.ContatoPFForm',{
 				{
 					xtype: 'button',
 					text: 'Cancelar',
-					itemId: 'cancelenderecopf',
+					itemId: 'cancelcontatopf',
 					iconCls: 'icon-reset'
 				},
 				{
 					xtype: 'button',
 					text: 'Salvar',
-					itemId: 'saveenderecopf',
+					itemId: 'savecontatopf',
 					iconCls: 'icon-save'
 				}
 			]
