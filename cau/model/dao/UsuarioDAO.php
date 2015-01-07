@@ -16,7 +16,7 @@ class UsuarioDAO{
 	}
 
 	public function cadastrar(Usuario $o_usuario){
-		$this->sql = "insert into usuario (login, senha, idperfil, idpessoa, dataCadastro, dataAtualizacao) " .
+		$this->sql = "insert into usuario (login, senha, idperfil, idpessoafisica, dataCadastro, dataAtualizacao) " .
 				"values ('" . $o_usuario->getLogin() . "', '" . $o_usuario->getSenha() . "', '" .
 				         $o_usuario->getOPerfil()->getId() . "', '" . $o_usuario->getOPessoaFisica()->getId() . "', '" .
 				         $o_usuario->getDataCadastro() . "', '" . $o_usuario->getDataAtualizacao() .
@@ -29,7 +29,7 @@ class UsuarioDAO{
 	
 	public function atualizar(Usuario $o_usuario){
 		$this->sql = "update usuario set login= '" . $o_usuario->getLogin() . "', senha= '" . $o_usuario->getSenha() .
-				                       "', idperfil= '" .  $o_usuario->getOPerfil()->getId() . "', idpessoa= '" . $o_usuario->getOPessoaFisica()->getId() .
+				                       "', idperfil= '" .  $o_usuario->getOPerfil()->getId() . "', idpessoafisica= '" . $o_usuario->getOPessoaFisica()->getId() .
 				                       "', dataCadastro= '" . $o_usuario->getDataCadastro() . "', dataAtualizacao= '" . $o_usuario->getDataAtualizacao() . "'" .
 				    " where id='" . $o_usuario->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
@@ -62,7 +62,7 @@ class UsuarioDAO{
 			$o_perfil = $o_perfilControl->buscarPorId($row->idperfil);
 			
 			$o_pessoaFisica = new PessoaFisica();
-			$o_pessoaFisica->setId($row->idpessoa);
+			$o_pessoaFisica->setId($row->idpessoafisica);
 			
 			$o_pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
 			$o_pessoaFisica = $o_pessoaFisicaControl->buscarPorId();
@@ -89,7 +89,7 @@ class UsuarioDAO{
 			$o_perfil = $o_perfilControl->buscarPorId($row->idperfil);
 			
 			$o_pessoaFisica = new PessoaFisica();
-			$o_pessoaFisica->setId($row->idpessoa);
+			$o_pessoaFisica->setId($row->idpessoafisica);
 			
 			$o_pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
 			$o_pessoaFisica = $o_pessoaFisicaControl->buscarPorId();
