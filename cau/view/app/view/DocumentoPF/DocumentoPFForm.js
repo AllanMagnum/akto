@@ -32,7 +32,7 @@ Ext.define('cau.view.documentopf.DocumentoPFForm',{
 				{
 					xtype: 'textfield',
 					fieldLabel:'Tipo',
-					name: 'tipoDocumento'
+					name: 'enum_tipo'
 				},
 				{
 					xtype: 'textfield',

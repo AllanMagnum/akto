@@ -1,39 +1,39 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/EnderecoPFControl.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" .'model/bean/EnderecoPF.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/DocumentoPFControl.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" .'model/bean/DocumentoPF.php';
 
 switch ($_SERVER['REQUEST_METHOD']) {
 	
 		case 'GET':
-			listaEnderecoPF();
+			listaDocumentoPF();
 			break;
 	
 		case 'POST':
-			cadastraEnderecoPF();
+			cadastraDocumentoPF();
 			break;
 	
 		case 'PUT':
-			atualizaEnderecoPF();
+			atualizaDocumentoPF();
 			break;
 				
 		case 'DELETE':
-			deletaEnderecoPF();
+			deletaDocumentoPF();
 			break;
 }
 	
-function listaEnderecoPF() {
+function listaDocumentoPF() {
 	
 	$o_pessoaFisica = new PessoaFisica();
 	$o_pessoaFisica->setId(1);
-	$o_enderecoPF = new EnderecoPF();
-	$o_enderecoPF->setOPessoaFisica($o_pessoaFisica);
-	$o_enderecoPFControl = new EnderecoPFControl($o_enderecoPF);
-	$v_o_enderecoPF = $o_enderecoPFControl->listarPorPessoa();
-	foreach ($v_o_enderecoPF as $o_enderecoPF) {
-		$v_registros[] = $o_enderecoPF;
+	$o_documentoPF = new DocumentoPF();
+	$o_documentoPF->setOPessoaFisica($o_pessoaFisica);
+	$o_documentoPFControl = new DocumentoPFControl($o_documentoPF);
+	$v_o_documentoPF = $o_documentoPFControl->listarPorPessoa();
+	foreach ($v_o_documentoPF as $o_documentoPF) {
+		$v_registros[] = $o_documentoPF;
 	}
 	
-	$o_enderecoPFControl = new EnderecoPFControl();
+	$o_documentoPFControl = new DocumentoPFControl();
 // 	$totalRegistro = $o_enderecoPFControl->qtdTotal();
 	$totalRegistro = 1;
 	
@@ -46,7 +46,7 @@ function listaEnderecoPF() {
 	
 }
 
-function cadastraEnderecoPF() {
+function cadastraDocumentoPF() {
 	
 	$jsonDados = $_POST['data'];
 	$data = json_decode(stripslashes($jsonDados));
@@ -68,34 +68,32 @@ function cadastraEnderecoPF() {
 	$o_cidade->setOEstado($o_estado);
 	
 	//------
-	$o_enderecoPF = new EnderecoPF();
-	$o_enderecoPF->setTipoEndereco($data->tipoEndereco);
-	$o_enderecoPF->setLogradouro($data->logradouro);
-	$o_enderecoPF->setNumero($data->numero);
-	$o_enderecoPF->setComplemento($data->complemento);
-	$o_enderecoPF->setBairro($data->bairro);
-	$o_enderecoPF->setCep($data->cep);
-	$o_enderecoPF->setOPessoaFisica($o_pessoaFisica);
-	$o_enderecoPF->setOCidade($o_cidade);
-	$o_enderecoPF->setDataCadastro($datahora);
-	$o_enderecoPF->setDataAtualizacao($datahora);
+	$o_documentoPF = new DocumentoPF();
+	$o_documentoPF->setEnumTipo($data->tipoDocumento);
+	$o_documentoPF->setNumero($data->numero);
+	$o_documentoPF->setDataEmissao($datahora);
+	$o_documentoPF->setOrgaoEmissor($data->orgaoEmissor);
+	$o_documentoPF->setVia($data->via);
+	$o_documentoPF->setOPessoaFisica($o_pessoaFisica);
+	$o_documentoPF->setDataCadastro($datahora);
+	$o_documentoPF->setDataAtualizacao($datahora);
 	
-	$o_enderecoPFControl = new EnderecoPFControl($o_enderecoPF);
-	$o_enderecoPFControl->cadastrar();
+	$o_documentoPFControl = new DocumentoPFControl($o_documentoPF);
+	$o_documentoPFControl->cadastrar();
 	
- 	$o_enderecoPF->setId($o_enderecoPFControl->getUltimoId());
+	$o_documentoPF->setId($o_documentoPFControl->getUltimoId());
 
 	
 	
 	// encoda para formato JSON
 	echo json_encode(array(
 			"success" => 0,
-			"data" => $o_enderecoPF
+			"data" => $o_documentoPF
 	));
 	
 }
 
-function atualizaEnderecoPF() {
+function atualizaDocumentoPF() {
 	
 	parse_str(file_get_contents("php://input"), $post_vars);
 	$jsonDados = $post_vars['data'];
@@ -109,7 +107,7 @@ function atualizaEnderecoPF() {
 	
 }
 
-function deletaEnderecoPF() {
+function deletaDocumentoPF() {
 	
 	parse_str(file_get_contents("php://input"), $post_vars);
 	$jsonDados = $post_vars['data'];
@@ -117,11 +115,11 @@ function deletaEnderecoPF() {
 		
 	$id = $data->id;
 	
-	$o_enderecoPF = new EnderecoPF();
-	$o_enderecoPF->setId($id);
+	$o_documentoPF = new DocumentoPF();
+	$o_documentoPF->setId($id);
 	
-	$o_enderecoPFControl = new EnderecoPFControl($o_pessoaFisica);
-	$o_enderecoPFControl->deletar();
+	$o_documentoPFControl = new DocumentoPFControl($o_pessoaFisica);
+	$o_documentoPFControl->deletar();
 	
 }
 

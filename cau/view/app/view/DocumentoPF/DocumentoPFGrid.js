@@ -11,7 +11,7 @@ Ext.define('cau.view.documentopf.DocumentoPFGrid',{
 
 	columns: [
 		{ text: 'Id',  dataIndex: 'id', width: 50},
-        { text: 'Tipo', dataIndex: 'tipoDocumento', width: 50},
+        { text: 'Tipo', dataIndex: 'enum_tipo', width: 50},
         { text: 'Numero', dataIndex: 'numero', width: 50},
         { text: 'Data Emissão', dataIndex: 'dataEmissao', renderer : Ext.util.Format.dateRenderer('d/m/Y')},
         { text: 'Orgao Emissor', dataIndex: 'orgaoEmissor', width: 200 },

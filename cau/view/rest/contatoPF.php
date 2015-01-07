@@ -1,39 +1,39 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/EnderecoPFControl.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" .'model/bean/EnderecoPF.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/ContatoPFControl.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" .'model/bean/ContatoPF.php';
 
 switch ($_SERVER['REQUEST_METHOD']) {
 	
 		case 'GET':
-			listaEnderecoPF();
+			listaContatoPF();
 			break;
 	
 		case 'POST':
-			cadastraEnderecoPF();
+			cadastraContatoPF();
 			break;
 	
 		case 'PUT':
-			atualizaEnderecoPF();
+			atualizaContatoPF();
 			break;
 				
 		case 'DELETE':
-			deletaEnderecoPF();
+			deletaContatoPF();
 			break;
 }
 	
-function listaEnderecoPF() {
+function listaContatoPF() {
 	
 	$o_pessoaFisica = new PessoaFisica();
 	$o_pessoaFisica->setId(1);
-	$o_enderecoPF = new EnderecoPF();
-	$o_enderecoPF->setOPessoaFisica($o_pessoaFisica);
-	$o_enderecoPFControl = new EnderecoPFControl($o_enderecoPF);
-	$v_o_enderecoPF = $o_enderecoPFControl->listarPorPessoa();
-	foreach ($v_o_enderecoPF as $o_enderecoPF) {
-		$v_registros[] = $o_enderecoPF;
+	$o_contatoPF = new ContatoPF();
+	$o_contatoPF->setOPessoaFisica($o_pessoaFisica);
+	$o_contatoPFControl = new ContatoPFControl($o_contatoPF);
+	$v_o_contatoPF = $o_contatoPFControl->listarPorPessoa();
+	foreach ($v_o_contatoPF as $o_contatoPF) {
+		$v_registros[] = $o_contatoPF;
 	}
 	
-	$o_enderecoPFControl = new EnderecoPFControl();
+	$o_contatoPFControl = new ContatoPFControl();
 // 	$totalRegistro = $o_enderecoPFControl->qtdTotal();
 	$totalRegistro = 1;
 	
@@ -46,7 +46,7 @@ function listaEnderecoPF() {
 	
 }
 
-function cadastraEnderecoPF() {
+function cadastraContatoPF() {
 	
 	$jsonDados = $_POST['data'];
 	$data = json_decode(stripslashes($jsonDados));
@@ -68,29 +68,25 @@ function cadastraEnderecoPF() {
 	$o_cidade->setOEstado($o_estado);
 	
 	//------
-	$o_enderecoPF = new EnderecoPF();
-	$o_enderecoPF->setTipoEndereco($data->tipoEndereco);
-	$o_enderecoPF->setLogradouro($data->logradouro);
-	$o_enderecoPF->setNumero($data->numero);
-	$o_enderecoPF->setComplemento($data->complemento);
-	$o_enderecoPF->setBairro($data->bairro);
-	$o_enderecoPF->setCep($data->cep);
-	$o_enderecoPF->setOPessoaFisica($o_pessoaFisica);
-	$o_enderecoPF->setOCidade($o_cidade);
-	$o_enderecoPF->setDataCadastro($datahora);
-	$o_enderecoPF->setDataAtualizacao($datahora);
+	$o_contatoPF = new ContatoPF();
+	$o_contatoPF->setTipocontato($data->tipoContato);
+	$o_contatoPF->setOperadoracontato($data->operadora);
+	$o_contatoPF->setContato($data->contato);
+	$o_contatoPF->setOPessoaFisica($o_pessoaFisica);
+	$o_contatoPF->setDataCadastro($datahora);
+	$o_contatoPF->setDataAtualizacao($datahora);
 	
-	$o_enderecoPFControl = new EnderecoPFControl($o_enderecoPF);
-	$o_enderecoPFControl->cadastrar();
+	$o_contatoPFControl = new ContatoPFControl($o_contatoPF);
+	$o_contatoPFControl->cadastrar();
 	
- 	$o_enderecoPF->setId($o_enderecoPFControl->getUltimoId());
+	$o_contatoPF->setId($o_contatoPFControl->getUltimoId());
 
 	
 	
 	// encoda para formato JSON
 	echo json_encode(array(
 			"success" => 0,
-			"data" => $o_enderecoPF
+			"data" => $o_contatoPF
 	));
 	
 }
@@ -117,11 +113,11 @@ function deletaEnderecoPF() {
 		
 	$id = $data->id;
 	
-	$o_enderecoPF = new EnderecoPF();
-	$o_enderecoPF->setId($id);
+	$o_contatoPF = new ContatoPF();
+	$o_contatoPF->setId($id);
 	
-	$o_enderecoPFControl = new EnderecoPFControl($o_pessoaFisica);
-	$o_enderecoPFControl->deletar();
+	$o_contatoPFControl = new ContatoPFControl($o_pessoaFisica);
+	$o_contatoPFControl->deletar();
 	
 }
 

@@ -38,10 +38,6 @@ Ext.define('cau.controller.Main', {
         	  ref: 'pessoaForm',
         	  selector: 'form'
           }
-//          },{
-//        	  ref: 'enderecoPFForm',
-//        	  selector: 'form'
-//          }
     ],
     
     init: function() {
@@ -53,6 +49,16 @@ Ext.define('cau.controller.Main', {
                 render : this.onGridRender,
             },
             'enderecopfgrid': {
+                selectionchange: this.gridSelectionChange,
+                viewready: this.onViewReady,
+                render : this.onGridRender,
+            },
+            'contatopfgrid': {
+                selectionchange: this.gridSelectionChange,
+                viewready: this.onViewReady,
+                render : this.onGridRender,
+            },
+            'documentopfgrid': {
                 selectionchange: this.gridSelectionChange,
                 viewready: this.onViewReady,
                 render : this.onGridRender,
@@ -353,10 +359,10 @@ Ext.define('cau.controller.Main', {
         
         	var contato = Ext.create('cau.model.ContatoPF',{
         	
-        		id: 	     values.id,
-        		tipoContato: values.tipoContato,
-        		operadora:   values.operadora,
-        		contato: 	 values.contato
+        		id: 	     		values.id,
+        		tipoContato: 		values.tipoContato,
+        		operadoraContato:   values.operadoraContato,
+        		contato: 	 		values.contato
         	});
         	
         	//console.log(values.id);
@@ -421,12 +427,12 @@ Ext.define('cau.controller.Main', {
         
         	var documento = Ext.create('cau.model.DocumentoPF',{
         	
-        		id: 	       values.id,
-        		tipoDocumento: values.tipoDocumento,
-        		numero:        values.numero,
-        		dataEmissao:   values.dataEmissao,
-        		orgaoEmissor:  values.orgaoEmissor,
-        		via:           values.via
+        		id: 	       	values.id,
+        		enum_tipo: 		values.enum_tipo,
+        		numero:        	values.numero,
+        		dataEmissao:   	values.dataEmissao,
+        		orgaoEmissor:  	values.orgaoEmissor,
+        		via:           	values.via
         		
         	});
         	        	

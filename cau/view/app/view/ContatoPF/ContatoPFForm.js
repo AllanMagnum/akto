@@ -36,7 +36,7 @@ Ext.define('cau.view.contatopf.ContatoPFForm',{
 				},
 				{
 					xtype: 'textfield',
-			        name: 'operadora',
+			        name: 'operadoraContato',
 			        fieldLabel: 'Operadora'
 				},
 				{

@@ -10,7 +10,7 @@ Ext.define('cau.model.ContatoPF',{
 	fields: [
 		{name: 'id',  				type: 'int'},
 		{name: 'tipoContato',  		type: 'string'},
-		{name: 'operadora',  		type: 'string'},
+		{name: 'operadoraContato',  type: 'string'},
 		{name: 'contato',  			type: 'string'}
 	]	
 	

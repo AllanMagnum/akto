@@ -12,7 +12,7 @@ Ext.define('cau.view.contatopf.ContatoPFGrid',{
 	columns: [
 		{ text: 'Id',  dataIndex: 'id', width: 50},
         { text: 'Tipo', dataIndex: 'tipoContato', width: 50},
-        { text: 'Operadora', dataIndex: 'operadora', width: 50},
+        { text: 'Operadora', dataIndex: 'operadoraContato', width: 50},
         { text: 'Contato', dataIndex: 'contato', width: 200 }
 	],
 
