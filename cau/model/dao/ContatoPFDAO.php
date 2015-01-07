@@ -49,7 +49,7 @@ class ContatoPFDAO{
 		}
 			
 		while($row = mysqli_fetch_object($query)){
-			$this->o_contatoPF = new EnderecoPF($row->id, $row->tipo, $row->operadora, $row->contato,$row->datacadastro, $row->dataatualizacao);
+			$this->o_contatoPF = new ContatoPF($row->id, $row->tipo, $row->operadora, $row->contato, $o_contatoPF->getOPessoaFisica(), $row->datacadastro, $row->dataatualizacao);
 			array_push($this->v_o_contatoPF, $this->o_contatoPF);
 		}
 		return $this->v_o_contatoPF;
