@@ -4,7 +4,7 @@
  * Desenvolvedores : Allan Magnum e Nilton Caldas Jr.
  */
 
-Ext.define('cau.model.Cidade',{
+Ext.define('cau.model.CidadeModel',{
 	extend: 'Ext.data.Model',
 
 	fields: [

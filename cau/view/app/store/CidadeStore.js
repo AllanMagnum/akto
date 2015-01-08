@@ -25,6 +25,4 @@ Ext.define('cau.store.CidadeStore',{
 			encode: true
 		}
 	}
-});/**
- * 
- */
+});

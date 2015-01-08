@@ -18,12 +18,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
 		break;
 }
 
-function listaContatoPF() {
+function listaCidade() {
 	
 	$v_registros = array();
 	
 	$o_cidadeControl = new CidadeControl();
-	$v_o_cidade = $o_cidadeControl->listarPorPessoa();
+	$v_o_cidade = $o_cidadeControl->listarTodos();
 	
 	foreach ($v_o_cidade as $o_cidade) {
 		$v_registros[] = $o_cidade;

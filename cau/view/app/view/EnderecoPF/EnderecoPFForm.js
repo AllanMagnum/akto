@@ -60,16 +60,16 @@ Ext.define('cau.view.enderecopf.EnderecoPFForm',{
 					name: 'cep'
 				},
 				{
-					xtype: 'textfield',
-					fieldLabel:'Cidade',
-					name: 'cidade'
-//					defaults:{anchor:'100%'},
-//					items:[{
-//						xtype:'combo',
-//						fieldLabel:'Cidade',
-//						name: 'cbxcidade',	
-//						store: 'CidadeStore'
-//					}]
+//					xtype: 'textfield',
+//					fieldLabel:'Cidade',
+//					name: 'cidade'
+					defaults:{anchor:'100%'},
+					items:[{
+						xtype:'combo',
+						fieldLabel:'Cidade',
+						name: 'cbxcidade',	
+						store: 'CidadeStore'
+					}]
 				}
 			]
 		}
