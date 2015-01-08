@@ -10,7 +10,7 @@ Ext.define('cau.view.contatopf.ContatoPFForm',{
 	alias: 'widget.contatopfform',
 
 	height: 200,
-	width: 350,
+	width: 450,
 	
 	layout: 'fit',
 	iconCls: 'icon-user',
@@ -30,24 +30,30 @@ Ext.define('cau.view.contatopf.ContatoPFForm',{
 			        name: 'id'
 				},
 				{
-					xtype:'combo',
-					name: 'cbxTipoContato',
 			        defaults:{anchor:'100%'},
+					xtype:'combo',
 					fieldLabel:'TipoContato',
+					emptyText:'Selecioone a Tipo de Contato ...',
+					forceSelection:true,
+					editable:false,
+					name: 'tipoContato',					
 					store: 'TipoContatoStore',
 					queryMode: 'rest',
-					displayField: 'nome',
-					valueField: 'CELULAR'
+					displayField: 'descricao',
+					valueField: 'descricao'
 				},
 				{
-					xtype:'combo',
-					name: 'cbxOperadoraContato',
 			        defaults:{anchor:'100%'},
+					xtype:'combo',
 					fieldLabel:'OperadoraContato',
+					emptyText:'Selecioone a Operadora de Contato ...',
+					forceSelection:true,
+					editable:false,
+					name: 'operadoraContato',
 					store: 'OperadoraContatoStore',
 					queryMode: 'rest',
-					displayField: 'nome',
-					valueField: 'VIVO'
+					displayField: 'descricao',
+					valueField: 'descricao'
 				},
 				{
 					xtype: 'textfield',

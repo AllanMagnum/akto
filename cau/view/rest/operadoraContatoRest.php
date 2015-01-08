@@ -28,14 +28,15 @@ function listaOperadoraContato() {
 	
 
 	$o_operadoraContatoControl = new OperadoraContatoControl();
-	$v_o_operadoraContato = $o_operadoraContatoControl->listarPaginado($start, $limit);
+	$v_o_operadoraContato = $o_operadoraContatoControl->listarTodos();
 	
 	foreach ($v_o_operadoraContato as $o_operadoraContato) {
 		$v_registros[] = $o_operadoraContato;
 	}
 	
 	$o_operadoraContatoControl = new OperadoraContatoControl();
-	$totalRegistro = $o_operadoraContatoControl->qtdTotal();
+// 	$totalRegistro = $o_operadoraContatoControl->qtdTotal();
+	$totalRegistro = 3;
 	
 	
 	// encoda para formato JSON

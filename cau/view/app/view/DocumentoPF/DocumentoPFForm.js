@@ -30,9 +30,13 @@ Ext.define('cau.view.documentopf.DocumentoPFForm',{
 			        name: 'id'
 				},
 				{
-					xtype: 'textfield',
+//					xtype: 'textfield',
+//					fieldLabel:'Tipo',
+//					name: 'enum_tipo'
+					xtype:'combo',
 					fieldLabel:'Tipo',
-					name: 'enum_tipo'
+					name: 'enum_tipo',	
+					store:["RG","CNH","CTPS","PASSAPORTE","OUTROS"]
 				},
 				{
 					xtype: 'textfield',

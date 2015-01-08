@@ -12,7 +12,9 @@ Ext.define('cau.controller.Main', {
              	'cau.model.EnderecoPF',
              	'cau.model.DocumentoPF',
              	'cau.model.ContatoPF',
-             	'cau.model.CidadeModel'
+             	'cau.model.CidadeModel',
+             	'cau.model.TipoContatoModel',
+             	'cau.model.OperadoraContatoModel'
     ],
 
     stores: [
@@ -20,7 +22,9 @@ Ext.define('cau.controller.Main', {
              	'cau.store.EnderecoPFStore',
              	'cau.store.DocumentoPFStore',
              	'cau.store.ContatoPFStore',
-             	'cau.store.CidadeStore'
+             	'cau.store.CidadeStore',
+             	'cau.store.TipoContatoStore',
+             	'cau.store.OperadoraContatoStore'
     ],
 
     views: [

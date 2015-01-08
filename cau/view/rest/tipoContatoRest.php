@@ -28,14 +28,15 @@ function listaTipoContato() {
 	
 
 	$o_tipoContatoControl = new TipoContatoControl();
-	$v_o_tipoContato = $o_tipoContatoControl->listarPaginado($start, $limit);
+	$v_o_tipoContato = $o_tipoContatoControl->listarTodos();
 	
 	foreach ($v_o_tipoContato as $o_tipoContato) {
 		$v_registros[] = $o_tipoContato;
 	}
 	
 	$o_tipoContatoControl = new TipoContatoControl();
-	$totalRegistro = $o_tipoContatoControl->qtdTotal();
+// 	$totalRegistro = $o_tipoContatoControl->qtdTotal();
+	$totalRegistro = 2;
 	
 	
 	// encoda para formato JSON
