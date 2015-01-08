@@ -30,14 +30,24 @@ Ext.define('cau.view.contatopf.ContatoPFForm',{
 			        name: 'id'
 				},
 				{
-					xtype: 'textfield',
-			        name: 'tipoContato',
-			        fieldLabel: 'Tipo'
+					xtype:'combo',
+					name: 'cbxTipoContato',
+			        defaults:{anchor:'100%'},
+					fieldLabel:'TipoContato',
+					store: 'TipoContatoStore',
+					queryMode: 'rest',
+					displayField: 'nome',
+					valueField: 'CELULAR'
 				},
 				{
-					xtype: 'textfield',
-			        name: 'operadoraContato',
-			        fieldLabel: 'Operadora'
+					xtype:'combo',
+					name: 'cbxOperadoraContato',
+			        defaults:{anchor:'100%'},
+					fieldLabel:'OperadoraContato',
+					store: 'OperadoraContatoStore',
+					queryMode: 'rest',
+					displayField: 'nome',
+					valueField: 'VIVO'
 				},
 				{
 					xtype: 'textfield',
