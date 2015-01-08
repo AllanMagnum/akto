@@ -24,5 +24,6 @@ Ext.define('cau.Application', {
         'EnderecoPFStore',
         'ContatoPFStore',
         'DocumentoPFStore',
+        'CidadeStore'
     ]
 });
