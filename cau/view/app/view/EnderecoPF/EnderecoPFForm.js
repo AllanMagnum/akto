@@ -63,12 +63,14 @@ Ext.define('cau.view.enderecopf.EnderecoPFForm',{
 					defaults:{anchor:'100%'},
 					xtype:'combo',
 					fieldLabel:'Cidade',
-					name: 'cbxcidade',
+					emptyText:'Selecioone a Cidade ...',
+					forceSelection:true,
+					editable:false,
+					name: 'cidade',
 					store: 'CidadeStore',
 					queryMode: 'rest',
 					displayField: 'nome',
-					valueField: 'Manaus',
-				
+					valueField: 'id'
 				}
 			]
 		}

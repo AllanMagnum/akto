@@ -56,17 +56,6 @@ function cadastraContatoPF() {
 	$o_pessoaFisica = new PessoaFisica();
 	$o_pessoaFisica->setId(1);
 	
-// 	$o_pais = new Pais();
-// 	$o_pais->setId(1);
-	
-// 	$o_estado = new Estado();
-// 	$o_estado->setId(1);
-// 	$o_estado->setOPais($o_pais);
-	
-// 	$o_cidade = new Cidade();
-// 	$o_cidade->setId(1);
-// 	$o_cidade->setOEstado($o_estado);
-	
 	//------
 	$o_contatoPF = new ContatoPF();
 	$o_contatoPF->setTipocontato($data->tipoContato);

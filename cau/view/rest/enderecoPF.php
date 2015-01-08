@@ -1,6 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" . 'control/EnderecoPFControl.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" .'model/bean/EnderecoPF.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/git/akto/cau/" .'control/CidadeControl.php';
 
 switch ($_SERVER['REQUEST_METHOD']) {
 	
@@ -56,16 +57,10 @@ function cadastraEnderecoPF() {
 	$o_pessoaFisica = new PessoaFisica();
 	$o_pessoaFisica->setId(1);
 	
-	$o_pais = new Pais();
-	$o_pais->setId(1);
-	
-	$o_estado = new Estado();
-	$o_estado->setId(1);
-	$o_estado->setOPais($o_pais);
-	
 	$o_cidade = new Cidade();
-	$o_cidade->setId(1);
-	$o_cidade->setOEstado($o_estado);
+	$o_cidade->setId($data->cidade);
+	$o_cidadeControl = new CidadeControl($o_cidade);
+	$o_cidade = $o_cidadeControl->buscarPorId();
 	
 	//------
 	$o_enderecoPF = new EnderecoPF();
@@ -85,8 +80,6 @@ function cadastraEnderecoPF() {
 	
  	$o_enderecoPF->setId($o_enderecoPFControl->getUltimoId());
 
-	
-	
 	// encoda para formato JSON
 	echo json_encode(array(
 			"success" => 0,
