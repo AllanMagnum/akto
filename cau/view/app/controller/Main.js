@@ -6,6 +6,12 @@
 
 Ext.define('cau.controller.Main', {
     extend: 'Ext.app.Controller',
+    
+    requires: [
+             	'cau.ux.CpfField',
+             	'cau.ux.CnpjField'
+    ],
+
 
     models: [
              	'cau.model.Pessoa',

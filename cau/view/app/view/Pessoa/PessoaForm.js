@@ -4,7 +4,6 @@
  * Desenvolvedores : Allan Magnum e Nilton Caldas Jr.
  */
 
-
 Ext.define('cau.view.pessoa.PessoaForm',{
 	
 	extend: 'Ext.tab.Panel',	
@@ -58,7 +57,7 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 							// defaults for fields
 							 defaults:{anchor:'100%'},
 							 items:[{
-								 xtype:'textfield',
+								 xtype:'cpffield',
 								 fieldLabel:'CPF',
 								 name: 'cpf'
 							},{
