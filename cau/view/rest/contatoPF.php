@@ -80,7 +80,7 @@ function cadastraContatoPF() {
 	
 }
 
-function atualizaEnderecoPF() {
+function atualizaContatoPF() {
 	
 	parse_str(file_get_contents("php://input"), $post_vars);
 	$jsonDados = $post_vars['data'];
@@ -94,7 +94,7 @@ function atualizaEnderecoPF() {
 	
 }
 
-function deletaEnderecoPF() {
+function deletaContatoPF() {
 	
 	parse_str(file_get_contents("php://input"), $post_vars);
 	$jsonDados = $post_vars['data'];
@@ -105,7 +105,7 @@ function deletaEnderecoPF() {
 	$o_contatoPF = new ContatoPF();
 	$o_contatoPF->setId($id);
 	
-	$o_contatoPFControl = new ContatoPFControl($o_pessoaFisica);
+	$o_contatoPFControl = new ContatoPFControl($o_contatoPF);
 	$o_contatoPFControl->deletar();
 	
 }

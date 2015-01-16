@@ -31,7 +31,7 @@ class DocumentoPFDAO{
 	}
 
 	function deletar(DocumentoPF $o_documentoPF){
-		$this->sql = "delete from documentos_pf where idpessoafisica='" . $o_documentoPF->getOPessoafisica()->getId() ."'" ;
+		$this->sql = "delete from documentos_pf where id='" . $o_documentoPF->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}

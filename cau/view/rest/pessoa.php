@@ -51,19 +51,33 @@ function cadastraPessoa() {
 	
 	$jsonDados = $_POST['data'];
 	$data = json_decode(stripslashes($jsonDados));
+	// Remover a mascara do CPF.
+	$cpf=$data->cpf;
+	$cpf=preg_replace("/\D+/", "", $cpf); // remove qualquer caracter não numérico
 	
 	$datahora = date("Y-m-d H:i:s");
+	// Tratar a Data
+// 	$dat2 = explode('/', '09/17/1969');	
+// 	$d_for = explode('/', '09/17/1969');
+	$d_for = explode('/', '09/17/1969');
+// 	$dat2 = $data->dataCadastro;
+// 	$d_for = explode('/', $dat2);
+	$dia = $d_for[1];
+	$mes = $d_for[0];
+	$ano = $d_for[2];
+	$s_dataAniversario = $ano."-".$mes."-".$dia;
+	
 	$o_pessoaFisica = new PessoaFisica();
 	$o_pessoaFisica->setNome($data->nome);
-	$o_pessoaFisica->setCpf($data->cpf);
-	$o_pessoaFisica->setDataNascimento("1987-03-14 00:00:00");
+	$o_pessoaFisica->setCpf($cpf);	
+	$o_pessoaFisica->setDataNascimento($s_dataAniversario);
 	$o_pessoaFisica->setEnumEstadoCivil($data->enum_estadoCivil);
 	$o_pessoaFisica->setEnumSexo($data->enum_sexo);
 	$o_pessoaFisica->setNomePai($data->nomePai);
 	$o_pessoaFisica->setNomeMae($data->nomeMae);
-	$o_pessoaFisica->setEnumCor('PARDA');
-	$o_pessoaFisica->setNaturalidade('amazonense');
-	$o_pessoaFisica->setNacionalidade('brasileiro');
+	$o_pessoaFisica->setEnumCor($data->enum_cor);
+	$o_pessoaFisica->setNaturalidade($data->naturalidade);
+	$o_pessoaFisica->setNacionalidade($data->nacionalidade);
 	$o_pessoaFisica->setDataCadastro($datahora);
 	$o_pessoaFisica->setDataAtualizacao($datahora);
 	
@@ -87,8 +101,24 @@ function atualizaPessoa() {
 	$jsonDados = $post_vars['data'];
 	$data = json_decode(stripslashes($jsonDados));
 	
-	$o_pessoaFisica = new PessoaFisica($data->id, $data->nome, $data->cpf, "1987-03-14 00:00:00", $data->enum_estadoCivil,
-			$data->enum_sexo,$data->nomePai, $data->nomeMae, $data->enum_cor, $data->naturalidade, $data->nacionalidade, "1987-03-14 00:00:00","1987-03-14 00:00:00" );
+	// Remover a mascara do CPF.
+	$cpf=$data->cpf;
+	$cpf=preg_replace("/\D+/", "", $cpf); // remove qualquer caracter não numérico
+	
+// 	$datahora = date("Y-m-d H:i:s");
+	$datahora = $data->dataNascimento;
+// 	$datahora = '09/17/1969';
+	// Tratar a Data
+// 	$d_for = explode('/', '09/17/1969');
+	$d_for = explode('/', $datahora);	
+	$dia = $d_for[1];
+	$mes = $d_for[0];
+	$ano = $d_for[2];
+	$s_dataAniversario = $ano."-".$mes."-".$dia;
+	
+	
+	$o_pessoaFisica = new PessoaFisica($data->id, $data->nome, $cpf, $s_dataAniversario, $data->enum_estadoCivil,
+			$data->enum_sexo,$data->nomePai, $data->nomeMae, $data->enum_cor, $data->naturalidade, $data->nacionalidade, $data,$data );
 	
 	$o_pessoaFisicaControl = new PessoaFisicaControl($o_pessoaFisica);
 	$o_pessoaFisicaControl->atualizar();

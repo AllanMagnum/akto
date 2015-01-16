@@ -105,7 +105,7 @@ function deletaDocumentoPF() {
 	$o_documentoPF = new DocumentoPF();
 	$o_documentoPF->setId($id);
 	
-	$o_documentoPFControl = new DocumentoPFControl($o_pessoaFisica);
+	$o_documentoPFControl = new DocumentoPFControl($o_documentoPF);
 	$o_documentoPFControl->deletar();
 	
 }

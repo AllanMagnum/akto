@@ -250,7 +250,9 @@ Ext.define('cau.controller.Main', {
             store.insert(0,pessoa);
         }
 
+        grid.getView().refresh();
         store.sync();
+
 
     },    
 

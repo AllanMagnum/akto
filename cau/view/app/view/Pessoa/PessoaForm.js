@@ -62,7 +62,9 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 								 name: 'cpf'
 							},{
 								 xtype:'datefield',
+//								 xtype: 'textfield',
 								 fieldLabel:'Data Nascimento',
+								 format: 'd/m/Y',
 								 name: 'dataNascimento'	
 							}]
 						},{
@@ -96,7 +98,7 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 						xtype: 'combo',
 				        name: 'enum_cor',
 				        fieldLabel: 'Cor',
-				        store:["BRANCA","FEMININO"]
+				        store:["BRANCA","PRETA","PARDA","AMARELA"]
 					},
 					{
 						xtype: 'textfield',
@@ -107,8 +109,9 @@ Ext.define('cau.view.pessoa.PessoaForm',{
 						xtype: 'textfield',
 				        name: 'nacionalidade',
 				        fieldLabel: 'Nacionalidade'
-					}
-				]
+					},
+					
+					]
 		}, 
 //        2. Aba Lista de Endereços -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		{

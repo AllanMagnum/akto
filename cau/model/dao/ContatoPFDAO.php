@@ -33,7 +33,7 @@ class ContatoPFDAO{
 	}
 	
 	function deletar(ContatoPF $o_contatoPF){
-		$this->sql = "delete from contato_pf where idpessoafisica'" . $o_contatoPF->getOPessoaFisica()->getId() ."'" ;
+		$this->sql = "delete from contato_pf where id='" . $o_contatoPF->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}

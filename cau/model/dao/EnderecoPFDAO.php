@@ -36,7 +36,7 @@ class EnderecoPFDAO{
 	}
 	
 	function deletar(EnderecoPF $o_enderecoPF){
-		$this->sql = "delete from endereco_pf where idpessoafisica='" . $o_enderecoPF->getOPessoaFisica()->getId() ."'" ;
+		$this->sql = "delete from endereco_pf where id='" . $o_enderecoPF->getId() ."'" ;
 		if (!mysqli_query($this->con, $this->sql)) {
 			die('Error: ' . mysqli_error($this->con));
 		}

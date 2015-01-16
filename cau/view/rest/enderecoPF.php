@@ -113,7 +113,7 @@ function deletaEnderecoPF() {
 	$o_enderecoPF = new EnderecoPF();
 	$o_enderecoPF->setId($id);
 	
-	$o_enderecoPFControl = new EnderecoPFControl($o_pessoaFisica);
+	$o_enderecoPFControl = new EnderecoPFControl($o_enderecoPF);
 	$o_enderecoPFControl->deletar();
 	
 }
